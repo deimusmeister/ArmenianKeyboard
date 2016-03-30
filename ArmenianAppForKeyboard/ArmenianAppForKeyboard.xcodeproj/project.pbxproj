@@ -1,0 +1,484 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D8BBAD11CAC40C800F8D7A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBAD01CAC40C800F8D7A4 /* main.m */; };
+		3D8BBAD41CAC40C800F8D7A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBAD31CAC40C800F8D7A4 /* AppDelegate.m */; };
+		3D8BBAD71CAC40C800F8D7A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBAD61CAC40C800F8D7A4 /* ViewController.m */; };
+		3D8BBADA1CAC40C800F8D7A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D8BBAD81CAC40C800F8D7A4 /* Main.storyboard */; };
+		3D8BBADC1CAC40C800F8D7A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D8BBADB1CAC40C800F8D7A4 /* Assets.xcassets */; };
+		3D8BBADF1CAC40C800F8D7A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D8BBADD1CAC40C800F8D7A4 /* LaunchScreen.storyboard */; };
+		3D8BBAEE1CAC415C00F8D7A4 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBAED1CAC415C00F8D7A4 /* KeyboardViewController.m */; };
+		3D8BBAF21CAC415C00F8D7A4 /* Armenian.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3D8BBAEA1CAC415C00F8D7A4 /* Armenian.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3D8BBAF91CAC739500F8D7A4 /* Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBAF81CAC739500F8D7A4 /* Alpha.m */; };
+		3D8BBAFC1CAC741B00F8D7A4 /* TurtleBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBAFB1CAC741B00F8D7A4 /* TurtleBezierPath.m */; };
+		3D8BBB081CAC775800F8D7A4 /* CYRKeyboardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBB051CAC775800F8D7A4 /* CYRKeyboardButton.m */; };
+		3D8BBB091CAC775800F8D7A4 /* CYRKeyboardButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBB071CAC775800F8D7A4 /* CYRKeyboardButtonView.m */; };
+		3D8BBB0C1CAC7BD100F8D7A4 /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBB0B1CAC7BD100F8D7A4 /* Colors.m */; };
+		3D8BBB0E1CAC7E2900F8D7A4 /* arnamu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D8BBB0D1CAC7E2900F8D7A4 /* arnamu.ttf */; };
+		3D8BBB0F1CAC7E2900F8D7A4 /* arnamu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D8BBB0D1CAC7E2900F8D7A4 /* arnamu.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3D8BBAF01CAC415C00F8D7A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D8BBAC41CAC40C700F8D7A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D8BBAE91CAC415C00F8D7A4;
+			remoteInfo = Armenian;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3D8BBAF61CAC415C00F8D7A4 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3D8BBAF21CAC415C00F8D7A4 /* Armenian.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3D8BBACC1CAC40C800F8D7A4 /* ArmenianAppForKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArmenianAppForKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D8BBAD01CAC40C800F8D7A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3D8BBAD21CAC40C800F8D7A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3D8BBAD31CAC40C800F8D7A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3D8BBAD51CAC40C800F8D7A4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3D8BBAD61CAC40C800F8D7A4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3D8BBAD91CAC40C800F8D7A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3D8BBADB1CAC40C800F8D7A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3D8BBADE1CAC40C800F8D7A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3D8BBAE01CAC40C800F8D7A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D8BBAEA1CAC415C00F8D7A4 /* Armenian.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Armenian.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D8BBAEC1CAC415C00F8D7A4 /* KeyboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardViewController.h; sourceTree = "<group>"; };
+		3D8BBAED1CAC415C00F8D7A4 /* KeyboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardViewController.m; sourceTree = "<group>"; };
+		3D8BBAEF1CAC415C00F8D7A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D8BBAF71CAC739500F8D7A4 /* Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alpha.h; sourceTree = "<group>"; };
+		3D8BBAF81CAC739500F8D7A4 /* Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alpha.m; sourceTree = "<group>"; };
+		3D8BBAFA1CAC741B00F8D7A4 /* TurtleBezierPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurtleBezierPath.h; sourceTree = "<group>"; };
+		3D8BBAFB1CAC741B00F8D7A4 /* TurtleBezierPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurtleBezierPath.m; sourceTree = "<group>"; };
+		3D8BBB041CAC775800F8D7A4 /* CYRKeyboardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRKeyboardButton.h; sourceTree = "<group>"; };
+		3D8BBB051CAC775800F8D7A4 /* CYRKeyboardButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRKeyboardButton.m; sourceTree = "<group>"; };
+		3D8BBB061CAC775800F8D7A4 /* CYRKeyboardButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRKeyboardButtonView.h; sourceTree = "<group>"; };
+		3D8BBB071CAC775800F8D7A4 /* CYRKeyboardButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRKeyboardButtonView.m; sourceTree = "<group>"; };
+		3D8BBB0A1CAC7BD100F8D7A4 /* Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
+		3D8BBB0B1CAC7BD100F8D7A4 /* Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colors.m; sourceTree = "<group>"; };
+		3D8BBB0D1CAC7E2900F8D7A4 /* arnamu.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arnamu.ttf; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D8BBAC91CAC40C800F8D7A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D8BBAE71CAC415C00F8D7A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D8BBAC31CAC40C700F8D7A4 = {
+			isa = PBXGroup;
+			children = (
+				3D8BBACE1CAC40C800F8D7A4 /* ArmenianAppForKeyboard */,
+				3D8BBAEB1CAC415C00F8D7A4 /* Armenian */,
+				3D8BBACD1CAC40C800F8D7A4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3D8BBACD1CAC40C800F8D7A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D8BBACC1CAC40C800F8D7A4 /* ArmenianAppForKeyboard.app */,
+				3D8BBAEA1CAC415C00F8D7A4 /* Armenian.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D8BBACE1CAC40C800F8D7A4 /* ArmenianAppForKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3D8BBAD21CAC40C800F8D7A4 /* AppDelegate.h */,
+				3D8BBAD31CAC40C800F8D7A4 /* AppDelegate.m */,
+				3D8BBAD51CAC40C800F8D7A4 /* ViewController.h */,
+				3D8BBAD61CAC40C800F8D7A4 /* ViewController.m */,
+				3D8BBAD81CAC40C800F8D7A4 /* Main.storyboard */,
+				3D8BBADB1CAC40C800F8D7A4 /* Assets.xcassets */,
+				3D8BBADD1CAC40C800F8D7A4 /* LaunchScreen.storyboard */,
+				3D8BBAE01CAC40C800F8D7A4 /* Info.plist */,
+				3D8BBACF1CAC40C800F8D7A4 /* Supporting Files */,
+			);
+			path = ArmenianAppForKeyboard;
+			sourceTree = "<group>";
+		};
+		3D8BBACF1CAC40C800F8D7A4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D8BBAD01CAC40C800F8D7A4 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3D8BBAEB1CAC415C00F8D7A4 /* Armenian */ = {
+			isa = PBXGroup;
+			children = (
+				3D8BBB101CAC7E2D00F8D7A4 /* Graphics */,
+				3D8BBB031CAC744100F8D7A4 /* CYRKeyboardButton */,
+				3D8BBAF71CAC739500F8D7A4 /* Alpha.h */,
+				3D8BBAF81CAC739500F8D7A4 /* Alpha.m */,
+				3D8BBAEC1CAC415C00F8D7A4 /* KeyboardViewController.h */,
+				3D8BBAED1CAC415C00F8D7A4 /* KeyboardViewController.m */,
+				3D8BBAEF1CAC415C00F8D7A4 /* Info.plist */,
+				3D8BBB0A1CAC7BD100F8D7A4 /* Colors.h */,
+				3D8BBB0B1CAC7BD100F8D7A4 /* Colors.m */,
+			);
+			path = Armenian;
+			sourceTree = "<group>";
+		};
+		3D8BBB031CAC744100F8D7A4 /* CYRKeyboardButton */ = {
+			isa = PBXGroup;
+			children = (
+				3D8BBAFA1CAC741B00F8D7A4 /* TurtleBezierPath.h */,
+				3D8BBAFB1CAC741B00F8D7A4 /* TurtleBezierPath.m */,
+				3D8BBB041CAC775800F8D7A4 /* CYRKeyboardButton.h */,
+				3D8BBB051CAC775800F8D7A4 /* CYRKeyboardButton.m */,
+				3D8BBB061CAC775800F8D7A4 /* CYRKeyboardButtonView.h */,
+				3D8BBB071CAC775800F8D7A4 /* CYRKeyboardButtonView.m */,
+			);
+			name = CYRKeyboardButton;
+			sourceTree = "<group>";
+		};
+		3D8BBB101CAC7E2D00F8D7A4 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				3D8BBB0D1CAC7E2900F8D7A4 /* arnamu.ttf */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3D8BBACB1CAC40C800F8D7A4 /* ArmenianAppForKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D8BBAE31CAC40C800F8D7A4 /* Build configuration list for PBXNativeTarget "ArmenianAppForKeyboard" */;
+			buildPhases = (
+				3D8BBAC81CAC40C800F8D7A4 /* Sources */,
+				3D8BBAC91CAC40C800F8D7A4 /* Frameworks */,
+				3D8BBACA1CAC40C800F8D7A4 /* Resources */,
+				3D8BBAF61CAC415C00F8D7A4 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D8BBAF11CAC415C00F8D7A4 /* PBXTargetDependency */,
+			);
+			name = ArmenianAppForKeyboard;
+			productName = ArmenianAppForKeyboard;
+			productReference = 3D8BBACC1CAC40C800F8D7A4 /* ArmenianAppForKeyboard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3D8BBAE91CAC415C00F8D7A4 /* Armenian */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D8BBAF31CAC415C00F8D7A4 /* Build configuration list for PBXNativeTarget "Armenian" */;
+			buildPhases = (
+				3D8BBAE61CAC415C00F8D7A4 /* Sources */,
+				3D8BBAE71CAC415C00F8D7A4 /* Frameworks */,
+				3D8BBAE81CAC415C00F8D7A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Armenian;
+			productName = Armenian;
+			productReference = 3D8BBAEA1CAC415C00F8D7A4 /* Armenian.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3D8BBAC41CAC40C700F8D7A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Levon Poghosyan";
+				TargetAttributes = {
+					3D8BBACB1CAC40C800F8D7A4 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					3D8BBAE91CAC415C00F8D7A4 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 3D8BBAC71CAC40C700F8D7A4 /* Build configuration list for PBXProject "ArmenianAppForKeyboard" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3D8BBAC31CAC40C700F8D7A4;
+			productRefGroup = 3D8BBACD1CAC40C800F8D7A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D8BBACB1CAC40C800F8D7A4 /* ArmenianAppForKeyboard */,
+				3D8BBAE91CAC415C00F8D7A4 /* Armenian */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D8BBACA1CAC40C800F8D7A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D8BBADF1CAC40C800F8D7A4 /* LaunchScreen.storyboard in Resources */,
+				3D8BBADC1CAC40C800F8D7A4 /* Assets.xcassets in Resources */,
+				3D8BBB0E1CAC7E2900F8D7A4 /* arnamu.ttf in Resources */,
+				3D8BBADA1CAC40C800F8D7A4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D8BBAE81CAC415C00F8D7A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D8BBB0F1CAC7E2900F8D7A4 /* arnamu.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D8BBAC81CAC40C800F8D7A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D8BBAD71CAC40C800F8D7A4 /* ViewController.m in Sources */,
+				3D8BBAD41CAC40C800F8D7A4 /* AppDelegate.m in Sources */,
+				3D8BBAD11CAC40C800F8D7A4 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D8BBAE61CAC415C00F8D7A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D8BBAF91CAC739500F8D7A4 /* Alpha.m in Sources */,
+				3D8BBB0C1CAC7BD100F8D7A4 /* Colors.m in Sources */,
+				3D8BBB091CAC775800F8D7A4 /* CYRKeyboardButtonView.m in Sources */,
+				3D8BBB081CAC775800F8D7A4 /* CYRKeyboardButton.m in Sources */,
+				3D8BBAFC1CAC741B00F8D7A4 /* TurtleBezierPath.m in Sources */,
+				3D8BBAEE1CAC415C00F8D7A4 /* KeyboardViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3D8BBAF11CAC415C00F8D7A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D8BBAE91CAC415C00F8D7A4 /* Armenian */;
+			targetProxy = 3D8BBAF01CAC415C00F8D7A4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3D8BBAD81CAC40C800F8D7A4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D8BBAD91CAC40C800F8D7A4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3D8BBADD1CAC40C800F8D7A4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D8BBADE1CAC40C800F8D7A4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3D8BBAE11CAC40C800F8D7A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3D8BBAE21CAC40C800F8D7A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3D8BBAE41CAC40C800F8D7A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ArmenianAppForKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LevonPoghosyan.ArmenianAppForKeyboard.ArmenianAppForKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3D8BBAE51CAC40C800F8D7A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ArmenianAppForKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LevonPoghosyan.ArmenianAppForKeyboard.ArmenianAppForKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3D8BBAF41CAC415C00F8D7A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Armenian/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LevonPoghosyan.ArmenianAppForKeyboard.ArmenianAppForKeyboard.Armenian;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3D8BBAF51CAC415C00F8D7A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Armenian/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LevonPoghosyan.ArmenianAppForKeyboard.ArmenianAppForKeyboard.Armenian;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3D8BBAC71CAC40C700F8D7A4 /* Build configuration list for PBXProject "ArmenianAppForKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D8BBAE11CAC40C800F8D7A4 /* Debug */,
+				3D8BBAE21CAC40C800F8D7A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D8BBAE31CAC40C800F8D7A4 /* Build configuration list for PBXNativeTarget "ArmenianAppForKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D8BBAE41CAC40C800F8D7A4 /* Debug */,
+				3D8BBAE51CAC40C800F8D7A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3D8BBAF31CAC415C00F8D7A4 /* Build configuration list for PBXNativeTarget "Armenian" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D8BBAF41CAC415C00F8D7A4 /* Debug */,
+				3D8BBAF51CAC415C00F8D7A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3D8BBAC41CAC40C700F8D7A4 /* Project object */;
+}
