@@ -9,15 +9,70 @@
 #import "KeyboardViewController.h"
 #import "Alpha.h"
 
+// Height sizes for iPhone modes
+#define kiPhonePortraitHeight       286; //251 + 35;
+#define kiPhoneLandscapeHeight      247; //212 + 35;
+
+// Height sizes for iPad modes
+#define kiPadPortraitHeight       224;
+#define kiPadLandscapeHeight      206;
+
+
 @interface KeyboardViewController ()
-@property (nonatomic, strong) UIButton *nextKeyboardButton;
+
+// Height constraint
+@property (nonatomic) NSLayoutConstraint *heightConstraint;
+
+// Helper variables
+@property (nonatomic) BOOL isLandscape;
+
+// Variables for storing keyboard height on landscape and portrait modes
+@property (nonatomic) CGFloat portraitHeight;
+@property (nonatomic) CGFloat landscapeHeight;
+
 @end
 
 @implementation KeyboardViewController
 
-- (void)updateViewConstraints
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        // Perform custom initialization work here
+        self.portraitHeight = kiPhonePortraitHeight;
+        self.landscapeHeight = kiPhoneLandscapeHeight;
+    }
+    return self;
+}
+
+- (void)updateViewConstraints {
     [super updateViewConstraints];
+    
+    // Add custom view sizing constraints here
+    if (self.view.frame.size.width == 0 || self.view.frame.size.height == 0)
+        return;
+    
+    // If height constraint is not initialized do not continue
+    if (self.heightConstraint == nil)
+        return;
+    
+    [self.view removeConstraint:self.heightConstraint];
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    CGFloat screenH = screenSize.height;
+    CGFloat screenW = screenSize.width;
+    BOOL isLandscape =  !(self.view.frame.size.width ==
+                          (screenW*(screenW<screenH))+(screenH*(screenW>screenH)));
+    NSLog(isLandscape ? @"Screen: Landscape" : @"Screen: Potriaint");
+    self.isLandscape = isLandscape;
+    if (isLandscape) {
+        NSLog(@"%f", self.landscapeHeight);
+        self.heightConstraint.constant = self.landscapeHeight;
+        [self.view addConstraint:self.heightConstraint];
+    } else {
+        NSLog(@"%f", self.portraitHeight);
+        self.heightConstraint.constant = self.portraitHeight;
+        [self.view addConstraint:self.heightConstraint];
+    }
 }
 
 - (void)viewDidLoad
@@ -26,6 +81,18 @@
     
     // Add alpha keyboard
     [self addAlphaKeyboard];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:0.0
+                                                          constant:self.portraitHeight];
+    self.heightConstraint.priority = UILayoutPriorityRequired - 1; // This will eliminate the constraint conflict warning.
+    [self.view addConstraint: self.heightConstraint];
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,7 +168,7 @@
                                                                                         relatedBy:NSLayoutRelationEqual
                                                                                            toItem:self.view
                                                                                         attribute:NSLayoutAttributeTop
-                                                                                       multiplier:1.0 constant:0.0];
+                                                                                       multiplier:1.0 constant:60.0];
     
     [self.view addConstraint:alphaKeyboardButtonTopConstraint];
 }
