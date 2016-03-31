@@ -10,9 +10,17 @@
 #import <UIKit/UIKit.h>
 
 @interface Colors : NSObject
+{
+    id textDocumentProxy;
+}
 
-+ (UIColor*) buttonBackgroundColor;
-+ (UIColor*) buttonTextBackgroundColor;
-+ (UIColor*) buttonSpecialBackgroundColor;
+@property (nonatomic, strong) id <UITextDocumentProxy> textDocumentProxy;
+
++ (id)sharedManager;
+
+- (UIColor*) buttonBackgroundColor;
+- (UIColor*) buttonTextBackgroundColor;
+- (UIColor*) buttonSpecialBackgroundColor;
+- (UIColor*) buttonSpecialBackgroundColorSelected;
 
 @end

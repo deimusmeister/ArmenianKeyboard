@@ -20,6 +20,7 @@
 #define kAlphaGlobeButton       407
 #define kAlphaDotButton         408
 #define kAlhpaSpace             409
+#define kAlhpaSymbolic          410
 
 // Input handler delegate protocole
 @protocol AlphaInputDelegate <NSObject>

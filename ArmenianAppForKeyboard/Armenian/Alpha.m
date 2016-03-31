@@ -17,6 +17,8 @@
 #define kNormal           1     // Lowercase
 #define kShifted          2     // Shifted
 #define kCapslock         3     // Capslocked
+#define kNumeric          4     // Numeric
+#define kSymbolic         5     // Symbolic
 
 @implementation Alpha
 
@@ -162,6 +164,128 @@
                                                                    views:views]];
 }
 
+- (void)addNumericLayout
+{
+    // Cleanup all subviews
+    for (UIView *subUIView in self.subviews) {
+        [subUIView removeFromSuperview];
+    }
+    
+    // Row 1
+    UIView* row1 = [self createRow:@[ @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"0" ]
+                           options:nil OffsetLeft:0.0 OffsetLeft:0.0];
+    row1.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:kDebug];
+    
+    // Row 2
+    UIView* row2 = [self createRow:@[ @"-", @"/", @":", @";", @"(", @")", @"x", @"&", @"@", @"\"" ]
+                           options:nil OffsetLeft:0.0 OffsetLeft:0.0];
+    row2.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
+    
+    // Row 3
+    UIView* row3 = [self createRow:@[ @"Ա", @"Ս", @"Դ", @"Ֆ", @"Գ", @"Հ", @"Յ", @"Կ", @"Լ", @"Ծ" ]
+                           options:nil OffsetLeft:0.05 OffsetLeft:0.05];
+    row3.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
+    
+    // Row 4
+    UIView* row4 = [self createRow:@[ @".", @"Ղ", @"Ց", @"Վ", @"Բ", @"Ն", @"Մ"]
+                           options:nil  OffsetLeft:0.11 OffsetLeft:0.11];
+    row4.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:kDebug];
+    
+    // Add delete button
+    [self addDeleteButtonInRow:row4 sideOffset:0.0];
+    
+    // Add symbolic button
+    [self addSymbolicButtonInRow:row4 sideOffset:0.0];
+    
+    // Row 5
+    UIView* row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.325 OffsetLeft:0.345];
+    row5.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:kDebug];
+    
+    // Add return button
+    [self addEnterButtonInRow:row5 sideOffset:0.0];
+    
+    // Add numbers button (ԱԲԳ)
+    [self addABCButtonInRow:row5 sideOffset:0.0];
+    
+    // Add globe button
+    [self addGlobeButtonInRow:row5 sideOffset:0.0];
+    
+    // Add search button
+    [self addSearchButtonInRow:row5 sideOffset:0.0];
+    
+    // Add dot button
+    [self addDotButtonInRow:row5 sideOffset:0.0];
+    
+    // Vertical constraints
+    NSDictionary* views = NSDictionaryOfVariableBindings( row1, row2, row3, row4, row5 );
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
+                          @"V:|-4-[row1]-4-[row2(==row1)]-4-[row3(==row2)]-4-[row4(==row3)]-4-[row5(==row4)]-3-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:views]];
+}
+
+- (void)addSymbolicLayout
+{
+    // Cleanup all subviews
+    for (UIView *subUIView in self.subviews) {
+        [subUIView removeFromSuperview];
+    }
+    
+    // Row 1
+    UIView* row1 = [self createRow:@[ @"[", @"]", @"{", @"}", @"#", @"%", @"^", @"*", @"+", @"=" ]
+                           options:nil OffsetLeft:0.0 OffsetLeft:0.0];
+    row1.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:kDebug];
+    
+    // Row 2
+    UIView* row2 = [self createRow:@[ @"-", @"/", @":", @";", @"(", @")", @"x", @"&", @"@", @"\"" ]
+                           options:nil OffsetLeft:0.0 OffsetLeft:0.0];
+    row2.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
+    
+    // Row 3
+    UIView* row3 = [self createRow:@[ @"Ա", @"Ս", @"Դ", @"Ֆ", @"Գ", @"Հ", @"Յ", @"Կ", @"Լ", @"Ծ" ]
+                           options:nil OffsetLeft:0.05 OffsetLeft:0.05];
+    row3.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
+    
+    // Row 4
+    UIView* row4 = [self createRow:@[ @".", @"Ղ", @"Ց", @"Վ", @"Բ", @"Ն", @"Մ"]
+                           options:nil  OffsetLeft:0.11 OffsetLeft:0.11];
+    row4.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:kDebug];
+    
+    // Add delete button
+    [self addDeleteButtonInRow:row4 sideOffset:0.0];
+    
+    // Add numbers button
+    [self addNumbersButtonInRow:row4 sideOffset:0.0];
+    
+    // Row 5
+    UIView* row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.325 OffsetLeft:0.345];
+    row5.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:kDebug];
+    
+    // Add return button
+    [self addEnterButtonInRow:row5 sideOffset:0.0];
+    
+    // Add numbers button (ԱԲԳ)
+    [self addABCButtonInRow:row5 sideOffset:0.0];
+    
+    // Add globe button
+    [self addGlobeButtonInRow:row5 sideOffset:0.0];
+    
+    // Add search button
+    [self addSearchButtonInRow:row5 sideOffset:0.0];
+    
+    // Add dot button
+    [self addDotButtonInRow:row5 sideOffset:0.0];
+    
+    // Vertical constraints
+    NSDictionary* views = NSDictionaryOfVariableBindings( row1, row2, row3, row4, row5 );
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
+                          @"V:|-4-[row1]-4-[row2(==row1)]-4-[row3(==row2)]-4-[row4(==row3)]-4-[row5(==row4)]-3-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:views]];
+}
+
 - (UIView*)createRow:(NSArray*)titles options:(NSArray*)options OffsetLeft:(CGFloat)offsetLeft OffsetLeft:(CGFloat)offsetRight
 {
     UIView* row = [[UIView alloc] init];
@@ -209,8 +333,8 @@
             
             [sbutton setTitle:[titles objectAtIndex:i] forState:UIControlStateNormal];
             sbutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU" size:16.0];
-            [sbutton setBackgroundColor:[Colors buttonBackgroundColor]];
-            [sbutton setTitleColor:[Colors buttonTextBackgroundColor] forState:UIControlStateNormal];
+            [sbutton setBackgroundColor:[[Colors sharedManager] buttonBackgroundColor]];
+            [sbutton setTitleColor:[[Colors sharedManager] buttonTextBackgroundColor] forState:UIControlStateNormal];
             sbutton.layer.cornerRadius = 5;
             sbutton.tag = kAlhpaSpace;
             
@@ -229,8 +353,8 @@
             [row addSubview:button];
             
             // Button specific colors
-            UIColor* buttonBackgroundColor = [Colors buttonBackgroundColor];
-            UIColor* buttonTextColor = [Colors buttonTextBackgroundColor];
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonBackgroundColor];
+            UIColor* buttonTextColor = [[Colors sharedManager] buttonTextBackgroundColor];
             
             // Button properties
             button.keyColor = buttonBackgroundColor;
@@ -460,7 +584,7 @@
             [button setImage:[UIImage imageNamed:@"Backspace.png"] forState:UIControlStateNormal];
             
             // Update background color
-            UIColor* buttonBackgroundColor = [Colors buttonSpecialBackgroundColor];
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
             [button setBackgroundColor:buttonBackgroundColor];
             
             // Remove a character
@@ -471,8 +595,8 @@
         case kAlphaEnter:
         {
             // Button specific colors
-            UIColor* buttonBackgroundColor = [Colors buttonBackgroundColor];
-            UIColor* buttonTextColor = [Colors buttonTextBackgroundColor];
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonBackgroundColor];
+            UIColor* buttonTextColor = [[Colors sharedManager] buttonTextBackgroundColor];
             
             // Button properties
             [button setBackgroundColor:buttonBackgroundColor];
@@ -486,22 +610,51 @@
             
         case kAlphaNumber:
         {
-            // Update delete button icon and background color
-            [button setImage:[UIImage imageNamed:@"Numbers.png"] forState:UIControlStateNormal];
-            
             // Update background color
-            UIColor* buttonBackgroundColor = [Colors buttonSpecialBackgroundColor];
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
             [button setBackgroundColor:buttonBackgroundColor];
             
             // Switch to numeric keyboard
-            [delegate alphaSpecialKeyInputDelegateMethod:kAlphaNumber];
+            [self addNumericLayout];
+            
+            // Set the current mode
+            self.alphaMode = kNumeric;
         }
             break;
+            
+        case kAlphaABC:
+        {
+            // Update background color
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
+            [button setBackgroundColor:buttonBackgroundColor];
+            
+            // Switch to lowercase/uppercase layout
+            [self addLowerCaseLayout];
+            
+            // Set the current mode
+            self.alphaMode = kNormal;
+        }
+            break;
+            
+        case kAlhpaSymbolic:
+        {
+            // Update background color
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
+            [button setBackgroundColor:buttonBackgroundColor];
+            
+            // Switch to symbolic keyboard
+            [self addSymbolicLayout];
+            
+            // Set the current mode
+            self.alphaMode = kSymbolic;
+        }
+            break;
+            
         case kAlhpaSpace:
         {
             // Update space botton colors
-            [button setBackgroundColor:[UIColor whiteColor]];
-            [button setTitleColor:[Colors buttonTextBackgroundColor] forState:UIControlStateNormal];
+            [button setBackgroundColor:[[Colors sharedManager] buttonBackgroundColor]];
+            [button setTitleColor:[[Colors sharedManager] buttonTextBackgroundColor] forState:UIControlStateNormal];
             
             // Forward to input handler
             [delegate alphaInputDelegateMethod:@" "];
@@ -532,7 +685,7 @@
             [button setImage:[UIImage imageNamed:@"BackspaceSelected.png"] forState:UIControlStateNormal];
             
             // Update background color
-            UIColor* buttonBackgroundColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonBackgroundColor];
             [button setBackgroundColor:buttonBackgroundColor];
         }
             break;
@@ -540,23 +693,33 @@
         case kAlphaEnter:
         {
             // Button specific colors
-            UIColor* buttonBackgroundColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
-            UIColor* buttonTextColor = [UIColor colorWithRed:173.f/255.f green:201.f/255.f blue:114.f/255.f alpha:1.f];
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonBackgroundColor];
             
             // Button properties
             [button setBackgroundColor:buttonBackgroundColor];
-            [button setTitleColor:buttonTextColor forState:UIControlStateNormal];
-            button.tintColor = buttonTextColor;
         }
             break;
             
         case kAlphaNumber:
         {
-            // Update delete button icon and background color
-            [button setImage:[UIImage imageNamed:@"NumbersSelected.png"] forState:UIControlStateNormal];
-            
             // Update background color
-            UIColor* buttonBackgroundColor = [UIColor whiteColor];
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonBackgroundColor];
+            [button setBackgroundColor:buttonBackgroundColor];
+        }
+            break;
+            
+        case kAlphaABC:
+        {
+            // Update background color
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonBackgroundColor];
+            [button setBackgroundColor:buttonBackgroundColor];
+        }
+            break;
+            
+        case kAlhpaSymbolic:
+        {
+            // Update background color
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonBackgroundColor];
             [button setBackgroundColor:buttonBackgroundColor];
         }
             break;
@@ -564,12 +727,10 @@
         case kAlhpaSpace:
         {
             // Button specific color
-            UIColor* buttonBackgroundColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
-            UIColor* buttonTextColor = [UIColor colorWithRed:173.f/255.f green:201.f/255.f blue:114.f/255.f alpha:1.f];
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
             
             // Update space botton colors
             [button setBackgroundColor:buttonBackgroundColor];
-            [button setTitleColor:buttonTextColor forState:UIControlStateNormal];
         }
             break;
             
@@ -595,7 +756,7 @@
             [ebutton setImage:[UIImage imageNamed:@"ShiftCapslock.png"] forState:UIControlStateNormal];
             
             // Update the background color
-            UIColor* buttonBackgroundColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColorSelected];
             [ebutton setBackgroundColor:buttonBackgroundColor];
         }
     }
@@ -618,7 +779,7 @@
             [ebutton setImage:[UIImage imageNamed:@"ShiftShifted.png"] forState:UIControlStateNormal];
             
             // Update the background color
-            UIColor* buttonBackgroundColor = [UIColor colorWithRed:173.f/255.f green:201.f/255.f blue:114.f/255.f alpha:1.f];
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColorSelected];
             [ebutton setBackgroundColor:buttonBackgroundColor];
         }
     }
@@ -637,7 +798,7 @@
             [ebutton setImage:[UIImage imageNamed:@"Shift.png"] forState:UIControlStateNormal];
             
             // Update the background color
-            UIColor* buttonBackgroundColor = [UIColor colorWithRed:173.f/255.f green:201.f/255.f blue:114.f/255.f alpha:1.f];
+            UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
             [ebutton setBackgroundColor:buttonBackgroundColor];
         }
     }
@@ -703,7 +864,7 @@
     [ebutton addTarget:self action:@selector(buttonDown:) forControlEvents:UIControlEventTouchDown];
     
     // Button specific colors
-    UIColor* buttonBackgroundColor = [Colors buttonSpecialBackgroundColor];
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
     UIColor* buttonTextColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
     
     // Button properties
@@ -784,8 +945,8 @@
     [ebutton addTarget:self action:@selector(buttonDown:) forControlEvents:UIControlEventTouchDown];
     
     // Button specific colors
-    UIColor* buttonBackgroundColor = [Colors buttonSpecialBackgroundColor];
-    UIColor* buttonTextColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
+    UIColor* buttonTextColor = [[Colors sharedManager] buttonTextBackgroundColor];
     
     // Button properties
     [ebutton setBackgroundColor:buttonBackgroundColor];
@@ -835,14 +996,26 @@
 
 - (void)addNumbersButtonInRow:(UIView*)containerView sideOffset:(CGFloat)offset
 {
-    // Find button with space title
-    UIButton* button = nil;
+    // Find button with space or . title
+    id button = nil;
     for (UIView *subUIView in containerView.subviews) {
         if ([subUIView isKindOfClass:[UIButton class]])
         {
             UIButton* tmp = (UIButton*)subUIView;
             // Check if we found the proper button
             BOOL properButton = [tmp.titleLabel.text isEqualToString:@"ԲԱՑԱՏ"] || [tmp.titleLabel.text isEqualToString:@"."];
+            if (properButton == YES)
+            {
+                button = tmp;
+                break;
+            }
+        }
+        else if ([subUIView isKindOfClass:[CYRKeyboardButton class]])
+        {
+            CYRKeyboardButton* tmp = (CYRKeyboardButton*)subUIView;
+            NSString* titleText = tmp.input;
+            // Check if we found the proper button
+            BOOL properButton = [titleText isEqualToString:@"."];
             if (properButton == YES)
             {
                 button = tmp;
@@ -856,8 +1029,7 @@
     
     UIButton* ebutton = [[UIButton alloc] init];
     ebutton.tag = kAlphaNumber;
-    [ebutton setImage:[UIImage imageNamed:@"Numbers.png"] forState:UIControlStateNormal];
-    ebutton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [ebutton setTitle:@"123" forState:UIControlStateNormal];
     
     ebutton.translatesAutoresizingMaskIntoConstraints = NO;
     [containerView addSubview:ebutton];
@@ -867,8 +1039,8 @@
     [ebutton addTarget:self action:@selector(buttonDown:) forControlEvents:UIControlEventTouchDown];
     
     // Button specific colors
-    UIColor* buttonBackgroundColor = [Colors buttonSpecialBackgroundColor];
-    UIColor* buttonTextColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
+    UIColor* buttonTextColor = [[Colors sharedManager] buttonTextBackgroundColor];
     
     // Button properties
     [ebutton setBackgroundColor:buttonBackgroundColor];
@@ -925,7 +1097,7 @@
         {
             UIButton* tmp = (UIButton*)subUIView;
             // Check if we found the proper button
-            BOOL properButton = (tmp.tag == kAlphaNumber);
+            BOOL properButton = (tmp.tag == kAlphaNumber) || (tmp.tag == kAlphaABC);
             if (properButton == YES)
             {
                 numbutton = tmp;
@@ -949,7 +1121,7 @@
     [ebutton addTarget:self action:@selector(buttonUpInside:) forControlEvents:UIControlEventTouchUpInside];
 
     // Button specific colors
-    UIColor* buttonBackgroundColor = [Colors buttonSpecialBackgroundColor];
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
     UIColor* buttonTextColor = [UIColor colorWithRed:173.f/255.f green:201.f/255.f blue:114.f/255.f alpha:1.f];
 
     // Button properties
@@ -1032,7 +1204,7 @@
     [ebutton addTarget:self action:@selector(buttonUpInside:) forControlEvents:UIControlEventTouchUpInside];
     
     // Button specific colors
-    UIColor* buttonBackgroundColor = [Colors buttonSpecialBackgroundColor];
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
     UIColor* buttonTextColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
     
     // Button properties
@@ -1116,8 +1288,8 @@
     ebutton.delegate = self;
     
     // Button specific colors
-    UIColor* buttonBackgroundColor = [Colors buttonBackgroundColor];
-    UIColor* buttonTextColor = [Colors buttonTextBackgroundColor];
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonBackgroundColor];
+    UIColor* buttonTextColor = [[Colors sharedManager] buttonTextBackgroundColor];
     
     // Button properties
     ebutton.keyColor = buttonBackgroundColor;
@@ -1174,7 +1346,7 @@
         {
             UIButton* tmp = (UIButton*)subUIView;
             // Check if we found the proper button
-            BOOL properButton = [tmp.titleLabel.text isEqualToString:@"ԲԱՑԱՏ"];
+            BOOL properButton = [tmp.titleLabel.text isEqualToString:@"ԲԱՑԱՏ"] || [tmp.titleLabel.text isEqualToString:@"."];
             if (properButton == YES)
             {
                 button = tmp;
@@ -1188,17 +1360,18 @@
     
     UIButton* ebutton = [[UIButton alloc] init];
     ebutton.tag = kAlphaABC;
-    [ebutton setTitle:@"ABC" forState:UIControlStateNormal];
+    [ebutton setTitle:@"ԱԲԳ" forState:UIControlStateNormal];
     
     ebutton.translatesAutoresizingMaskIntoConstraints = NO;
     [containerView addSubview:ebutton];
     
     // Register button click handler
     [ebutton addTarget:self action:@selector(buttonUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [ebutton addTarget:self action:@selector(buttonDown:) forControlEvents:UIControlEventTouchDown];
     
     // Button specific colors
-    UIColor* buttonBackgroundColor = [Colors buttonSpecialBackgroundColor];
-    UIColor* buttonTextColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
+    UIColor* buttonTextColor = [[Colors sharedManager] buttonTextBackgroundColor];
     
     // Button properties
     [ebutton setBackgroundColor:buttonBackgroundColor];
@@ -1236,15 +1409,14 @@
                                                                            multiplier:1.0 constant:offset];
     [containerView addConstraint:buttonLeftConstraint];
     
-    // Right constraint
-    NSLayoutConstraint *buttonRightConstraint = [NSLayoutConstraint constraintWithItem:ebutton
-                                                                             attribute:NSLayoutAttributeRight
+    // Width constraint
+    NSLayoutConstraint *buttonWidthConstraint = [NSLayoutConstraint constraintWithItem:ebutton
+                                                                             attribute:NSLayoutAttributeWidth
                                                                              relatedBy:NSLayoutRelationEqual
-                                                                                toItem:button
-                                                                             attribute:NSLayoutAttributeLeft
-                                                                            multiplier:1.0 constant:-2.0];
-    [containerView addConstraint:buttonRightConstraint];
-    
+                                                                                toItem:containerView
+                                                                             attribute:NSLayoutAttributeWidth
+                                                                            multiplier:0.10f constant:0];
+    [containerView addConstraint:buttonWidthConstraint];
 }
 
 - (void)addShiftButtonInRow:(UIView*)containerView sideOffset:(CGFloat)offset
@@ -1282,7 +1454,7 @@
     [ebutton addTarget:self action:@selector(onTap:withEvent:) forControlEvents:UIControlEventTouchDown];
     
     // Button specific colors
-    UIColor* buttonBackgroundColor = [Colors buttonSpecialBackgroundColor];
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
     UIColor* buttonTextColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
     
     // Button properties
@@ -1333,6 +1505,89 @@
     
 }
 
+- (void)addSymbolicButtonInRow:(UIView*)containerView sideOffset:(CGFloat)offset
+{
+    // Find button with . title
+    CYRKeyboardButton* button = nil;
+    for (UIView *subUIView in containerView.subviews) {
+        if ([subUIView isKindOfClass:[CYRKeyboardButton class]])
+        {
+            CYRKeyboardButton* tmp = (CYRKeyboardButton*)subUIView;
+            NSString* titleText = tmp.input;
+            // Check if we found the proper button
+            BOOL properButton = [titleText isEqualToString:@"."];
+            if (properButton == YES)
+            {
+                button = tmp;
+                break;
+            }
+        }
+    }
+    
+    if (button == nil)
+        return;
+    
+    UIButton* ebutton = [[UIButton alloc] init];
+    ebutton.tag = kAlhpaSymbolic;
+    [ebutton setTitle:@"#+=" forState:UIControlStateNormal];
+    
+    ebutton.translatesAutoresizingMaskIntoConstraints = NO;
+    [containerView addSubview:ebutton];
+    
+    // Register button click handler
+    [ebutton addTarget:self action:@selector(buttonUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [ebutton addTarget:self action:@selector(buttonDown:) forControlEvents:UIControlEventTouchDown];
+    
+    // Button specific colors
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
+    UIColor* buttonTextColor = [[Colors sharedManager] buttonTextBackgroundColor];
+    
+    // Button properties
+    [ebutton setBackgroundColor:buttonBackgroundColor];
+    [ebutton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [ebutton setTitleColor:buttonTextColor forState:UIControlStateNormal];
+    ebutton.tintColor = buttonTextColor;
+    ebutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU" size:12.0];
+    ebutton.layer.cornerRadius = 5;
+    
+    // Bottom constraint
+    NSLayoutConstraint *buttonBottomConstraint = [NSLayoutConstraint constraintWithItem:ebutton
+                                                                              attribute:NSLayoutAttributeBottom
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:containerView
+                                                                              attribute:NSLayoutAttributeBottom
+                                                                             multiplier:1.0 constant:0.0];
+    
+    [containerView addConstraint:buttonBottomConstraint];
+    
+    // Top constraint
+    NSLayoutConstraint *buttonTopConstraint = [NSLayoutConstraint constraintWithItem:ebutton
+                                                                           attribute:NSLayoutAttributeTop
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:containerView
+                                                                           attribute:NSLayoutAttributeTop
+                                                                          multiplier:1.0 constant:0.0];
+    [containerView addConstraint:buttonTopConstraint];
+    
+    // Left constraint
+    NSLayoutConstraint *buttonLeftConstraint = [NSLayoutConstraint constraintWithItem:ebutton
+                                                                            attribute:NSLayoutAttributeLeft
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:containerView
+                                                                            attribute:NSLayoutAttributeLeft
+                                                                           multiplier:1.0 constant:offset];
+    [containerView addConstraint:buttonLeftConstraint];
+    
+    // Width constraint
+    NSLayoutConstraint *buttonWidthConstraint = [NSLayoutConstraint constraintWithItem:ebutton
+                                                                             attribute:NSLayoutAttributeWidth
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:containerView
+                                                                             attribute:NSLayoutAttributeWidth
+                                                                            multiplier:0.10f constant:0];
+    [containerView addConstraint:buttonWidthConstraint];
+}
+
 - (void)addOptionButtonInRow:(UIView*)containerView sideOffset:(CGFloat)offset
 {
     // Find button with . title
@@ -1365,7 +1620,7 @@
     [ebutton addTarget:self action:@selector(buttonUpInside:) forControlEvents:UIControlEventTouchUpInside];
     
     // Button specific colors
-    UIColor* buttonBackgroundColor = [Colors buttonSpecialBackgroundColor];
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
     UIColor* buttonTextColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
     
     // Button properties

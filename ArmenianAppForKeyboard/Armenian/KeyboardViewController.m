@@ -8,6 +8,7 @@
 
 #import "KeyboardViewController.h"
 #import "Alpha.h"
+#import "Colors.h"
 
 // Height sizes for iPhone modes
 #define kiPhonePortraitHeight       286; //251 + 35;
@@ -81,6 +82,9 @@
     
     // Add alpha keyboard
     [self addAlphaKeyboard];
+    
+    // Setup the colors manager
+    [[Colors sharedManager] setTextDocumentProxy:self.textDocumentProxy];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -102,19 +106,6 @@
 
 - (void)textWillChange:(id<UITextInput>)textInput
 {
-}
-
-- (void)textDidChange:(id<UITextInput>)textInput
-{
-//    // The app has just changed the document's contents, the document context has been updated.
-//    
-//    UIColor *textColor = nil;
-//    if (self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearanceDark) {
-//        textColor = [UIColor whiteColor];
-//    } else {
-//        textColor = [UIColor blackColor];
-//    }
-//    [self.nextKeyboardButton setTitleColor:textColor forState:UIControlStateNormal];
 }
 
 - (void) addAlphaKeyboard
