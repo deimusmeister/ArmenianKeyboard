@@ -21,6 +21,8 @@
 - (UIColor*) buttonBackgroundColor;
 - (UIColor*) buttonTextBackgroundColor;
 - (UIColor*) buttonSpecialBackgroundColor;
+- (UIColor*) buttonSpecialTintColor;
+- (UIColor*) buttonSpecialTintSelectedColor;
 - (UIColor*) buttonSpecialBackgroundColorSelected;
 
 @end

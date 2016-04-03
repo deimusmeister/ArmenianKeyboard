@@ -64,6 +64,16 @@
     }
 }
 
+- (UIColor*) buttonSpecialTintColor
+{
+    return [UIColor whiteColor];
+}
+
+- (UIColor*) buttonSpecialTintSelectedColor
+{
+    return [UIColor blackColor];
+}
+
 - (UIColor*) buttonSpecialBackgroundColorSelected
 {
     if (self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearanceDark)

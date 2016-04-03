@@ -34,6 +34,10 @@
 
 // Define Alpha class
 @interface Alpha : UIView <CYRKeyboarBUttonInputDelegate>
+{
+    // Delete button timer
+    NSTimer* _TimerDeleteButton;
+}
 
 // Delegate member for alpha key input forwarding
 @property (nonatomic, weak) id <AlphaInputDelegate> delegate;
