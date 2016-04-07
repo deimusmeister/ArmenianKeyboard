@@ -46,6 +46,29 @@
 		3DFA621C1CB1097E00EBB770 /* shift_portrait_skinny@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA62051CB1097E00EBB770 /* shift_portrait_skinny@2x.png */; };
 		3DFA621D1CB1097E00EBB770 /* shift_split_10key-163r@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA62061CB1097E00EBB770 /* shift_split_10key-163r@2x.png */; };
 		3DFA621E1CB1097E00EBB770 /* shift_split_10key@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA62071CB1097E00EBB770 /* shift_split_10key@2x.png */; };
+		3DFA62681CB70D0800EBB770 /* HunspellBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA62651CB70D0800EBB770 /* HunspellBridge.mm */; };
+		3DFA62691CB70D0800EBB770 /* SpellChecker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA62671CB70D0800EBB770 /* SpellChecker.mm */; };
+		3DFA626D1CB70D5A00EBB770 /* hy-AM.aff in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA626B1CB70D5A00EBB770 /* hy-AM.aff */; };
+		3DFA626E1CB70D5A00EBB770 /* hy-AM.dic in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA626C1CB70D5A00EBB770 /* hy-AM.dic */; };
+		3DFA62951CB70DA300EBB770 /* affentry.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA62711CB70DA300EBB770 /* affentry.mm */; };
+		3DFA62961CB70DA300EBB770 /* affixmgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA62731CB70DA300EBB770 /* affixmgr.mm */; };
+		3DFA62971CB70DA300EBB770 /* csutil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA62781CB70DA300EBB770 /* csutil.mm */; };
+		3DFA62981CB70DA300EBB770 /* dictmgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA627A1CB70DA300EBB770 /* dictmgr.mm */; };
+		3DFA62991CB70DA300EBB770 /* filemgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA627C1CB70DA300EBB770 /* filemgr.mm */; };
+		3DFA629A1CB70DA300EBB770 /* hashmgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA627E1CB70DA300EBB770 /* hashmgr.mm */; };
+		3DFA629B1CB70DA300EBB770 /* hunspell.dsp in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA62801CB70DA300EBB770 /* hunspell.dsp */; };
+		3DFA629C1CB70DA300EBB770 /* hunspell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA62821CB70DA300EBB770 /* hunspell.mm */; };
+		3DFA629D1CB70DA300EBB770 /* hunvisapi.h.in in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA62841CB70DA300EBB770 /* hunvisapi.h.in */; };
+		3DFA629E1CB70DA300EBB770 /* hunzip.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA62861CB70DA300EBB770 /* hunzip.mm */; };
+		3DFA629F1CB70DA300EBB770 /* license.hunspell in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA62881CB70DA300EBB770 /* license.hunspell */; };
+		3DFA62A01CB70DA300EBB770 /* license.myspell in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA62891CB70DA300EBB770 /* license.myspell */; };
+		3DFA62A11CB70DA300EBB770 /* Makefile.am in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA628A1CB70DA300EBB770 /* Makefile.am */; };
+		3DFA62A21CB70DA300EBB770 /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA628B1CB70DA300EBB770 /* Makefile.in */; };
+		3DFA62A31CB70DA300EBB770 /* makefile.mk in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA628C1CB70DA300EBB770 /* makefile.mk */; };
+		3DFA62A41CB70DA300EBB770 /* phonet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA628E1CB70DA300EBB770 /* phonet.mm */; };
+		3DFA62A51CB70DA300EBB770 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3DFA628F1CB70DA300EBB770 /* README */; };
+		3DFA62A61CB70DA300EBB770 /* replist.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA62911CB70DA300EBB770 /* replist.mm */; };
+		3DFA62A71CB70DA300EBB770 /* suggestmgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DFA62931CB70DA300EBB770 /* suggestmgr.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +146,49 @@
 		3DFA62051CB1097E00EBB770 /* shift_portrait_skinny@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift_portrait_skinny@2x.png"; sourceTree = "<group>"; };
 		3DFA62061CB1097E00EBB770 /* shift_split_10key-163r@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift_split_10key-163r@2x.png"; sourceTree = "<group>"; };
 		3DFA62071CB1097E00EBB770 /* shift_split_10key@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift_split_10key@2x.png"; sourceTree = "<group>"; };
+		3DFA62641CB70D0800EBB770 /* HunspellBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HunspellBridge.h; sourceTree = "<group>"; };
+		3DFA62651CB70D0800EBB770 /* HunspellBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HunspellBridge.mm; sourceTree = "<group>"; };
+		3DFA62661CB70D0800EBB770 /* SpellChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpellChecker.h; sourceTree = "<group>"; };
+		3DFA62671CB70D0800EBB770 /* SpellChecker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpellChecker.mm; sourceTree = "<group>"; };
+		3DFA626B1CB70D5A00EBB770 /* hy-AM.aff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "hy-AM.aff"; sourceTree = "<group>"; };
+		3DFA626C1CB70D5A00EBB770 /* hy-AM.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "hy-AM.dic"; sourceTree = "<group>"; };
+		3DFA62701CB70DA300EBB770 /* affentry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = affentry.h; sourceTree = "<group>"; };
+		3DFA62711CB70DA300EBB770 /* affentry.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = affentry.mm; sourceTree = "<group>"; };
+		3DFA62721CB70DA300EBB770 /* affixmgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = affixmgr.h; sourceTree = "<group>"; };
+		3DFA62731CB70DA300EBB770 /* affixmgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = affixmgr.mm; sourceTree = "<group>"; };
+		3DFA62741CB70DA300EBB770 /* atypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atypes.h; sourceTree = "<group>"; };
+		3DFA62751CB70DA300EBB770 /* baseaffix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseaffix.h; sourceTree = "<group>"; };
+		3DFA62761CB70DA300EBB770 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		3DFA62771CB70DA300EBB770 /* csutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csutil.h; sourceTree = "<group>"; };
+		3DFA62781CB70DA300EBB770 /* csutil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = csutil.mm; sourceTree = "<group>"; };
+		3DFA62791CB70DA300EBB770 /* dictmgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dictmgr.h; sourceTree = "<group>"; };
+		3DFA627A1CB70DA300EBB770 /* dictmgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = dictmgr.mm; sourceTree = "<group>"; };
+		3DFA627B1CB70DA300EBB770 /* filemgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filemgr.h; sourceTree = "<group>"; };
+		3DFA627C1CB70DA300EBB770 /* filemgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = filemgr.mm; sourceTree = "<group>"; };
+		3DFA627D1CB70DA300EBB770 /* hashmgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hashmgr.h; sourceTree = "<group>"; };
+		3DFA627E1CB70DA300EBB770 /* hashmgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = hashmgr.mm; sourceTree = "<group>"; };
+		3DFA627F1CB70DA300EBB770 /* htypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = htypes.h; sourceTree = "<group>"; };
+		3DFA62801CB70DA300EBB770 /* hunspell.dsp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hunspell.dsp; sourceTree = "<group>"; };
+		3DFA62811CB70DA300EBB770 /* hunspell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hunspell.h; sourceTree = "<group>"; };
+		3DFA62821CB70DA300EBB770 /* hunspell.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = hunspell.mm; sourceTree = "<group>"; };
+		3DFA62831CB70DA300EBB770 /* hunvisapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hunvisapi.h; sourceTree = "<group>"; };
+		3DFA62841CB70DA300EBB770 /* hunvisapi.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hunvisapi.h.in; sourceTree = "<group>"; };
+		3DFA62851CB70DA300EBB770 /* hunzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hunzip.h; sourceTree = "<group>"; };
+		3DFA62861CB70DA300EBB770 /* hunzip.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = hunzip.mm; sourceTree = "<group>"; };
+		3DFA62871CB70DA300EBB770 /* langnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = langnum.h; sourceTree = "<group>"; };
+		3DFA62881CB70DA300EBB770 /* license.hunspell */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.hunspell; sourceTree = "<group>"; };
+		3DFA62891CB70DA300EBB770 /* license.myspell */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.myspell; sourceTree = "<group>"; };
+		3DFA628A1CB70DA300EBB770 /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.am; sourceTree = "<group>"; };
+		3DFA628B1CB70DA300EBB770 /* Makefile.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.in; sourceTree = "<group>"; };
+		3DFA628C1CB70DA300EBB770 /* makefile.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = makefile.mk; sourceTree = "<group>"; };
+		3DFA628D1CB70DA300EBB770 /* phonet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = phonet.h; sourceTree = "<group>"; };
+		3DFA628E1CB70DA300EBB770 /* phonet.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = phonet.mm; sourceTree = "<group>"; };
+		3DFA628F1CB70DA300EBB770 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		3DFA62901CB70DA300EBB770 /* replist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = replist.h; sourceTree = "<group>"; };
+		3DFA62911CB70DA300EBB770 /* replist.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = replist.mm; sourceTree = "<group>"; };
+		3DFA62921CB70DA300EBB770 /* suggestmgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = suggestmgr.h; sourceTree = "<group>"; };
+		3DFA62931CB70DA300EBB770 /* suggestmgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = suggestmgr.mm; sourceTree = "<group>"; };
+		3DFA62941CB70DA300EBB770 /* w_char.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = w_char.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +254,7 @@
 		3D8BBAEB1CAC415C00F8D7A4 /* Armenian */ = {
 			isa = PBXGroup;
 			children = (
+				3DFA62631CB70CD100EBB770 /* Hunspell Engine */,
 				3D8BBB101CAC7E2D00F8D7A4 /* Graphics */,
 				3D8BBB031CAC744100F8D7A4 /* CYRKeyboardButton */,
 				3D8BBAF71CAC739500F8D7A4 /* Alpha.h */,
@@ -269,6 +336,72 @@
 				3DFA62071CB1097E00EBB770 /* shift_split_10key@2x.png */,
 			);
 			path = shift;
+			sourceTree = "<group>";
+		};
+		3DFA62631CB70CD100EBB770 /* Hunspell Engine */ = {
+			isa = PBXGroup;
+			children = (
+				3DFA626F1CB70D7A00EBB770 /* Hunspell */,
+				3DFA626A1CB70D1E00EBB770 /* dictionaries */,
+				3DFA62641CB70D0800EBB770 /* HunspellBridge.h */,
+				3DFA62651CB70D0800EBB770 /* HunspellBridge.mm */,
+				3DFA62661CB70D0800EBB770 /* SpellChecker.h */,
+				3DFA62671CB70D0800EBB770 /* SpellChecker.mm */,
+			);
+			name = "Hunspell Engine";
+			sourceTree = "<group>";
+		};
+		3DFA626A1CB70D1E00EBB770 /* dictionaries */ = {
+			isa = PBXGroup;
+			children = (
+				3DFA626B1CB70D5A00EBB770 /* hy-AM.aff */,
+				3DFA626C1CB70D5A00EBB770 /* hy-AM.dic */,
+			);
+			name = dictionaries;
+			sourceTree = "<group>";
+		};
+		3DFA626F1CB70D7A00EBB770 /* Hunspell */ = {
+			isa = PBXGroup;
+			children = (
+				3DFA62701CB70DA300EBB770 /* affentry.h */,
+				3DFA62711CB70DA300EBB770 /* affentry.mm */,
+				3DFA62721CB70DA300EBB770 /* affixmgr.h */,
+				3DFA62731CB70DA300EBB770 /* affixmgr.mm */,
+				3DFA62741CB70DA300EBB770 /* atypes.h */,
+				3DFA62751CB70DA300EBB770 /* baseaffix.h */,
+				3DFA62761CB70DA300EBB770 /* config.h */,
+				3DFA62771CB70DA300EBB770 /* csutil.h */,
+				3DFA62781CB70DA300EBB770 /* csutil.mm */,
+				3DFA62791CB70DA300EBB770 /* dictmgr.h */,
+				3DFA627A1CB70DA300EBB770 /* dictmgr.mm */,
+				3DFA627B1CB70DA300EBB770 /* filemgr.h */,
+				3DFA627C1CB70DA300EBB770 /* filemgr.mm */,
+				3DFA627D1CB70DA300EBB770 /* hashmgr.h */,
+				3DFA627E1CB70DA300EBB770 /* hashmgr.mm */,
+				3DFA627F1CB70DA300EBB770 /* htypes.h */,
+				3DFA62801CB70DA300EBB770 /* hunspell.dsp */,
+				3DFA62811CB70DA300EBB770 /* hunspell.h */,
+				3DFA62821CB70DA300EBB770 /* hunspell.mm */,
+				3DFA62831CB70DA300EBB770 /* hunvisapi.h */,
+				3DFA62841CB70DA300EBB770 /* hunvisapi.h.in */,
+				3DFA62851CB70DA300EBB770 /* hunzip.h */,
+				3DFA62861CB70DA300EBB770 /* hunzip.mm */,
+				3DFA62871CB70DA300EBB770 /* langnum.h */,
+				3DFA62881CB70DA300EBB770 /* license.hunspell */,
+				3DFA62891CB70DA300EBB770 /* license.myspell */,
+				3DFA628A1CB70DA300EBB770 /* Makefile.am */,
+				3DFA628B1CB70DA300EBB770 /* Makefile.in */,
+				3DFA628C1CB70DA300EBB770 /* makefile.mk */,
+				3DFA628D1CB70DA300EBB770 /* phonet.h */,
+				3DFA628E1CB70DA300EBB770 /* phonet.mm */,
+				3DFA628F1CB70DA300EBB770 /* README */,
+				3DFA62901CB70DA300EBB770 /* replist.h */,
+				3DFA62911CB70DA300EBB770 /* replist.mm */,
+				3DFA62921CB70DA300EBB770 /* suggestmgr.h */,
+				3DFA62931CB70DA300EBB770 /* suggestmgr.mm */,
+				3DFA62941CB70DA300EBB770 /* w_char.h */,
+			);
+			name = Hunspell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,20 +495,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DFA62A31CB70DA300EBB770 /* makefile.mk in Resources */,
 				3DFA621A1CB1097E00EBB770 /* shift_lock_split_10key@2x.png in Resources */,
+				3DFA626E1CB70D5A00EBB770 /* hy-AM.dic in Resources */,
+				3DFA62A11CB70DA300EBB770 /* Makefile.am in Resources */,
 				3DFA62081CB1097E00EBB770 /* bold_delete_landscape@2x.png in Resources */,
 				3DFA620D1CB1097E00EBB770 /* delete_landscape_skinny@2x.png in Resources */,
 				3DFA62171CB1097E00EBB770 /* shift_lock_landscape_skinny@2x.png in Resources */,
 				3DFA62181CB1097E00EBB770 /* shift_lock_portrait@2x.png in Resources */,
+				3DFA62A51CB70DA300EBB770 /* README in Resources */,
 				3DFA620E1CB1097E00EBB770 /* delete_portrait@2x.png in Resources */,
 				3D8BBB0F1CAC7E2900F8D7A4 /* arnamu.ttf in Resources */,
+				3DFA629D1CB70DA300EBB770 /* hunvisapi.h.in in Resources */,
 				3DFA62191CB1097E00EBB770 /* shift_lock_portrait_skinny@2x.png in Resources */,
 				3DFA62101CB1097E00EBB770 /* bold_global_landscape@2x.png in Resources */,
+				3DFA629B1CB70DA300EBB770 /* hunspell.dsp in Resources */,
 				3DFA62131CB1097E00EBB770 /* global_portrait@2x.png in Resources */,
+				3DFA62A21CB70DA300EBB770 /* Makefile.in in Resources */,
 				3DFA621C1CB1097E00EBB770 /* shift_portrait_skinny@2x.png in Resources */,
 				3DFA62091CB1097E00EBB770 /* bold_delete_landscape_skinny@2x.png in Resources */,
 				3DFA621B1CB1097E00EBB770 /* shift_portrait@2x.png in Resources */,
 				3DFA620F1CB1097E00EBB770 /* delete_portrait_skinny@2x.png in Resources */,
+				3DFA629F1CB70DA300EBB770 /* license.hunspell in Resources */,
 				3DFA621D1CB1097E00EBB770 /* shift_split_10key-163r@2x.png in Resources */,
 				3DFA62161CB1097E00EBB770 /* shift_lock_landscape@2x.png in Resources */,
 				3DFA620C1CB1097E00EBB770 /* delete_landscape@2x.png in Resources */,
@@ -384,8 +525,10 @@
 				3DFA62141CB1097E00EBB770 /* shift_landscape@2x.png in Resources */,
 				3DFA620A1CB1097E00EBB770 /* bold_delete_portrait@2x.png in Resources */,
 				3DFA62151CB1097E00EBB770 /* shift_landscape_skinny@2x.png in Resources */,
+				3DFA62A01CB70DA300EBB770 /* license.myspell in Resources */,
 				3DFA62121CB1097E00EBB770 /* global_landscape@2x.png in Resources */,
 				3DFA621E1CB1097E00EBB770 /* shift_split_10key@2x.png in Resources */,
+				3DFA626D1CB70D5A00EBB770 /* hy-AM.aff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,12 +549,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DFA62691CB70D0800EBB770 /* SpellChecker.mm in Sources */,
+				3DFA62961CB70DA300EBB770 /* affixmgr.mm in Sources */,
 				3D8BBAF91CAC739500F8D7A4 /* Alpha.m in Sources */,
+				3DFA62681CB70D0800EBB770 /* HunspellBridge.mm in Sources */,
+				3DFA62981CB70DA300EBB770 /* dictmgr.mm in Sources */,
+				3DFA62A41CB70DA300EBB770 /* phonet.mm in Sources */,
 				3D8BBB0C1CAC7BD100F8D7A4 /* Colors.m in Sources */,
 				3D8BBB091CAC775800F8D7A4 /* CYRKeyboardButtonView.m in Sources */,
 				3D8BBB081CAC775800F8D7A4 /* CYRKeyboardButton.m in Sources */,
 				3D8BBAFC1CAC741B00F8D7A4 /* TurtleBezierPath.m in Sources */,
 				3D8BBAEE1CAC415C00F8D7A4 /* KeyboardViewController.m in Sources */,
+				3DFA62971CB70DA300EBB770 /* csutil.mm in Sources */,
+				3DFA62951CB70DA300EBB770 /* affentry.mm in Sources */,
+				3DFA629A1CB70DA300EBB770 /* hashmgr.mm in Sources */,
+				3DFA62991CB70DA300EBB770 /* filemgr.mm in Sources */,
+				3DFA62A61CB70DA300EBB770 /* replist.mm in Sources */,
+				3DFA629C1CB70DA300EBB770 /* hunspell.mm in Sources */,
+				3DFA62A71CB70DA300EBB770 /* suggestmgr.mm in Sources */,
+				3DFA629E1CB70DA300EBB770 /* hunzip.mm in Sources */,
 				3DBC30111CB6A4A300F6E2EC /* PredictiveBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

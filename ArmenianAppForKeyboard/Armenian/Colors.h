@@ -27,5 +27,8 @@
 
 - (UIColor*) buttonSuggestionBackgroundColor;
 - (UIColor*) buttonSuggestionTextColor;
+- (UIColor*) buttonSuggestionSelectedBackgroundColor;
+
+- (UIColor*) buttonShadowColor;
 
 @end

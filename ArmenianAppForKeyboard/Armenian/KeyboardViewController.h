@@ -10,7 +10,7 @@
 #import "Alpha.h"
 #import "PredictiveBar.h"
 
-@interface KeyboardViewController : UIInputViewController <AlphaInputDelegate>
+@interface KeyboardViewController : UIInputViewController <AlphaInputDelegate, PredictiveBarDelegate>
 {
     // The instance to prediction bar
     PredictiveBar* bar;

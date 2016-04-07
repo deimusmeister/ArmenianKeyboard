@@ -107,4 +107,30 @@
     return [UIColor whiteColor];
 }
 
+- (UIColor*) buttonSuggestionSelectedBackgroundColor
+{
+    if (self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearanceDark)
+    {
+        // dark mode
+        return [UIColor colorWithRed:174.f/255.f green:179.f/255.f blue:190.f/255.f alpha:1.f];
+    }
+    else
+    {
+        // bright mode
+        return [UIColor whiteColor];
+    }
+}
+
+- (UIColor*) buttonShadowColor
+{
+    if (self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearanceDark)
+    {
+        return [UIColor blackColor];
+    }
+    else
+    {
+        return [UIColor colorWithRed:136 / 255.f green:138 / 255.f blue:142 / 255.f alpha:1];
+    }
+}
+
 @end

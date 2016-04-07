@@ -108,6 +108,9 @@
                                                           constant:self.portraitHeight];
     self.heightConstraint.priority = UILayoutPriorityRequired - 1; // This will eliminate the constraint conflict warning.
     [self.view addConstraint: self.heightConstraint];
+    
+    // Load spellchecker dictionary
+    [bar loadDictionary];
 }
 
 - (void)didReceiveMemoryWarning
@@ -164,13 +167,13 @@
     
     [self.view addConstraint:alphaKeyboardButtonBottomConstraint];
     
-    // Top constraint
+    // Width constraint
     NSLayoutConstraint *alphaKeyboardButtonTopConstraint = [NSLayoutConstraint constraintWithItem:alpha
-                                                                                        attribute:NSLayoutAttributeTop
+                                                                                        attribute:NSLayoutAttributeHeight
                                                                                         relatedBy:NSLayoutRelationEqual
                                                                                            toItem:self.view
-                                                                                        attribute:NSLayoutAttributeTop
-                                                                                       multiplier:1.0 constant:60.0];
+                                                                                        attribute:NSLayoutAttributeHeight
+                                                                                       multiplier:0.83 constant:0.0];
     
     [self.view addConstraint:alphaKeyboardButtonTopConstraint];
 }
@@ -196,7 +199,7 @@
     bar = [[PredictiveBar alloc] init];
     
     // Register input selection callback
-//    bar.delegate = self;
+    bar.delegate = self;
     
     // Set a unique tag
     bar.tag = kPredBar;
@@ -310,6 +313,25 @@
     
     // Remove a character
     [self.textDocumentProxy deleteBackward];
+}
+
+#pragma mark PredictiveBarDelegate
+
+- (void) spellerInputDelegateMethod:(NSString *)key Word:(NSString*)word;
+{
+    // Remove last word
+    for(size_t i = 0; i < word.length; ++i)
+    {
+        [self.textDocumentProxy deleteBackward];
+    }
+    currentWord = [currentWord substringToIndex:[currentWord length] - word.length];
+    
+    // Add option key and space at the end
+    [self.textDocumentProxy insertText:[NSString stringWithFormat:@"%@ ", key]];
+    currentWord = [NSString stringWithFormat:@"%@%@ ", currentWord, key];
+    
+    // Update predictive option
+    [self updatePredictionInput];
 }
 
 @end

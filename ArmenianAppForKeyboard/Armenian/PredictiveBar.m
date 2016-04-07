@@ -11,6 +11,8 @@
 
 @implementation PredictiveBar
 
+@synthesize delegate;
+
 - (id)init
 {
     if (self = [super init])
@@ -34,6 +36,10 @@
                                                                      options:0
                                                                      metrics:nil
                                                                        views:views]];
+        
+        // Instantiate spellchecker
+        spellChecker = [[SpellChecker alloc] init];
+        word = [[NSString alloc] init];
     }
     return self;
 }
@@ -44,7 +50,9 @@
     [self addSubview:option];
     
     // Register button click handlers
-    //        [leftOption addTarget:self action:@selector(buttonUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [option addTarget:self action:@selector(buttonUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [option addTarget:self action:@selector(buttonUpOutside:) forControlEvents:UIControlEventTouchUpOutside];
+    [option addTarget:self action:@selector(buttonDown:) forControlEvents:UIControlEventTouchDown];
     
     // Button specific colors
     UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
@@ -78,9 +86,62 @@
 
 - (void)updateInputText:(NSString*)inputText
 {
-    [leftOption setTitle:inputText forState:UIControlStateNormal];
-    [centerOption setTitle:inputText forState:UIControlStateNormal];
-    [rightOption setTitle:inputText forState:UIControlStateNormal];
+    NSArray* suggestions = [NSArray arrayWithArray:[spellChecker getSuggestionsForWord:inputText]];
+    word = [NSString stringWithString:inputText];
+    
+    if (suggestions.count > 0)
+        [leftOption setTitle:[suggestions objectAtIndex:0] forState:UIControlStateNormal];
+    
+    if (suggestions.count > 1)
+        [centerOption setTitle:[suggestions objectAtIndex:1] forState:UIControlStateNormal];
+    
+    if (suggestions.count > 2)
+        [rightOption setTitle:[suggestions objectAtIndex:2] forState:UIControlStateNormal];
+    
+    if (suggestions.count == 0)
+    {
+        [leftOption setTitle:inputText forState:UIControlStateNormal];
+        [centerOption setTitle:@"" forState:UIControlStateNormal];
+        [rightOption setTitle:@"" forState:UIControlStateNormal];
+    }
+}
+
+- (void)loadDictionary
+{
+    if (spellChecker != nil)
+    {
+        [spellChecker updateLanguage:@"hy-AM"];
+    }
+}
+
+- (void)buttonUpInside:(id)sender
+{
+    UIButton* button = (UIButton*)sender;
+    
+    // Button specific colors
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSuggestionBackgroundColor];
+    [button setBackgroundColor:buttonBackgroundColor];
+    
+    // Forward the option to input field
+    [delegate spellerInputDelegateMethod:button.titleLabel.text Word:word];
+}
+
+- (void)buttonDown:(id)sender
+{
+    UIButton* button = (UIButton*)sender;
+    
+    // Button specific colors
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSuggestionSelectedBackgroundColor];
+    [button setBackgroundColor:buttonBackgroundColor];
+}
+
+- (void)buttonUpOutside:(id)sender
+{
+    UIButton* button = (UIButton*)sender;
+    
+    // Button specific colors
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSuggestionBackgroundColor];
+    [button setBackgroundColor:buttonBackgroundColor];
 }
 
 @end

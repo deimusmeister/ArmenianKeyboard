@@ -347,6 +347,7 @@
             // Button properties
             button.keyColor = buttonBackgroundColor;
             button.keyTextColor = buttonTextColor;
+            button.keyShadowColor = [[Colors sharedManager] buttonShadowColor];
             button.keyHighlightedColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
             
             button.input = [titles objectAtIndex:i];
