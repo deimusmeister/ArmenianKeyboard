@@ -25,4 +25,7 @@
 - (UIColor*) buttonSpecialTintSelectedColor;
 - (UIColor*) buttonSpecialBackgroundColorSelected;
 
+- (UIColor*) buttonSuggestionBackgroundColor;
+- (UIColor*) buttonSuggestionTextColor;
+
 @end

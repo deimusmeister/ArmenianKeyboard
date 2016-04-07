@@ -8,6 +8,7 @@
 
 #import "KeyboardViewController.h"
 #import "Alpha.h"
+#import "PredictiveBar.h"
 #import "Colors.h"
 
 // Height sizes for iPhone modes
@@ -17,6 +18,10 @@
 // Height sizes for iPad modes
 #define kiPadPortraitHeight       224;
 #define kiPadLandscapeHeight      206;
+
+// Define the tags for the UI components
+#define kAlpha      1234
+#define kPredBar    4321
 
 
 @interface KeyboardViewController ()
@@ -42,6 +47,9 @@
         // Perform custom initialization work here
         self.portraitHeight = kiPhonePortraitHeight;
         self.landscapeHeight = kiPhoneLandscapeHeight;
+        
+        // Instantiate currently typed word container
+        currentWord = [[NSString alloc] init];
     }
     return self;
 }
@@ -83,6 +91,9 @@
     // Add alpha keyboard
     [self addAlphaKeyboard];
     
+    // Add prediction bar
+    [self addPredictionBar];
+    
     // Setup the colors manager
     [[Colors sharedManager] setTextDocumentProxy:self.textDocumentProxy];
 }
@@ -117,7 +128,7 @@
     alpha.delegate = self;
     
     // Set a unique tag
-//    alpha.tag = kAlpha;
+    alpha.tag = kAlpha;
     [self.view addSubview:alpha];
     
     // Add size constraints
@@ -164,6 +175,108 @@
     [self.view addConstraint:alphaKeyboardButtonTopConstraint];
 }
 
+- (void) addPredictionBar
+{
+    Alpha* view = nil;
+    for (UIView *subUIView in self.view.subviews) {
+        if ([subUIView isKindOfClass:[Alpha class]])
+        {
+            Alpha* tmp = (Alpha*)subUIView;
+            // Check if we found the proper button
+            BOOL properView = (tmp.tag == kAlpha);
+            if (properView == YES)
+            {
+                view = tmp;
+                break;
+            }
+        }
+    }
+    
+    // Add prediction layout
+    bar = [[PredictiveBar alloc] init];
+    
+    // Register input selection callback
+//    bar.delegate = self;
+    
+    // Set a unique tag
+    bar.tag = kPredBar;
+    [self.view addSubview:bar];
+    
+    // Add size constraints
+    bar.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    // Left constraint
+    NSLayoutConstraint *alphaKeyboardButtonLeftConstraint = [NSLayoutConstraint constraintWithItem:bar
+                                                                                         attribute:NSLayoutAttributeLeft
+                                                                                         relatedBy:NSLayoutRelationEqual
+                                                                                            toItem:self.view
+                                                                                         attribute:NSLayoutAttributeLeft
+                                                                                        multiplier:1.0 constant:0.0];
+    
+    [self.view addConstraint:alphaKeyboardButtonLeftConstraint];
+    
+    // Right constraint
+    NSLayoutConstraint *alphaKeyboardButtonRightConstraint = [NSLayoutConstraint constraintWithItem:bar
+                                                                                          attribute:NSLayoutAttributeRight
+                                                                                          relatedBy:NSLayoutRelationEqual
+                                                                                             toItem:self.view
+                                                                                          attribute:NSLayoutAttributeRight
+                                                                                         multiplier:1.0 constant:0.0];
+    
+    [self.view addConstraint:alphaKeyboardButtonRightConstraint];
+    
+    // Bottom constraint
+    NSLayoutConstraint *alphaKeyboardButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:view
+                                                                                           attribute:NSLayoutAttributeTop
+                                                                                           relatedBy:NSLayoutRelationEqual
+                                                                                              toItem:bar
+                                                                                           attribute:NSLayoutAttributeBottom
+                                                                                          multiplier:1.0 constant:0.0];
+    
+    [self.view addConstraint:alphaKeyboardButtonBottomConstraint];
+    
+    // Top constraint
+    NSLayoutConstraint *alphaKeyboardButtonTopConstraint = [NSLayoutConstraint constraintWithItem:bar
+                                                                                        attribute:NSLayoutAttributeTop
+                                                                                        relatedBy:NSLayoutRelationEqual
+                                                                                           toItem:self.view
+                                                                                        attribute:NSLayoutAttributeTop
+                                                                                       multiplier:1.0 constant:0.0];
+    
+    [self.view addConstraint:alphaKeyboardButtonTopConstraint];
+}
+
+-(void)updatePredictionInput
+{
+    // Update prediction input
+    NSRange a = [currentWord rangeOfString:@" " options:NSBackwardsSearch];
+    NSRange b = [currentWord rangeOfString:@"\n" options:NSBackwardsSearch];
+    
+    // Last word
+    NSString* word = @"";
+    
+    if (a.location != NSNotFound && b.location != NSNotFound)
+    {
+        if (a.location < b.location)
+            word = [NSString stringWithString:[currentWord substringFromIndex:b.location + 1]];
+        else
+            word = [NSString stringWithString:[currentWord substringFromIndex:a.location + 1]];
+    }
+    else if (a.location != NSNotFound)
+    {
+        word = [NSString stringWithString:[currentWord substringFromIndex:a.location + 1]];
+    }
+    else if(b.location != NSNotFound)
+    {
+        word = [NSString stringWithString:[currentWord substringFromIndex:b.location + 1]];
+    }
+    else
+        word = [NSString stringWithString:currentWord];
+    
+    // Update prediction input
+    [bar updateInputText:word];
+}
+
 #pragma mark AlphaInputDelegate
 
 - (void) alphaSpecialKeyInputDelegateMethod:(NSInteger)tag
@@ -176,10 +289,25 @@
 {
     // Insert typed text
     [self.textDocumentProxy insertText:key];
+    
+    // Update currently typed word
+    currentWord = [NSString stringWithFormat:@"%@%@", currentWord, key];
+    
+    // Update prediction input
+    [self updatePredictionInput];
 }
 
 - (void) alhpaInputRemoveCharacter
 {
+    // Update currently typed word
+    if (currentWord.length != 0)
+    {
+        currentWord = [currentWord substringToIndex:[currentWord length] - 1];
+        
+        // Update prediction input
+        [self updatePredictionInput];
+    }
+    
     // Remove a character
     [self.textDocumentProxy deleteBackward];
 }

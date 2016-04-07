@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Alpha.h"
+#import "PredictiveBar.h"
 
 @interface KeyboardViewController : UIInputViewController <AlphaInputDelegate>
-
+{
+    // The instance to prediction bar
+    PredictiveBar* bar;
+    
+    // The currently typing word
+    NSString* currentWord;
+}
 @end
