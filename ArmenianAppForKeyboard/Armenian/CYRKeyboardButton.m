@@ -33,6 +33,7 @@
 
 #import "CYRKeyboardButton.h"
 #import "CYRKeyboardButtonView.h"
+#import <objc/runtime.h>
 
 NSString *const CYRKeyboardButtonPressedNotification = @"CYRKeyboardButtonPressedNotification";
 NSString *const CYRKeyboardButtonDidShowExpandedInputNotification = @"CYRKeyboardButtonDidShowExpandedInputNotification";
@@ -58,7 +59,47 @@ NSString *const CYRKeyboardButtonKeyPressedKey = @"CYRKeyboardButtonKeyPressedKe
 
 @implementation CYRKeyboardButton
 
+@dynamic hitTestEdgeInsets;
+
 #pragma mark - UIView
+
+static const NSString *KEY_HIT_TEST_EDGE_INSETS = @"HitTestEdgeInsets";
+
+-(void)setHitTestEdgeInsets:(UIEdgeInsets)hitTestEdgeInsets {
+    NSValue *value = [NSValue value:&hitTestEdgeInsets withObjCType:@encode(UIEdgeInsets)];
+    objc_setAssociatedObject(self, &KEY_HIT_TEST_EDGE_INSETS, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(UIEdgeInsets)hitTestEdgeInsets {
+    NSValue *value = objc_getAssociatedObject(self, &KEY_HIT_TEST_EDGE_INSETS);
+    if(value)
+    {
+        UIEdgeInsets edgeInsets;
+        [value getValue:&edgeInsets];
+        return edgeInsets;
+    }
+    else
+    {
+        return UIEdgeInsetsZero;
+    }
+}
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    return [super hitTest:point withEvent:event];
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
+{
+//    if(UIEdgeInsetsEqualToEdgeInsets(self.hitTestEdgeInsets, UIEdgeInsetsZero) || !self.enabled || self) {
+//        return [super pointInside:point withEvent:event];
+//    }
+    
+    CGRect relativeFrame = self.bounds;
+    CGRect hitFrame = UIEdgeInsetsInsetRect(relativeFrame, self.hitTestEdgeInsets);
+    
+    return CGRectContainsPoint(hitFrame, point);
+}
 
 - (id)initWithFrame:(CGRect)frame
 {

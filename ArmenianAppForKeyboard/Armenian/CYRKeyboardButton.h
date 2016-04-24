@@ -150,4 +150,7 @@ extern NSString *const CYRKeyboardButtonKeyPressedKey;
 // Delegate member for alpha key input forwarding
 @property (nonatomic, weak) id <CYRKeyboarBUttonInputDelegate> delegate;
 
+// Hit borderline
+@property(nonatomic, assign) UIEdgeInsets hitTestEdgeInsets;
+
 @end

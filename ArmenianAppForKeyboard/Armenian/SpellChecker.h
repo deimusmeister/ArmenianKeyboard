@@ -18,5 +18,7 @@
 - (NSArray *) getSuggestionsForWord:(NSString *) word;
 - (BOOL)isSpeltCorrectly:(NSString *) word;
 
+- (void)suspend;
+
 @end
 

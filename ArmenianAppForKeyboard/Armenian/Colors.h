@@ -31,4 +31,6 @@
 
 - (UIColor*) buttonShadowColor;
 
+- (UIColor*) backgroundColor;
+
 @end

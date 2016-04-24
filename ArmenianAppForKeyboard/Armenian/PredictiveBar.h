@@ -36,5 +36,6 @@
 
 - (void)updateInputText:(NSString*)inputText;
 - (void)loadDictionary;
+- (void)suspendSpeller;
 
 @end

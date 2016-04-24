@@ -47,6 +47,7 @@ void releaseDictionary()
 {
 	if (handle != NULL) {
         delete (Hunspell*)(handle);
+        handle = NULL;
 	}	
 }
 

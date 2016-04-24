@@ -113,6 +113,12 @@
     [bar loadDictionary];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // Release the resources
+    [bar suspendSpeller];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -48,7 +48,6 @@ static char *createCharFromCFStringRef(CFStringRef cfstr)
 	releaseDictionary();
 }
 
-
 - (void)updateLanguage:(NSString *)language
 {
 	NSComparisonResult comparison = [language compare:currentLanguage];

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D1957DF1CCCE2C6000A879A /* TurtleBezierPath.h in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBAFA1CAC741B00F8D7A4 /* TurtleBezierPath.h */; };
+		3D1957E01CCCE2C6000A879A /* TurtleBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBAFB1CAC741B00F8D7A4 /* TurtleBezierPath.m */; };
+		3D1957E11CCCE2C6000A879A /* CYRKeyboardButton.h in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBB041CAC775800F8D7A4 /* CYRKeyboardButton.h */; };
+		3D1957E21CCCE2C6000A879A /* CYRKeyboardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBB051CAC775800F8D7A4 /* CYRKeyboardButton.m */; };
+		3D1957E31CCCE2C6000A879A /* CYRKeyboardButtonView.h in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBB061CAC775800F8D7A4 /* CYRKeyboardButtonView.h */; };
+		3D1957E41CCCE2C6000A879A /* CYRKeyboardButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBB071CAC775800F8D7A4 /* CYRKeyboardButtonView.m */; };
 		3D8BBAD11CAC40C800F8D7A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBAD01CAC40C800F8D7A4 /* main.m */; };
 		3D8BBAD41CAC40C800F8D7A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBAD31CAC40C800F8D7A4 /* AppDelegate.m */; };
 		3D8BBAD71CAC40C800F8D7A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8BBAD61CAC40C800F8D7A4 /* ViewController.m */; };
@@ -539,6 +545,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D1957DF1CCCE2C6000A879A /* TurtleBezierPath.h in Sources */,
+				3D1957E01CCCE2C6000A879A /* TurtleBezierPath.m in Sources */,
+				3D1957E11CCCE2C6000A879A /* CYRKeyboardButton.h in Sources */,
+				3D1957E21CCCE2C6000A879A /* CYRKeyboardButton.m in Sources */,
+				3D1957E31CCCE2C6000A879A /* CYRKeyboardButtonView.h in Sources */,
+				3D1957E41CCCE2C6000A879A /* CYRKeyboardButtonView.m in Sources */,
 				3D8BBAD71CAC40C800F8D7A4 /* ViewController.m in Sources */,
 				3D8BBAD41CAC40C800F8D7A4 /* AppDelegate.m in Sources */,
 				3D8BBAD11CAC40C800F8D7A4 /* main.m in Sources */,

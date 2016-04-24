@@ -33,6 +33,9 @@
         self.layer.borderColor = [UIColor colorWithRed:255.f/255.f green:0.f/255.f blue:0.f/255.f alpha:kDebug].CGColor;
         self.layer.borderWidth = 1.0f;
         
+        // Set background color
+        self.backgroundColor = [[Colors sharedManager] backgroundColor];
+        
         // Show the default layout
         [self addLowerCaseLayout];
         
@@ -61,7 +64,7 @@
     
     // Row 3
     UIView* row3 = [self createRow:@[ @"ա", @"ս", @"դ", @"ֆ", @"գ", @"հ", @"յ", @"կ", @"լ", @"ծ" ]
-                           options:nil OffsetLeft:0.05 OffsetLeft:0.05];
+                            options:nil OffsetLeft:0.05 OffsetLeft:0.05];
     row3.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
     
     // Row 4
@@ -370,6 +373,23 @@
             }
             // Add into buttons list
             [buttons addObject:button];
+            
+            // Set the hit areas
+            if (i == 0)
+            {
+                // Set the touch button areas
+                [(CYRKeyboardButton*)button setHitTestEdgeInsets:UIEdgeInsetsMake(-2.f, -100.f, -2.f, -1.5f)];
+            }
+            else if (i == titles.count - 1)
+            {
+                // Set the touch button areas
+                [(CYRKeyboardButton*)button setHitTestEdgeInsets:UIEdgeInsetsMake(-2.f, -1.5f, -2.f, -100.f)];
+            }
+            else{
+                // Set the touch button areas
+                [(CYRKeyboardButton*)button setHitTestEdgeInsets:UIEdgeInsetsMake(-2.f, -1.5f, -2.f, -1.5f)];
+            }
+
         }
     }
     
@@ -463,14 +483,16 @@
 {
     // Define empty side uiviews
     UIView* emptyLefttView = [[UIView alloc] init];
-    emptyLefttView.backgroundColor = [UIColor colorWithRed:100.f/255.f green:0.f/255.f blue:0.f/255.f alpha:kDebug];
     emptyLefttView.translatesAutoresizingMaskIntoConstraints = NO;
+    emptyLefttView.userInteractionEnabled = NO;
     [containerView addSubview:emptyLefttView];
+    [containerView sendSubviewToBack:emptyLefttView];
     
     UIView* emptyRightView = [[UIView alloc] init];
-    emptyRightView.backgroundColor = [UIColor colorWithRed:100.f/255.f green:0.f/255.f blue:0.f/255.f alpha:kDebug];
     emptyRightView.translatesAutoresizingMaskIntoConstraints = NO;
+    emptyRightView.userInteractionEnabled = NO;
     [containerView addSubview:emptyRightView];
+    [containerView sendSubviewToBack:emptyRightView];
     
     // Add empty side offset constraints
     [self addRowSizeOffsetsInView:containerView Left:emptyLefttView Right:emptyRightView
@@ -503,6 +525,7 @@
                                                                                     attribute:NSLayoutAttributeRight
                                                                                    multiplier:1.0 constant:0];
             [containerView addConstraint:buttonLeftConstraint];
+            
         }
         else
         {

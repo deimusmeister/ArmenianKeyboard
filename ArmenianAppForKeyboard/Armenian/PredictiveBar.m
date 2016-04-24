@@ -13,6 +13,8 @@
 
 @synthesize delegate;
 
+dispatch_queue_t suggestionsQueue;
+
 - (id)init
 {
     if (self = [super init])
@@ -40,8 +42,17 @@
         // Instantiate spellchecker
         spellChecker = [[SpellChecker alloc] init];
         word = [[NSString alloc] init];
+        
+        // Initialize the dispatch queue
+        suggestionsQueue = dispatch_queue_create("spelling suggestions queue", NULL);
     }
     return self;
+}
+
+-(void) suspendSpeller
+{
+    // Release speller resources
+    [spellChecker suspend];
 }
 
 -(void) setupOptionButton:(UIButton*)option
@@ -86,31 +97,37 @@
 
 - (void)updateInputText:(NSString*)inputText
 {
-    NSArray* suggestions = [NSArray arrayWithArray:[spellChecker getSuggestionsForWord:inputText]];
-    word = [NSString stringWithString:inputText];
-    
-    if (suggestions.count > 0)
-        [leftOption setTitle:[suggestions objectAtIndex:0] forState:UIControlStateNormal];
-    
-    if (suggestions.count > 1)
-        [centerOption setTitle:[suggestions objectAtIndex:1] forState:UIControlStateNormal];
-    
-    if (suggestions.count > 2)
-        [rightOption setTitle:[suggestions objectAtIndex:2] forState:UIControlStateNormal];
-    
-    if (suggestions.count == 0)
-    {
-        [leftOption setTitle:inputText forState:UIControlStateNormal];
-        [centerOption setTitle:@"" forState:UIControlStateNormal];
-        [rightOption setTitle:@"" forState:UIControlStateNormal];
-    }
+    dispatch_async(suggestionsQueue, ^{
+        NSArray* suggestions = [NSArray arrayWithArray:[spellChecker getSuggestionsForWord:inputText]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            word = [NSString stringWithString:inputText];
+            
+            if (suggestions.count > 0)
+                [leftOption setTitle:[suggestions objectAtIndex:0] forState:UIControlStateNormal];
+            
+            if (suggestions.count > 1)
+                [centerOption setTitle:[suggestions objectAtIndex:1] forState:UIControlStateNormal];
+            
+            if (suggestions.count > 2)
+                [rightOption setTitle:[suggestions objectAtIndex:2] forState:UIControlStateNormal];
+            
+            if (suggestions.count == 0)
+            {
+                [leftOption setTitle:inputText forState:UIControlStateNormal];
+                [centerOption setTitle:@"" forState:UIControlStateNormal];
+                [rightOption setTitle:@"" forState:UIControlStateNormal];
+            }
+        });
+    });
 }
 
 - (void)loadDictionary
 {
     if (spellChecker != nil)
     {
-        [spellChecker updateLanguage:@"hy-AM"];
+        dispatch_async(suggestionsQueue, ^{
+            [spellChecker updateLanguage:@"hy-AM"];
+        });
     }
 }
 
