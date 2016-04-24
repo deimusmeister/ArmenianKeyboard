@@ -140,7 +140,7 @@ dispatch_queue_t suggestionsQueue;
     [button setBackgroundColor:buttonBackgroundColor];
     
     // Forward the option to input field
-    [delegate spellerInputDelegateMethod:button.titleLabel.text Word:word];
+    [delegate spellerInputDelegateMethod:button.currentTitle Word:word];
 }
 
 - (void)buttonDown:(id)sender

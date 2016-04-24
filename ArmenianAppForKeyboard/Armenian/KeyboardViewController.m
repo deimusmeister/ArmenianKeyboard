@@ -302,18 +302,201 @@
     [bar updateInputText:word];
 }
 
+- (void)handleSpaceDoulbeTap
+{
+    // Remove last two space
+    [self alhpaInputRemoveCharacter];
+    [self alhpaInputRemoveCharacter];
+    
+    // Check string for double tap allowance
+    NSString* check = [[NSString alloc] init];
+    
+    if (self.textDocumentProxy.documentContextBeforeInput != nil)
+        check = [NSString stringWithString:self.textDocumentProxy.documentContextBeforeInput];
+    
+    if (check.length >= 2)
+        check = [check substringFromIndex:check.length - 2];
+    
+    if (check.length != 0 && ![check isEqualToString:@" "] && ![check isEqualToString:@"  "])
+    {
+        // Add ending character followed by space
+        [self alphaInputDelegateMethod:@": "];
+    }
+    else
+    {
+        // Recover double space input
+        [self alphaInputDelegateMethod:@"  "];
+    }
+}
+
+- (void)toShifted
+{
+    Alpha* view = nil;
+    for (UIView *subUIView in self.view.subviews) {
+        if ([subUIView isKindOfClass:[Alpha class]])
+        {
+            Alpha* tmp = (Alpha*)subUIView;
+            // Check if we found the proper button
+            BOOL properView = (tmp.tag == kAlpha);
+            if (properView == YES)
+            {
+                view = tmp;
+                break;
+            }
+        }
+    }
+    
+    // Switch to shited mode
+    [view toShiftMode];
+}
+
+- (void)checkSpecialArmenianGrammar
+{
+    NSString* text = [[NSString alloc] init];
+    if (self.textDocumentProxy.documentContextBeforeInput != nil)
+        text = [NSString stringWithString:self.textDocumentProxy.documentContextBeforeInput];
+    
+    // Check for switching to shited mode
+    if ([text hasSuffix:@": "])
+    {
+        // Switch to shited mode
+        [self toShifted];
+    }
+    
+    // Check for automatic comma edition
+    if ([text hasSuffix:@" որ "] && ![text hasSuffix:@", որ "])
+    {
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy insertText:@", որ "];
+    }
+    
+    if ([text hasSuffix:@" բայց "] && ![text hasSuffix:@", բայց "])
+    {
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy insertText:@", բայց "];
+    }
+    
+    if ([text hasSuffix:@" իսկ "] && ![text hasSuffix:@", իսկ "])
+    {
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy insertText:@", իսկ "];
+    }
+    
+    if ([text hasSuffix:@" եթե "] && ![text hasSuffix:@", եթե "])
+    {
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy insertText:@", եթե "];
+    }
+    
+    if ([text hasSuffix:@" սակայն "] && ![text hasSuffix:@", սակայն "])
+    {
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy insertText:@", սակայն "];
+    }
+    
+    if ([text hasSuffix:@" մինչդեռ "] && ![text hasSuffix:@", մինչդեռ "])
+    {
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy insertText:@", մինչդեռ "];
+    }
+    
+    if ([text hasSuffix:@" թեև "] && ![text hasSuffix:@", թեև "])
+    {
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy insertText:@", թեև "];
+    }
+    
+    if ([text hasSuffix:@" որպեսզի "] && ![text hasSuffix:@", որպեսզի "])
+    {
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy insertText:@", որպեսզի "];
+    }
+}
+
+- (void)toNormal
+{
+    Alpha* view = nil;
+    for (UIView *subUIView in self.view.subviews) {
+        if ([subUIView isKindOfClass:[Alpha class]])
+        {
+            Alpha* tmp = (Alpha*)subUIView;
+            // Check if we found the proper button
+            BOOL properView = (tmp.tag == kAlpha);
+            if (properView == YES)
+            {
+                view = tmp;
+                break;
+            }
+        }
+    }
+    
+    // Switch to normal mode
+    [view toNormalMode];
+}
+
 #pragma mark AlphaInputDelegate
 
 - (void) alphaSpecialKeyInputDelegateMethod:(NSInteger)tag
 {
     if (tag == kAlphaGlobeButton)
         [self advanceToNextInputMode];
+    if (tag == kAlphaSpaceDouble)
+        [self handleSpaceDoulbeTap];
 }
 
 - (void) alphaInputDelegateMethod: (NSString *) key
 {
     // Insert typed text
     [self.textDocumentProxy insertText:key];
+    
+    // Check string
+    NSString* check = [[NSString alloc] init];
+    
+    // Gramatical check for adding comma for special words
+    [self checkSpecialArmenianGrammar];
     
     // Update currently typed word
     if (self.textDocumentProxy.documentContextBeforeInput != nil)
@@ -344,6 +527,10 @@
 
 - (void) spellerInputDelegateMethod:(NSString *)key Word:(NSString*)word;
 {
+    // Return immediately if an empty option has been clicked
+    if ([key isEqualToString:@""])
+        return;
+        
     // Remove last word
     for(size_t i = 0; i < word.length; ++i)
     {

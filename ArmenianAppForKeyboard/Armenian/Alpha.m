@@ -319,8 +319,11 @@
             [row addSubview:sbutton];
             
             // Register touch events
+            [sbutton addTarget:self action:@selector(onTap:withEvent:) forControlEvents:UIControlEventTouchDownRepeat];
+//            [sbutton addTarget:self action:@selector(onTap:withEvent:) forControlEvents:UIControlEventTouchDown];
             [sbutton addTarget:self action:@selector(buttonDown:) forControlEvents:UIControlEventTouchDown];
             [sbutton addTarget:self action:@selector(buttonUpInside:) forControlEvents:UIControlEventTouchUpInside];
+//            [sbutton addTarget:self action:@selector(onTap:withEvent:) forControlEvents:UIControlEventTouchDown];
             
             [sbutton setTitle:[titles objectAtIndex:i] forState:UIControlStateNormal];
             sbutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU" size:12.0];
@@ -670,9 +673,6 @@
             // Update space botton colors
             [button setBackgroundColor:[[Colors sharedManager] buttonBackgroundColor]];
             [button setTitleColor:[[Colors sharedManager] buttonTextBackgroundColor] forState:UIControlStateNormal];
-            
-            // Forward to input handler
-            [self forwardInput:@" "];
         }
             break;
         case kAlphaGlobeButton:
@@ -755,6 +755,9 @@
             
             // Update space botton colors
             [button setBackgroundColor:buttonBackgroundColor];
+            
+            // Forward space
+            [self forwardInput:@" "];
         }
             break;
             
@@ -852,6 +855,12 @@
     }
 }
 
+- (void)handleSpaceDoubleTap
+{
+    // Forward double space tap
+    [delegate alphaSpecialKeyInputDelegateMethod:kAlphaSpaceDouble];
+}
+
 - (void)onTap:(id)sender withEvent:(UIEvent*)event
 {
     UITouch* touch = [[event allTouches] anyObject];
@@ -869,6 +878,12 @@
             else if (touch.tapCount == 1)
             {
                 [self handleShiftSingleTap];
+            }
+            break;
+        case kAlhpaSpace:
+            if (touch.tapCount == 2)
+            {
+                [self handleSpaceDoubleTap];
             }
             break;
         default:
