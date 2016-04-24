@@ -49,5 +49,10 @@
 //      kOption2Case      4
 @property (nonatomic) NSUInteger alphaMode;
 
+// Switch keyboard to shifted mode
+- (void)toShiftMode;
+
+// Switch keyboard to normal mode
+- (void)toNormalMode;
 
 @end

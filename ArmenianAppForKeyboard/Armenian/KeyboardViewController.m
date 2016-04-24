@@ -87,7 +87,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     // Add alpha keyboard
     [self addAlphaKeyboard];
     
@@ -182,6 +185,18 @@
                                                                                        multiplier:0.83 constant:0.0];
     
     [self.view addConstraint:alphaKeyboardButtonTopConstraint];
+    
+    // Update the keyboard mode on startup
+    if ((self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeWords ||
+         self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeSentences ||
+         self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeAllCharacters) &&
+        (self.textDocumentProxy.documentContextBeforeInput == nil ||
+         [self.textDocumentProxy.documentContextBeforeInput isEqualToString:@"\n"] ||
+         [self.textDocumentProxy.documentContextBeforeInput isEqualToString:@""]))
+    {
+        // Switch to shifted mode
+        [alpha toShiftMode];
+    }
 }
 
 - (void) addPredictionBar
@@ -282,6 +297,7 @@
     else
         word = [NSString stringWithString:currentWord];
     
+    NSLog(@"AAS %@", word);
     // Update prediction input
     [bar updateInputText:word];
 }
@@ -300,7 +316,10 @@
     [self.textDocumentProxy insertText:key];
     
     // Update currently typed word
-    currentWord = [NSString stringWithFormat:@"%@%@", currentWord, key];
+    if (self.textDocumentProxy.documentContextBeforeInput != nil)
+        currentWord = [NSString stringWithString:self.textDocumentProxy.documentContextBeforeInput];
+    else
+        currentWord = @"";
     
     // Update prediction input
     [self updatePredictionInput];
@@ -308,17 +327,17 @@
 
 - (void) alhpaInputRemoveCharacter
 {
-    // Update currently typed word
-    if (currentWord.length != 0)
-    {
-        currentWord = [currentWord substringToIndex:[currentWord length] - 1];
-        
-        // Update prediction input
-        [self updatePredictionInput];
-    }
-    
     // Remove a character
     [self.textDocumentProxy deleteBackward];
+    
+    // Update currently typed word
+    if (self.textDocumentProxy.documentContextBeforeInput != nil)
+        currentWord = [NSString stringWithString:self.textDocumentProxy.documentContextBeforeInput];
+    else
+        currentWord = @"";
+    
+    // Update prediction input
+    [self updatePredictionInput];
 }
 
 #pragma mark PredictiveBarDelegate
@@ -330,11 +349,12 @@
     {
         [self.textDocumentProxy deleteBackward];
     }
-    currentWord = [currentWord substringToIndex:[currentWord length] - word.length];
     
     // Add option key and space at the end
     [self.textDocumentProxy insertText:[NSString stringWithFormat:@"%@ ", key]];
-    currentWord = [NSString stringWithFormat:@"%@%@ ", currentWord, key];
+    
+    // Update currently typed word
+    currentWord = [NSString stringWithString:self.textDocumentProxy.documentContextBeforeInput];
     
     // Update predictive option
     [self updatePredictionInput];

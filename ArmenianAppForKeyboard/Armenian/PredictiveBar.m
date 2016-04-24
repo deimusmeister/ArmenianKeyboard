@@ -58,6 +58,7 @@ dispatch_queue_t suggestionsQueue;
 -(void) setupOptionButton:(UIButton*)option
 {
     option.translatesAutoresizingMaskIntoConstraints = NO;
+    option.titleLabel.lineBreakMode = NSLineBreakByTruncatingHead;
     [self addSubview:option];
     
     // Register button click handlers
@@ -102,6 +103,11 @@ dispatch_queue_t suggestionsQueue;
         dispatch_async(dispatch_get_main_queue(), ^{
             word = [NSString stringWithString:inputText];
             
+            // Set the defaults
+            [leftOption setTitle:inputText forState:UIControlStateNormal];
+            [centerOption setTitle:@"" forState:UIControlStateNormal];
+            [rightOption setTitle:@"" forState:UIControlStateNormal];
+            
             if (suggestions.count > 0)
                 [leftOption setTitle:[suggestions objectAtIndex:0] forState:UIControlStateNormal];
             
@@ -111,12 +117,6 @@ dispatch_queue_t suggestionsQueue;
             if (suggestions.count > 2)
                 [rightOption setTitle:[suggestions objectAtIndex:2] forState:UIControlStateNormal];
             
-            if (suggestions.count == 0)
-            {
-                [leftOption setTitle:inputText forState:UIControlStateNormal];
-                [centerOption setTitle:@"" forState:UIControlStateNormal];
-                [rightOption setTitle:@"" forState:UIControlStateNormal];
-            }
         });
     });
 }

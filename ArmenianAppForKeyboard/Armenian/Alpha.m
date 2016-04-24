@@ -619,7 +619,7 @@
             button.tintColor = buttonTextColor;
             
             // Insert return character
-            [delegate alphaInputDelegateMethod:@"\n"];
+            [self forwardInput:@"\n"];
         }
             break;
             
@@ -672,7 +672,7 @@
             [button setTitleColor:[[Colors sharedManager] buttonTextBackgroundColor] forState:UIControlStateNormal];
             
             // Forward to input handler
-            [delegate alphaInputDelegateMethod:@" "];
+            [self forwardInput:@" "];
         }
             break;
         case kAlphaGlobeButton:
@@ -683,7 +683,7 @@
             
         default:
             // Forward to key input handler
-            [delegate alphaInputDelegateMethod:button.titleLabel.text];
+            [self forwardInput:button.titleLabel.text];
             break;
     }
 }
@@ -1637,11 +1637,46 @@
     
 }
 
+- (void)forwardInput:(NSString*)key
+{
+    // Keyboard mode management logic
+    if (![key isEqualToString:@" "] && ![key isEqualToString:@"\n"] && self.alphaMode == kShifted)
+    {
+        // Switch to lowercase/uppercase layout
+        [self addLowerCaseLayout];
+        
+        // Set the current mode
+        self.alphaMode = kNormal;
+    }
+    
+    [delegate alphaInputDelegateMethod:key];
+}
+
+#pragma mark Public Interface
+
+- (void)toShiftMode
+{
+    // Switch to lowercase/uppercase layout
+    [self addUpperCaseLayout];
+    
+    // Set the current mode
+    self.alphaMode = kShifted;
+}
+
+- (void)toNormalMode
+{
+    // Switch to lowercase/uppercase layout
+    [self addLowerCaseLayout];
+    
+    // Set the current mode
+    self.alphaMode = kNormal;
+}
+
 #pragma mark CYRKeyboarBUttonInputDelegate
 
 - (void) cyrKeyboardButtonInputDelegateMethod: (NSString *)key
 {
-    [delegate alphaInputDelegateMethod:key];
+    [self forwardInput:key];
 }
 
 @end
