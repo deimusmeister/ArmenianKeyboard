@@ -91,14 +91,14 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // Setup the colors manager
+    [[Colors sharedManager] setTextDocumentProxy:self.textDocumentProxy];
+    
     // Add alpha keyboard
     [self addAlphaKeyboard];
     
     // Add prediction bar
     [self addPredictionBar];
-    
-    // Setup the colors manager
-    [[Colors sharedManager] setTextDocumentProxy:self.textDocumentProxy];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -299,7 +299,7 @@
     
     NSLog(@"AAS %@", word);
     // Update prediction input
-    [bar updateInputText:word];
+    [bar updateInputText:[word lowercaseString]];
 }
 
 - (void)handleSpaceDoulbeTap
