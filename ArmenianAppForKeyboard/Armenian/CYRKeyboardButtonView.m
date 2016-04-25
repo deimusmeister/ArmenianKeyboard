@@ -330,11 +330,11 @@
             [path rightArc:majorRadius turn:48]; // #5
             [path forward:8.5f];
             [path leftArc:majorRadius turn:48]; // #6
-            [path forward:CGRectGetHeight(keyRect) - 8.5f + 1];
+            [path forward:CGRectGetHeight(keyRect) - 8.5f + 1 - 12];
             [path rightArc:minorRadius turn:90];
             [path forward:lowerWidth - 2 * minorRadius]; //  lowerWidth - 2 * minorRadius + 0.5f
             [path rightArc:minorRadius turn:90];
-            [path forward:CGRectGetHeight(keyRect) - 2 * minorRadius];
+            [path forward:CGRectGetHeight(keyRect) - 2 * minorRadius - 12];
             [path leftArc:majorRadius turn:48];
             [path forward:8.5f];
             [path rightArc:majorRadius turn:48];
@@ -354,11 +354,11 @@
             [path rightArc:majorRadius turn:90]; // #1
             [path forward:upperWidth - 2 * majorRadius]; // #2 top
             [path rightArc:majorRadius turn:90]; // #3
-            [path forward:CGRectGetHeight(keyRect) - 2 * majorRadius + insets.top + insets.bottom]; // #4 right big
+            [path forward:CGRectGetHeight(keyRect) - 2 * majorRadius + insets.top + insets.bottom - 7]; // #4 right big
             [path rightArc:majorRadius turn:45]; // #5
             [path forward:28]; // 6
             [path leftArc:majorRadius turn:45]; // #7
-            [path forward:CGRectGetHeight(keyRect) - 26 + (insets.left + insets.right) / 4]; // #8
+            [path forward:CGRectGetHeight(keyRect) - 26 + (insets.left + insets.right) / 4 - 7]; // #8
             [path rightArc:minorRadius turn:90]; // 9
             [path forward:path.currentPoint.x - minorRadius]; // 10
             [path rightArc:minorRadius turn:90]; // 11
@@ -379,11 +379,11 @@
             [path rightArc:majorRadius turn:90]; // #1
             [path forward:upperWidth - 2 * majorRadius]; // #2 top
             [path rightArc:majorRadius turn:90]; // #3
-            [path forward:CGRectGetHeight(keyRect) - 2 * majorRadius + insets.top + insets.bottom]; // #4 right big
+            [path forward:CGRectGetHeight(keyRect) - 2 * majorRadius + insets.top + insets.bottom - 7]; // #4 right big
             [path rightArc:majorRadius turn:45]; // #5
             [path forward:28]; // 6
             [path leftArc:majorRadius turn:45]; // #7
-            [path forward:CGRectGetHeight(keyRect) - 26 + (insets.left + insets.right) / 4]; // #8
+            [path forward:CGRectGetHeight(keyRect) - 26 + (insets.left + insets.right) / 4 - 7]; // #8
             [path rightArc:minorRadius turn:90]; // 9
             [path forward:path.currentPoint.x - minorRadius]; // 10
             [path rightArc:minorRadius turn:90]; // 11
