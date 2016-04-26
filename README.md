@@ -8,3 +8,4 @@
  - Ստորակետի ավտոմատ ավելացում «որ, բայց, եթե, սակայն, որպեսզի, մինչդեռ» շաղկապներից առաջ: Հնարավոր Է ցանկը փոփոխվի
  - Հարցական ստեղնի ենթաստեղների կարգավորում
 
+![Screenshot](https://raw.githubusercontent.com/deimusmeister/ArmenianKeyboard/master/keyboard_demo.gif)
