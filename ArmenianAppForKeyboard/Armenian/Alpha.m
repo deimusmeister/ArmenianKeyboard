@@ -9,6 +9,8 @@
 #import "Alpha.h"
 #import "Colors.h"
 #import "CYRKeyboardButton.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 // UI debugging flag
 #define kDebug              0.0
@@ -690,6 +692,9 @@
 
 - (void)buttonDown:(id)sender
 {
+    // Make the click sound
+    [self playSound];
+    
     UIButton* button = (UIButton*)sender;
     
     // Handle corresponding button press
@@ -771,6 +776,9 @@
     // Invalidate current timer
     [_TimerDeleteButton invalidate];
     _TimerDeleteButton = nil;
+    
+    // Play click sound
+    [self playSound];
     
     // Remove a character
     [delegate alhpaInputRemoveCharacter];
@@ -863,6 +871,9 @@
 
 - (void)onTap:(id)sender withEvent:(UIEvent*)event
 {
+    // Make the click sound
+    [self playSound];
+    
     UITouch* touch = [[event allTouches] anyObject];
     
     UIButton* button = (UIButton*)sender;
@@ -1650,6 +1661,15 @@
                                                                             multiplier:1.0 constant:-2.0];
     [containerView addConstraint:buttonRightConstraint];
     
+}
+
+- (void)playSound
+{
+    NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+    if ([userDefaults boolForKey:@"ArmKeyboardSound"])
+    {
+        AudioServicesPlaySystemSound(1104);
+    }
 }
 
 - (void)forwardInput:(NSString*)key

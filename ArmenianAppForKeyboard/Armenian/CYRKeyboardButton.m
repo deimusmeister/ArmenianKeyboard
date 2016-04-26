@@ -34,6 +34,8 @@
 #import "CYRKeyboardButton.h"
 #import "CYRKeyboardButtonView.h"
 #import <objc/runtime.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 NSString *const CYRKeyboardButtonPressedNotification = @"CYRKeyboardButtonPressedNotification";
 NSString *const CYRKeyboardButtonDidShowExpandedInputNotification = @"CYRKeyboardButtonDidShowExpandedInputNotification";
@@ -439,6 +441,12 @@ static const NSString *KEY_HIT_TEST_EDGE_INSETS = @"HitTestEdgeInsets";
 {
     [[UIDevice currentDevice] playInputClick];
     
+    NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+    if ([userDefaults boolForKey:@"ArmKeyboardSound"])
+    {
+        AudioServicesPlaySystemSound(1104);
+    }
+
     [self showInputView];
 }
 
