@@ -52,7 +52,7 @@ dispatch_queue_t suggestionsQueue;
 -(void) suspendSpeller
 {
     // Release speller resources
-    [spellChecker suspend];
+//    [spellChecker suspend];
 }
 
 -(void) setupOptionButton:(UIButton*)option

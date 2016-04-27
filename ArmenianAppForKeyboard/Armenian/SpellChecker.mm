@@ -82,7 +82,7 @@ static char *createCharFromCFStringRef(CFStringRef cfstr)
 			if (nsSuggestion == NULL) {
 				NSLog(@"Failed to convert [%s] to NSString", *(suggestionsList + i));
 			}else{
-                NSLog(@"%@", nsSuggestion);
+//                NSLog(@"%@", nsSuggestion);
                 [result addObject:nsSuggestion];
             }
 		}

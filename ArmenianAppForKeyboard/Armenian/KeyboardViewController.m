@@ -71,14 +71,11 @@
     CGFloat screenW = screenSize.width;
     BOOL isLandscape =  !(self.view.frame.size.width ==
                           (screenW*(screenW<screenH))+(screenH*(screenW>screenH)));
-    NSLog(isLandscape ? @"Screen: Landscape" : @"Screen: Potriaint");
     self.isLandscape = isLandscape;
     if (isLandscape) {
-        NSLog(@"%f", self.landscapeHeight);
         self.heightConstraint.constant = self.landscapeHeight;
         [self.view addConstraint:self.heightConstraint];
     } else {
-        NSLog(@"%f", self.portraitHeight);
         self.heightConstraint.constant = self.portraitHeight;
         [self.view addConstraint:self.heightConstraint];
     }
@@ -297,7 +294,6 @@
     else
         word = [NSString stringWithString:currentWord];
     
-    NSLog(@"AAS %@", word);
     // Update prediction input
     [bar updateInputText:[word lowercaseString]];
 }

@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3D8BBAE91CAC415C00F8D7A4"
-               BuildableName = "Armenian.appex"
-               BlueprintName = "Armenian"
+               BuildableName = "ArmenianKeyboard.appex"
+               BlueprintName = "ArmenianKeyboard"
                ReferencedContainer = "container:ArmenianAppForKeyboard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,8 +30,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3D8BBACB1CAC40C800F8D7A4"
-               BuildableName = "ArmenianAppForKeyboard.app"
-               BlueprintName = "ArmenianAppForKeyboard"
+               BuildableName = "Armenian.app"
+               BlueprintName = "Armenian"
                ReferencedContainer = "container:ArmenianAppForKeyboard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,8 +48,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3D8BBAE91CAC415C00F8D7A4"
-            BuildableName = "Armenian.appex"
-            BlueprintName = "Armenian"
+            BuildableName = "ArmenianKeyboard.appex"
+            BlueprintName = "ArmenianKeyboard"
             ReferencedContainer = "container:ArmenianAppForKeyboard.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -67,16 +67,20 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "1"
+         BundleIdentifier = "com.apple.mobilenotes"
+         RemotePath = "/Applications/MobileNotes.app">
+      </RemoteRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3D8BBACB1CAC40C800F8D7A4"
-            BuildableName = "ArmenianAppForKeyboard.app"
-            BlueprintName = "ArmenianAppForKeyboard"
+            BuildableName = "Armenian.app"
+            BlueprintName = "Armenian"
             ReferencedContainer = "container:ArmenianAppForKeyboard.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -92,8 +96,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3D8BBACB1CAC40C800F8D7A4"
-            BuildableName = "ArmenianAppForKeyboard.app"
-            BlueprintName = "ArmenianAppForKeyboard"
+            BuildableName = "Armenian.app"
+            BlueprintName = "Armenian"
             ReferencedContainer = "container:ArmenianAppForKeyboard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
