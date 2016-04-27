@@ -31,6 +31,7 @@
 
 // Helper variables
 @property (nonatomic) BOOL isLandscape;
+@property (nonatomic) BOOL isPredictionEnabled;
 
 // Variables for storing keyboard height on landscape and portrait modes
 @property (nonatomic) CGFloat portraitHeight;
@@ -84,6 +85,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Load prediction settings
+    NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+    if ([userDefaults objectForKey:@"ArmKeyboardPrediction"] == nil)
+    {
+        [userDefaults setBool:YES forKey:@"ArmKeyboardPrediction"];
+    }
+    self.isPredictionEnabled = [userDefaults boolForKey:@"ArmKeyboardPrediction"];
+    
+    // Minimize keyboard if the prediction is not enabled
+    if (self.isPredictionEnabled == NO)
+    {
+        self.portraitHeight = self.portraitHeight - 35;
+        self.landscapeHeight = self.landscapeHeight - 35;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -94,8 +110,11 @@
     // Add alpha keyboard
     [self addAlphaKeyboard];
     
-    // Add prediction bar
-    [self addPredictionBar];
+    if (self.isPredictionEnabled == YES)
+    {
+        // Add prediction bar
+        [self addPredictionBar];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -174,12 +193,13 @@
     [self.view addConstraint:alphaKeyboardButtonBottomConstraint];
     
     // Width constraint
+    CGFloat factor = (self.isPredictionEnabled ? 0.83 : 1.0);
     NSLayoutConstraint *alphaKeyboardButtonTopConstraint = [NSLayoutConstraint constraintWithItem:alpha
                                                                                         attribute:NSLayoutAttributeHeight
                                                                                         relatedBy:NSLayoutRelationEqual
                                                                                            toItem:self.view
                                                                                         attribute:NSLayoutAttributeHeight
-                                                                                       multiplier:0.83 constant:0.0];
+                                                                                       multiplier:factor constant:0.0];
     
     [self.view addConstraint:alphaKeyboardButtonTopConstraint];
     
@@ -488,20 +508,23 @@
     // Insert typed text
     [self.textDocumentProxy insertText:key];
     
-    // Check string
-    NSString* check = [[NSString alloc] init];
-    
-    // Gramatical check for adding comma for special words
-    [self checkSpecialArmenianGrammar];
-    
-    // Update currently typed word
-    if (self.textDocumentProxy.documentContextBeforeInput != nil)
-        currentWord = [NSString stringWithString:self.textDocumentProxy.documentContextBeforeInput];
-    else
-        currentWord = @"";
-    
-    // Update prediction input
-    [self updatePredictionInput];
+    if (self.isPredictionEnabled == YES)
+    {
+        // Check string
+        NSString* check = [[NSString alloc] init];
+        
+        // Gramatical check for adding comma for special words
+        [self checkSpecialArmenianGrammar];
+        
+        // Update currently typed word
+        if (self.textDocumentProxy.documentContextBeforeInput != nil)
+            currentWord = [NSString stringWithString:self.textDocumentProxy.documentContextBeforeInput];
+        else
+            currentWord = @"";
+        
+        // Update prediction input
+        [self updatePredictionInput];
+    }
 }
 
 - (void) alhpaInputRemoveCharacter
@@ -509,14 +532,17 @@
     // Remove a character
     [self.textDocumentProxy deleteBackward];
     
-    // Update currently typed word
-    if (self.textDocumentProxy.documentContextBeforeInput != nil)
-        currentWord = [NSString stringWithString:self.textDocumentProxy.documentContextBeforeInput];
-    else
-        currentWord = @"";
-    
-    // Update prediction input
-    [self updatePredictionInput];
+    if (self.isPredictionEnabled == YES)
+    {
+        // Update currently typed word
+        if (self.textDocumentProxy.documentContextBeforeInput != nil)
+            currentWord = [NSString stringWithString:self.textDocumentProxy.documentContextBeforeInput];
+        else
+            currentWord = @"";
+        
+        // Update prediction input
+        [self updatePredictionInput];
+    }
 }
 
 #pragma mark PredictiveBarDelegate

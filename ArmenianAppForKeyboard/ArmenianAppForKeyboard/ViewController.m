@@ -40,6 +40,7 @@
     
     "</body></html>​";
     
+    // Add sound option
     UITextView* soundText = [[UITextView alloc] init];
     soundText.text = @"Keyboard Sound ";
     [soundText setFont:[UIFont systemFontOfSize:20]];
@@ -67,11 +68,45 @@
     NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
     soundSwitch.on = [userDefaults boolForKey:@"ArmKeyboardSound"];
     
+    // Add prediction option
+    UITextView* predictionText = [[UITextView alloc] init];
+    predictionText.text = @"Input Prediction ";
+    [predictionText setFont:[UIFont systemFontOfSize:20]];
+    UISwitch *predictionSwitch = [[UISwitch alloc] init];
+    [predictionSwitch addTarget: self action: @selector(pflip:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.view addSubview:predictionText];
+    [predictionText sizeToFit];
+    [self.view addSubview:predictionSwitch];
+    
+    textWidth = predictionText.frame.size.width;
+    textWidth = textWidth + textWidth / 3;
+    offsetWidth = (self.view.frame.size.width - textWidth) / 2;
+    offsetHeight = 20.f + 40.f;
+    
+    predictionText.frame = CGRectMake(offsetWidth,
+                                 offsetHeight,
+                                 predictionText.frame.size.width,
+                                 predictionText.frame.size.height);
+    predictionSwitch.frame = CGRectMake(offsetWidth + textWidth - predictionSwitch.frame.size.width,
+                                   offsetHeight + 5,
+                                   predictionSwitch.frame.size.width,
+                                   predictionSwitch.frame.size.height);
+    
+    if ([userDefaults objectForKey:@"ArmKeyboardPrediction"] == nil)
+    {
+        NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+        [userDefaults setBool:YES forKey:@"ArmKeyboardPrediction"];
+        [userDefaults synchronize];
+    }
+    predictionSwitch.on = [userDefaults boolForKey:@"ArmKeyboardPrediction"];
+    
+    // Add the intruction text
     UIWebView *webView = [[UIWebView alloc] init];
     webView.frame = CGRectMake(0,
-                               soundSwitch.frame.origin.y + soundSwitch.frame.size.height,
+                               predictionSwitch.frame.origin.y + predictionSwitch.frame.size.height + 10,
                                self.view.frame.size.width,
-                               self.view.frame.size.height - soundSwitch.frame.origin.y + soundSwitch.frame.size.height);
+                               self.view.frame.size.height - predictionSwitch.frame.origin.y + predictionSwitch.frame.size.height);
     
     [webView loadHTMLString:htmlString baseURL:nil];
     [self.view addSubview:webView];
@@ -95,6 +130,13 @@
     UISwitch *onoff = (UISwitch *) sender;
     NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
     [userDefaults setBool:onoff.on forKey:@"ArmKeyboardSound"];
+    [userDefaults synchronize];
+}
+
+- (IBAction) pflip: (id) sender {
+    UISwitch *onoff = (UISwitch *) sender;
+    NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+    [userDefaults setBool:onoff.on forKey:@"ArmKeyboardPrediction"];
     [userDefaults synchronize];
 }
 
