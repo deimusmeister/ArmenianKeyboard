@@ -356,7 +356,6 @@
             button.keyColor = buttonBackgroundColor;
             button.keyTextColor = buttonTextColor;
             button.keyShadowColor = [[Colors sharedManager] buttonShadowColor];
-            button.keyHighlightedColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
             
             button.input = [titles objectAtIndex:i];
             
@@ -1287,7 +1286,6 @@
     ebutton.keyColor = buttonBackgroundColor;
     ebutton.keyShadowColor = buttonBackgroundColor;
     ebutton.keyTextColor = buttonTextColor;
-    ebutton.keyHighlightedColor = [UIColor colorWithRed:42.f/255.f green:39.f/255.f blue:39.f/255.f alpha:1.f];
     ebutton.font = [UIFont fontWithName:@"ArianAMU" size:23.0];
     
     // Bottom constraint
