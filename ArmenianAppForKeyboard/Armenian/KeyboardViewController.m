@@ -375,8 +375,14 @@
     }
     
     // Check for automatic comma edition
-    if ([text hasSuffix:@" որ "] && ![text hasSuffix:@", որ "] &&
-        ![text hasSuffix:@"ոնց որ "] && ![text hasSuffix:@"Ոնց որ "])
+    if ([text hasSuffix:@" որ "]                && ![text hasSuffix:@", որ "] &&
+        ![text hasSuffix:@"ոնց որ "]            && ![text hasSuffix:@"Ոնց որ "] &&
+        ![text hasSuffix:@"մինչև որ "]           && ![text hasSuffix:@"Մինչև որ "] &&
+        ![text hasSuffix:@"չնայած որ "]          && ![text hasSuffix:@"Չնայած որ "] &&
+        ![text hasSuffix:@"քանի որ "]           && ![text hasSuffix:@"Քանի որ "] &&
+        ![text hasSuffix:@"հենց որ "]            && ![text hasSuffix:@"Հենց որ "] &&
+        ![text hasSuffix:@"մանավանդ որ "]       && ![text hasSuffix:@"Մանավանդ որ "] &&
+        ![text hasSuffix:@"երբ որ "]             && ![text hasSuffix:@"Երբ որ "])
     {
         [self.textDocumentProxy deleteBackward];
         [self.textDocumentProxy deleteBackward];
