@@ -175,6 +175,14 @@ static const NSString *KEY_HIT_TEST_EDGE_INSETS = @"HitTestEdgeInsets";
     [self updateButtonPosition];
 }
 
+-(void) didMoveToWindow {
+    [super didMoveToWindow]; // (does nothing by default)
+    if (self.window == nil) {
+        [self.buttonView removeFromSuperview];
+        [self.expandedButtonView removeFromSuperview];
+    }
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];

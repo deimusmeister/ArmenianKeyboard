@@ -376,8 +376,7 @@
     
     // Check for automatic comma edition
     if ([text hasSuffix:@" որ "] && ![text hasSuffix:@", որ "] &&
-        ![text hasSuffix:@"ոնց որ "] && ![text hasSuffix:@"Ոնց որ "] &&
-        ![text hasSuffix:@"ինչ որ "] && ![text hasSuffix:@"Ինչ որ "])
+        ![text hasSuffix:@"ոնց որ "] && ![text hasSuffix:@"Ոնց որ "])
     {
         [self.textDocumentProxy deleteBackward];
         [self.textDocumentProxy deleteBackward];
