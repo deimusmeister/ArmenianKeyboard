@@ -320,28 +320,23 @@
 
 - (void)handleSpaceDoulbeTap
 {
-    // Remove last two space
-    [self alhpaInputRemoveCharacter];
-    [self alhpaInputRemoveCharacter];
-    
     // Check string for double tap allowance
     NSString* check = [[NSString alloc] init];
     
     if (self.textDocumentProxy.documentContextBeforeInput != nil)
         check = [NSString stringWithString:self.textDocumentProxy.documentContextBeforeInput];
     
-    if (check.length >= 2)
-        check = [check substringFromIndex:check.length - 2];
+    if (check.length >= 3)
+        check = [check substringFromIndex:check.length - 3];
     
-    if (check.length != 0 && ![check isEqualToString:@" "] && ![check isEqualToString:@"  "])
+    if (check.length == 3 && ![check isEqualToString:@"   "] && [[check substringFromIndex:check.length - 2] isEqualToString:@"  "])
     {
+        // Remove last two space
+        [self alhpaInputRemoveCharacter];
+        [self alhpaInputRemoveCharacter];
+        
         // Add ending character followed by space
         [self alphaInputDelegateMethod:@": "];
-    }
-    else
-    {
-        // Recover double space input
-        [self alphaInputDelegateMethod:@"  "];
     }
 }
 
