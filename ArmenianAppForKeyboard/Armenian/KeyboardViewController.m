@@ -391,6 +391,16 @@
         [self.textDocumentProxy insertText:@", որ "];
     }
     
+    if ([text hasSuffix:@" երբ "] && ![text hasSuffix:@", երբ "])
+    {
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy insertText:@", երբ "];
+    }
+    
     if ([text hasSuffix:@" բայց "] && ![text hasSuffix:@", բայց "])
     {
         [self.textDocumentProxy deleteBackward];

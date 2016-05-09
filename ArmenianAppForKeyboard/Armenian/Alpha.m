@@ -762,6 +762,12 @@
             
             // Forward space
             [self forwardInput:@" "];
+            
+            if (alphaMode == kNumeric || alphaMode == kSymbolic)
+            {
+                // Switch to normal mode
+                [self toNormalMode];
+            }
         }
             break;
             
