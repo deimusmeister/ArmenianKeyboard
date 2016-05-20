@@ -520,13 +520,13 @@
     // Insert typed text
     [self.textDocumentProxy insertText:key];
     
+    // Gramatical check for adding comma for special words
+    [self checkSpecialArmenianGrammar];
+    
     if (self.isPredictionEnabled == YES)
     {
         // Check string
         NSString* check = [[NSString alloc] init];
-        
-        // Gramatical check for adding comma for special words
-        [self checkSpecialArmenianGrammar];
         
         // Update currently typed word
         if (self.textDocumentProxy.documentContextBeforeInput != nil)
