@@ -101,12 +101,45 @@
     }
     predictionSwitch.on = [userDefaults boolForKey:@"ArmKeyboardPrediction"];
     
+    // Add bold text option
+    UITextView* boldText = [[UITextView alloc] init];
+    boldText.text = @"Bold Text ";
+    [boldText setFont:[UIFont systemFontOfSize:20]];
+    UISwitch *boldSwitch = [[UISwitch alloc] init];
+    [boldSwitch addTarget: self action: @selector(bflip:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.view addSubview:boldText];
+    [boldText sizeToFit];
+    [self.view addSubview:boldSwitch];
+    
+    textWidth = boldText.frame.size.width;
+    textWidth = textWidth + textWidth / 2;
+    offsetWidth = (self.view.frame.size.width - textWidth) / 2;
+    offsetHeight = 20.f + 40.f + 40.f;
+    
+    boldText.frame = CGRectMake(offsetWidth,
+                                offsetHeight,
+                                boldText.frame.size.width,
+                                boldText.frame.size.height);
+    boldSwitch.frame = CGRectMake(offsetWidth + textWidth - boldSwitch.frame.size.width,
+                                  offsetHeight + 5,
+                                  boldSwitch.frame.size.width,
+                                  boldSwitch.frame.size.height);
+    
+    if ([userDefaults objectForKey:@"ArmKeyboardBoldText"] == nil)
+    {
+        NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+        [userDefaults setBool:NO forKey:@"ArmKeyboardBoldText"];
+        [userDefaults synchronize];
+    }
+    boldSwitch.on = [userDefaults boolForKey:@"ArmKeyboardBoldText"];
+    
     // Add the intruction text
     UIWebView *webView = [[UIWebView alloc] init];
     webView.frame = CGRectMake(0,
-                               predictionSwitch.frame.origin.y + predictionSwitch.frame.size.height + 10,
+                               boldSwitch.frame.origin.y + boldSwitch.frame.size.height + 10,
                                self.view.frame.size.width,
-                               self.view.frame.size.height - predictionSwitch.frame.origin.y + predictionSwitch.frame.size.height);
+                               self.view.frame.size.height - boldSwitch.frame.origin.y + boldSwitch.frame.size.height);
     
     [webView loadHTMLString:htmlString baseURL:nil];
     [self.view addSubview:webView];
@@ -137,6 +170,13 @@
     UISwitch *onoff = (UISwitch *) sender;
     NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
     [userDefaults setBool:onoff.on forKey:@"ArmKeyboardPrediction"];
+    [userDefaults synchronize];
+}
+
+- (IBAction) bflip: (id) sender {
+    UISwitch *onoff = (UISwitch *) sender;
+    NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+    [userDefaults setBool:onoff.on forKey:@"ArmKeyboardBoldText"];
     [userDefaults synchronize];
 }
 

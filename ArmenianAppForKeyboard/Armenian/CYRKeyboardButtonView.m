@@ -192,7 +192,7 @@
         NSAttributedString *attributedString = [[NSAttributedString alloc]
                                                 initWithString:inputString
                                                 attributes:
-                                                @{NSFontAttributeName : [_button.font fontWithSize:44]  /*[UIFont fontWithName:@"ArianAMU" size:44]*/,
+                                                @{NSFontAttributeName : [_button.font fontWithSize:44]  /*[UIFont fontWithName:[[Colors sharedManager] keyboardFont] size:44]*/,
                                                   NSForegroundColorAttributeName : stringColor, NSParagraphStyleAttributeName : p}];
         [attributedString drawInRect:stringRect];
     }

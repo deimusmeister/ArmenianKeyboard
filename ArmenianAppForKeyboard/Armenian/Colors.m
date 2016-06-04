@@ -11,13 +11,16 @@
 @implementation Colors
 
 @synthesize textDocumentProxy;
+@synthesize isBoldEnabled;
 
 + (id)sharedManager
 {
     static Colors *sharedMyManager = nil;
     @synchronized(self) {
         if (sharedMyManager == nil)
+        {
             sharedMyManager = [[self alloc] init];
+        }
     }
     return sharedMyManager;
 }
@@ -143,6 +146,22 @@
     {
         return [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.002f];
     }
+}
+
+- (NSString*) keyboardFont
+{
+    if (self.isBoldEnabled)
+        return @"ArianAMU-Bold";
+    else
+        return @"ArianAMU";
+}
+
+- (int) keyboardFontSize
+{
+    if (self.isBoldEnabled)
+        return 2;
+    else
+        return 0;
 }
 
 @end

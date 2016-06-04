@@ -12,9 +12,11 @@
 @interface Colors : NSObject
 {
     id textDocumentProxy;
+    BOOL isBoldEnabled;
 }
 
 @property (nonatomic, strong) id <UITextDocumentProxy> textDocumentProxy;
+@property (nonatomic, assign) BOOL isBoldEnabled;
 
 + (id)sharedManager;
 
@@ -32,5 +34,8 @@
 - (UIColor*) buttonShadowColor;
 
 - (UIColor*) backgroundColor;
+
+- (NSString*) keyboardFont;
+- (int) keyboardFontSize;
 
 @end

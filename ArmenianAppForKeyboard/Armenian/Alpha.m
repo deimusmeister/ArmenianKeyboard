@@ -328,7 +328,7 @@
 //            [sbutton addTarget:self action:@selector(onTap:withEvent:) forControlEvents:UIControlEventTouchDown];
             
             [sbutton setTitle:[titles objectAtIndex:i] forState:UIControlStateNormal];
-            sbutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU" size:12.0];
+            sbutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU-Bold" size:12.0];
             [sbutton setBackgroundColor:[[Colors sharedManager] buttonBackgroundColor]];
             [sbutton setTitleColor:[[Colors sharedManager] buttonTextBackgroundColor] forState:UIControlStateNormal];
             sbutton.layer.cornerRadius = 5;
@@ -361,7 +361,8 @@
             
             if (options == nil)
             {
-                button.font = [UIFont fontWithName:@"ArianAMU" size:20.0];
+                button.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                              size:20.0 + [[Colors sharedManager] keyboardFontSize]];
             }
             else
             {
@@ -952,7 +953,8 @@
     [ebutton.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [ebutton setTitleColor:buttonTintColor forState:UIControlStateNormal];
     ebutton.tintColor = buttonTintColor;
-    ebutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU" size:12.0];
+    ebutton.titleLabel.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                              size:12.0 +  + [[Colors sharedManager] keyboardFontSize]];
     ebutton.layer.cornerRadius = 5;
     
     // Bottom constraint
@@ -1033,7 +1035,8 @@
     [ebutton.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [ebutton setTitleColor:buttonTextColor forState:UIControlStateNormal];
     ebutton.tintColor = buttonTextColor;
-    ebutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU" size:12.0];
+    ebutton.titleLabel.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                              size:12.0 + [[Colors sharedManager] keyboardFontSize]];
     ebutton.layer.cornerRadius = 5;
     
     // Bottom constraint
@@ -1127,7 +1130,8 @@
     [ebutton.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [ebutton setTitleColor:buttonTextColor forState:UIControlStateNormal];
     ebutton.tintColor = buttonTextColor;
-    ebutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU" size:12.0];
+    ebutton.titleLabel.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                              size:12.0 + [[Colors sharedManager] keyboardFontSize]];
     ebutton.layer.cornerRadius = 5;
     
     // Bottom constraint
@@ -1209,7 +1213,8 @@
     [ebutton.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [ebutton setTitleColor:buttonTextColor forState:UIControlStateNormal];
     ebutton.tintColor = buttonTextColor;
-    ebutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU" size:12.0];
+    ebutton.titleLabel.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                              size:12.0 + [[Colors sharedManager] keyboardFontSize]];
     ebutton.layer.cornerRadius = 5;
     
     // Bottom constraint
@@ -1292,7 +1297,8 @@
     ebutton.keyColor = buttonBackgroundColor;
     ebutton.keyShadowColor = buttonBackgroundColor;
     ebutton.keyTextColor = buttonTextColor;
-    ebutton.font = [UIFont fontWithName:@"ArianAMU" size:23.0];
+    ebutton.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                   size:23.0 + [[Colors sharedManager] keyboardFontSize]];
     
     // Bottom constraint
     NSLayoutConstraint *buttonBottomConstraint = [NSLayoutConstraint constraintWithItem:ebutton
@@ -1374,7 +1380,8 @@
     [ebutton.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [ebutton setTitleColor:buttonTextColor forState:UIControlStateNormal];
     ebutton.tintColor = buttonTextColor;
-    ebutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU" size:12.0];
+    ebutton.titleLabel.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                              size:12.0 + [[Colors sharedManager] keyboardFontSize]];
     ebutton.layer.cornerRadius = 5;
     
     // Bottom constraint
@@ -1459,7 +1466,8 @@
     [ebutton.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [ebutton setTitleColor:buttonTextColor forState:UIControlStateNormal];
     ebutton.tintColor = buttonTextColor;
-    ebutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU" size:12.0];
+    ebutton.titleLabel.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                              size:12.0 + [[Colors sharedManager] keyboardFontSize]];
     ebutton.layer.cornerRadius = 5;
     
     
@@ -1544,7 +1552,8 @@
     [ebutton.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [ebutton setTitleColor:buttonTextColor forState:UIControlStateNormal];
     ebutton.tintColor = buttonTextColor;
-    ebutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU" size:12.0];
+    ebutton.titleLabel.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                              size:12.0 + [[Colors sharedManager] keyboardFontSize]];
     ebutton.layer.cornerRadius = 5;
     
     // Bottom constraint
@@ -1625,7 +1634,8 @@
     [ebutton.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [ebutton setTitleColor:buttonTextColor forState:UIControlStateNormal];
     ebutton.tintColor = buttonTextColor;
-    ebutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU" size:12.0];
+    ebutton.titleLabel.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                              size:12.0 + [[Colors sharedManager] keyboardFontSize]];
     ebutton.layer.cornerRadius = 5;
     
     // Bottom constraint

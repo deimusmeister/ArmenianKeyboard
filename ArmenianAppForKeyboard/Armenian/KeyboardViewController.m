@@ -100,6 +100,13 @@
         self.portraitHeight = self.portraitHeight - 35;
         self.landscapeHeight = self.landscapeHeight - 35;
     }
+    
+    // Load bold text
+    if ([userDefaults objectForKey:@"ArmKeyboardBoldText"] == nil)
+    {
+        [userDefaults setBool:NO forKey:@"ArmKeyboardBoldText"];
+    }
+    ((Colors*)[Colors sharedManager]).isBoldEnabled = [userDefaults boolForKey:@"ArmKeyboardBoldText"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -375,7 +382,8 @@
     }
     
     // Check for automatic comma edition
-    if ([text hasSuffix:@" որ "]                && ![text hasSuffix:@", որ "] &&
+    if (![text isEqualToString:@" որ "]         &&
+        [text hasSuffix:@" որ "]                && ![text hasSuffix:@", որ "] &&
         ![text hasSuffix:@"ոնց որ "]            && ![text hasSuffix:@"Ոնց որ "] &&
         ![text hasSuffix:@"մինչև որ "]           && ![text hasSuffix:@"Մինչև որ "] &&
         ![text hasSuffix:@"չնայած որ "]          && ![text hasSuffix:@"Չնայած որ "] &&
@@ -391,7 +399,8 @@
         [self.textDocumentProxy insertText:@", որ "];
     }
     
-    if ([text hasSuffix:@" երբ "] && ![text hasSuffix:@", երբ "])
+    if (![text isEqualToString:@" երբ "] &&
+        [text hasSuffix:@" երբ "] && ![text hasSuffix:@", երբ "])
     {
         [self.textDocumentProxy deleteBackward];
         [self.textDocumentProxy deleteBackward];
@@ -401,7 +410,8 @@
         [self.textDocumentProxy insertText:@", երբ "];
     }
     
-    if ([text hasSuffix:@" բայց "] && ![text hasSuffix:@", բայց "])
+    if (![text isEqualToString:@" բայց "] &&
+        [text hasSuffix:@" բայց "] && ![text hasSuffix:@", բայց "])
     {
         [self.textDocumentProxy deleteBackward];
         [self.textDocumentProxy deleteBackward];
@@ -412,7 +422,8 @@
         [self.textDocumentProxy insertText:@", բայց "];
     }
     
-    if ([text hasSuffix:@" իսկ "] && ![text hasSuffix:@", իսկ "])
+    if (![text isEqualToString:@" իսկ "] &&
+        [text hasSuffix:@" իսկ "] && ![text hasSuffix:@", իսկ "])
     {
         [self.textDocumentProxy deleteBackward];
         [self.textDocumentProxy deleteBackward];
@@ -422,7 +433,8 @@
         [self.textDocumentProxy insertText:@", իսկ "];
     }
     
-    if ([text hasSuffix:@" եթե "] && ![text hasSuffix:@", եթե "])
+    if (![text isEqualToString:@" եթե "] &&
+        [text hasSuffix:@" եթե "] && ![text hasSuffix:@", եթե "])
     {
         [self.textDocumentProxy deleteBackward];
         [self.textDocumentProxy deleteBackward];
@@ -432,7 +444,8 @@
         [self.textDocumentProxy insertText:@", եթե "];
     }
     
-    if ([text hasSuffix:@" սակայն "] && ![text hasSuffix:@", սակայն "])
+    if (![text isEqualToString:@" սակայն "] &&
+        [text hasSuffix:@" սակայն "] && ![text hasSuffix:@", սակայն "])
     {
         [self.textDocumentProxy deleteBackward];
         [self.textDocumentProxy deleteBackward];
@@ -445,7 +458,8 @@
         [self.textDocumentProxy insertText:@", սակայն "];
     }
     
-    if ([text hasSuffix:@" մինչդեռ "] && ![text hasSuffix:@", մինչդեռ "])
+    if (![text isEqualToString:@" մինչդեռ "] &&
+        [text hasSuffix:@" մինչդեռ "] && ![text hasSuffix:@", մինչդեռ "])
     {
         [self.textDocumentProxy deleteBackward];
         [self.textDocumentProxy deleteBackward];
@@ -459,7 +473,8 @@
         [self.textDocumentProxy insertText:@", մինչդեռ "];
     }
     
-    if ([text hasSuffix:@" թեև "] && ![text hasSuffix:@", թեև "])
+    if (![text isEqualToString:@" թեև "] &&
+        [text hasSuffix:@" թեև "] && ![text hasSuffix:@", թեև "])
     {
         [self.textDocumentProxy deleteBackward];
         [self.textDocumentProxy deleteBackward];
@@ -469,7 +484,8 @@
         [self.textDocumentProxy insertText:@", թեև "];
     }
     
-    if ([text hasSuffix:@" որպեսզի "] && ![text hasSuffix:@", որպեսզի "])
+    if (![text isEqualToString:@" որպեսզի "] &&
+        [text hasSuffix:@" որպեսզի "] && ![text hasSuffix:@", որպեսզի "])
     {
         [self.textDocumentProxy deleteBackward];
         [self.textDocumentProxy deleteBackward];

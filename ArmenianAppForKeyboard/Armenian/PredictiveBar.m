@@ -74,7 +74,8 @@ dispatch_queue_t suggestionsQueue;
     [option setBackgroundColor:buttonBackgroundColor];
     [option.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [option setTitleColor:buttonTextColor forState:UIControlStateNormal];
-    option.titleLabel.font = [UIFont fontWithName:@"ArianAMU" size:19.0];
+    option.titleLabel.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                             size:19.0 + [[Colors sharedManager] keyboardFontSize]];
     
     // Bottom constraint
     NSLayoutConstraint *buttonBottomConstraint = [NSLayoutConstraint constraintWithItem:option
