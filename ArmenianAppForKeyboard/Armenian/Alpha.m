@@ -328,7 +328,8 @@
 //            [sbutton addTarget:self action:@selector(onTap:withEvent:) forControlEvents:UIControlEventTouchDown];
             
             [sbutton setTitle:[titles objectAtIndex:i] forState:UIControlStateNormal];
-            sbutton.titleLabel.font = [UIFont fontWithName:@"ArianAMU-Bold" size:12.0];
+            sbutton.titleLabel.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                                      size:12.0 + [[Colors sharedManager] keyboardFontSize]];
             [sbutton setBackgroundColor:[[Colors sharedManager] buttonBackgroundColor]];
             [sbutton setTitleColor:[[Colors sharedManager] buttonTextBackgroundColor] forState:UIControlStateNormal];
             sbutton.layer.cornerRadius = 5;
