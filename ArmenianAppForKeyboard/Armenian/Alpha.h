@@ -23,6 +23,13 @@
 #define kAlhpaSymbolic          410
 #define kAlphaSpaceDouble       411
 
+// States of the alpha keybaord
+#define kNormal           1     // Lowercase
+#define kShifted          2     // Shifted
+#define kCapslock         3     // Capslocked
+#define kNumeric          4     // Numeric
+#define kSymbolic         5     // Symbolic
+
 // Input handler delegate protocole
 @protocol AlphaInputDelegate <NSObject>
 
@@ -30,6 +37,7 @@
 - (void) alphaSpecialKeyInputDelegateMethod:(NSInteger)tag;
 - (void) alphaInputDelegateMethod:(NSString *)key;
 - (void) alhpaInputRemoveCharacter;
+- (void) alhpaInputBackspaceReleased;
 
 @end
 

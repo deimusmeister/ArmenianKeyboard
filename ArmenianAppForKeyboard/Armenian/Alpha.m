@@ -15,13 +15,6 @@
 // UI debugging flag
 #define kDebug              0.0
 
-// States of the alpha keybaord
-#define kNormal           1     // Lowercase
-#define kShifted          2     // Shifted
-#define kCapslock         3     // Capslocked
-#define kNumeric          4     // Numeric
-#define kSymbolic         5     // Symbolic
-
 @implementation Alpha
 
 @synthesize delegate;
@@ -610,6 +603,9 @@
             // Invalidate current timer
             [_TimerDeleteButton invalidate];
             _TimerDeleteButton = nil;
+            
+            // Update the state of the keyboard
+            [delegate alhpaInputBackspaceReleased];
         }
             break;
             

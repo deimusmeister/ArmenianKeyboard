@@ -17,5 +17,8 @@
     
     // The currently typing word
     NSString* currentWord;
+    
+    // Flag for currenlty removing character state
+    BOOL isUpperCase;
 }
 @end

@@ -368,6 +368,30 @@
     [view toShiftMode];
 }
 
+- (void)toShiftedWithCondition
+{
+    Alpha* view = nil;
+    for (UIView *subUIView in self.view.subviews) {
+        if ([subUIView isKindOfClass:[Alpha class]])
+        {
+            Alpha* tmp = (Alpha*)subUIView;
+            // Check if we found the proper button
+            BOOL properView = (tmp.tag == kAlpha);
+            if (properView == YES)
+            {
+                view = tmp;
+                break;
+            }
+        }
+    }
+    
+    if (view.alphaMode == kNormal)
+    {
+        // Switch to shited mode
+        [view toShiftMode];
+    }
+}
+
 - (void)checkSpecialArmenianGrammar
 {
     NSString* text = [[NSString alloc] init];
@@ -521,6 +545,30 @@
     [view toNormalMode];
 }
 
+- (void)toNormalWithCondition
+{
+    Alpha* view = nil;
+    for (UIView *subUIView in self.view.subviews) {
+        if ([subUIView isKindOfClass:[Alpha class]])
+        {
+            Alpha* tmp = (Alpha*)subUIView;
+            // Check if we found the proper button
+            BOOL properView = (tmp.tag == kAlpha);
+            if (properView == YES)
+            {
+                view = tmp;
+                break;
+            }
+        }
+    }
+    
+    if (view.alphaMode == kShifted)
+    {
+        // Switch to normal mode
+        [view toNormalMode];
+    }
+}
+
 #pragma mark AlphaInputDelegate
 
 - (void) alphaSpecialKeyInputDelegateMethod:(NSInteger)tag
@@ -557,6 +605,17 @@
 
 - (void) alhpaInputRemoveCharacter
 {
+    // Update keyboard state
+    if (self.textDocumentProxy.documentContextBeforeInput != nil)
+    {
+        NSString* text = self.textDocumentProxy.documentContextBeforeInput;
+        
+        if (text.length > 1)
+        {
+            isUpperCase = [[NSCharacterSet uppercaseLetterCharacterSet] characterIsMember:[text characterAtIndex:[text length] - 1]];
+        }
+    }
+    
     // Remove a character
     [self.textDocumentProxy deleteBackward];
     
@@ -570,6 +629,18 @@
         
         // Update prediction input
         [self updatePredictionInput];
+    }
+}
+
+- (void) alhpaInputBackspaceReleased
+{
+    if (isUpperCase == YES)
+    {
+        [self toShiftedWithCondition];
+    }
+    else
+    {
+        [self toNormalWithCondition];
     }
 }
 
