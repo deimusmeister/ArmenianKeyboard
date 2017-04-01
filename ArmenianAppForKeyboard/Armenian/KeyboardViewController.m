@@ -16,12 +16,15 @@
 #define kiPhoneLandscapeHeight      247; //212 + 35;
 
 // Height sizes for iPad modes
-#define kiPadPortraitHeight       224;
-#define kiPadLandscapeHeight      206;
+#define kiPadPortraitHeight       348; //313 + 35;
+#define kiPadLandscapeHeight      433; //398 + 35;
 
 // Define the tags for the UI components
 #define kAlpha      1234
 #define kPredBar    4321
+
+// Target definition
+#define IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
 
 @interface KeyboardViewController ()
@@ -46,8 +49,16 @@
     if (self)
     {
         // Perform custom initialization work here
-        self.portraitHeight = kiPhonePortraitHeight;
-        self.landscapeHeight = kiPhoneLandscapeHeight;
+        if (IPAD)
+        {
+            self.portraitHeight = kiPadPortraitHeight;
+            self.landscapeHeight = kiPadLandscapeHeight;
+        }
+        else
+        {
+            self.portraitHeight = kiPhonePortraitHeight;
+            self.landscapeHeight = kiPhoneLandscapeHeight;
+        }
         
         // Instantiate currently typed word container
         currentWord = [[NSString alloc] init];
@@ -573,6 +584,8 @@
 
 - (void) alphaSpecialKeyInputDelegateMethod:(NSInteger)tag
 {
+    if (tag == kAlphaDismissButton)
+        [self dismissKeyboard];
     if (tag == kAlphaGlobeButton)
         [self advanceToNextInputMode];
     if (tag == kAlphaSpaceDouble)

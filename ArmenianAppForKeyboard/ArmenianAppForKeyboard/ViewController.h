@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SwipeView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <SwipeViewDataSource, SwipeViewDelegate>
 
 
 @end

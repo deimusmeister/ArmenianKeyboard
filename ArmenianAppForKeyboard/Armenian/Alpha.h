@@ -22,6 +22,7 @@
 #define kAlhpaSpace             409
 #define kAlhpaSymbolic          410
 #define kAlphaSpaceDouble       411
+#define kAlphaDismissButton     412
 
 // States of the alpha keybaord
 #define kNormal           1     // Lowercase

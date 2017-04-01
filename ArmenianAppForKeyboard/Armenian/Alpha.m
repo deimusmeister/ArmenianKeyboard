@@ -15,6 +15,9 @@
 // UI debugging flag
 #define kDebug              0.0
 
+// Target definition
+#define IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
+
 @implementation Alpha
 
 @synthesize delegate;
@@ -29,7 +32,7 @@
         self.layer.borderWidth = 1.0f;
         
         // Set background color
-        self.backgroundColor = [[Colors sharedManager] backgroundColor];
+        self.backgroundColor = (__bridge UIColor * _Nullable)([[Colors sharedManager] backgroundColor]);
         
         // Show the default layout
         [self addLowerCaseLayout];
@@ -74,7 +77,11 @@
     [self addShiftButtonInRow:row4 sideOffset:0.0];
     
     // Row 5
-    UIView* row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
+    UIView* row5;
+    if (IPAD)
+        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.445];
+    else
+        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
     row5.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:kDebug];
     
     // Add return button
@@ -85,6 +92,10 @@
     
     // Add globe button
     [self addGlobeButtonInRow:row5 sideOffset:0.0];
+    
+    // Add dismiss button (only for iPad)
+    if (IPAD)
+        [self addDismissButtonInRow:row5 sideOffset:0.0];
     
     // Add dot button
     [self addDotButtonInRow:row5 sideOffset:0.0];
@@ -679,6 +690,11 @@
             [delegate alphaSpecialKeyInputDelegateMethod:kAlphaGlobeButton];
         }
             break;
+        case kAlphaDismissButton:
+        {
+            [delegate alphaSpecialKeyInputDelegateMethod:kAlphaDismissButton];
+        }
+            break;
             
         default:
             // Forward to key input handler
@@ -1255,6 +1271,13 @@
 
 - (void)addDotButtonInRow:(UIView*)containerView sideOffset:(CGFloat)offset
 {
+    // The button id to locate
+    NSInteger BUTTONID = 0;
+    if (IPAD)
+        BUTTONID = kAlphaDismissButton;
+    else
+        BUTTONID = kAlphaEnter;
+    
     // Find button with numbers button
     UIButton* button = nil;
     for (UIView *subUIView in containerView.subviews) {
@@ -1262,7 +1285,7 @@
         {
             UIButton* tmp = (UIButton*)subUIView;
             // Check if we found the proper button
-            BOOL properButton = (tmp.tag == kAlphaEnter);
+            BOOL properButton = (tmp.tag == BUTTONID);
             if (properButton == YES)
             {
                 button = tmp;
@@ -1332,6 +1355,91 @@
                                                                                 toItem:containerView
                                                                              attribute:NSLayoutAttributeWidth
                                                                             multiplier:0.10 constant:0.0];
+    [containerView addConstraint:buttonWidthConstraint];
+    
+}
+
+- (void)addDismissButtonInRow:(UIView*)containerView sideOffset:(CGFloat)offset
+{
+    // Find button with numbers button
+    UIButton* button = nil;
+    for (UIView *subUIView in containerView.subviews) {
+        if ([subUIView isKindOfClass:[UIButton class]])
+        {
+            UIButton* tmp = (UIButton*)subUIView;
+            // Check if we found the proper button
+            BOOL properButton = (tmp.tag == kAlphaEnter);
+            if (properButton == YES)
+            {
+                button = tmp;
+                break;
+            }
+        }
+    }
+    
+    if (button == nil)
+        return;
+    
+    UIButton* ebutton = [[UIButton alloc] init];
+    ebutton.tag = kAlphaDismissButton;
+    [ebutton setImage:[[UIImage imageNamed:@"dismiss_portrait"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    ebutton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    ebutton.translatesAutoresizingMaskIntoConstraints = NO;
+    [containerView addSubview:ebutton];
+    
+    // Register button click handler
+    [ebutton addTarget:self action:@selector(buttonUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // Button specific colors
+    UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
+    UIColor* buttonTextColor = [[Colors sharedManager] buttonTextBackgroundColor];
+    
+    // Button properties
+    [ebutton setBackgroundColor:buttonBackgroundColor];
+    [ebutton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [ebutton setTitleColor:buttonTextColor forState:UIControlStateNormal];
+    ebutton.tintColor = buttonTextColor;
+    ebutton.titleLabel.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                              size:12.0 + [[Colors sharedManager] keyboardFontSize]];
+    ebutton.layer.cornerRadius = 5;
+    
+    // Bottom constraint
+    NSLayoutConstraint *buttonBottomConstraint = [NSLayoutConstraint constraintWithItem:ebutton
+                                                                              attribute:NSLayoutAttributeBottom
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:containerView
+                                                                              attribute:NSLayoutAttributeBottom
+                                                                             multiplier:1.0 constant:0.0];
+    
+    [containerView addConstraint:buttonBottomConstraint];
+    
+    // Top constraint
+    NSLayoutConstraint *buttonTopConstraint = [NSLayoutConstraint constraintWithItem:ebutton
+                                                                           attribute:NSLayoutAttributeTop
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:containerView
+                                                                           attribute:NSLayoutAttributeTop
+                                                                          multiplier:1.0 constant:0.0];
+    [containerView addConstraint:buttonTopConstraint];
+    
+    // Right constraint
+    NSLayoutConstraint *buttonRightConstraint = [NSLayoutConstraint constraintWithItem:ebutton
+                                                                             attribute:NSLayoutAttributeRight
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:button
+                                                                             attribute:NSLayoutAttributeLeft
+                                                                            multiplier:1.0 constant:-3.0];
+    [containerView addConstraint:buttonRightConstraint];
+    
+    // Width constraint
+    NSLayoutConstraint *buttonWidthConstraint = [NSLayoutConstraint constraintWithItem:ebutton
+                                                                             attribute:NSLayoutAttributeWidth
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:containerView
+                                                                             attribute:NSLayoutAttributeWidth
+                                                                            multiplier:0.10 constant:0.0];
+    [containerView addConstraint:buttonWidthConstraint];
     [containerView addConstraint:buttonWidthConstraint];
     
 }
