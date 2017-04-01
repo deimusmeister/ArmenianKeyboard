@@ -143,7 +143,11 @@
     [self addShiftButtonInRow:row4 sideOffset:0.0];
     
     // Row 5
-    UIView* row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
+    UIView* row5;
+    if (IPAD)
+        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.445];
+    else
+        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
     row5.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:kDebug];
     
     // Add return button
@@ -154,6 +158,10 @@
     
     // Add globe button
     [self addGlobeButtonInRow:row5 sideOffset:0.0];
+    
+    // Add dismiss button (only for iPad)
+    if (IPAD)
+        [self addDismissButtonInRow:row5 sideOffset:0.0];
     
     // Add dot button
     [self addDotButtonInRow:row5 sideOffset:0.0];
@@ -185,7 +193,7 @@
     row2.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
     
     // Row 3
-    UIView* row3 = [self createRow:@[ @"՞", @"`", @"«", @"»", @"՛", @":)", @";)", @":D"]
+    UIView* row3 = [self createRow:@[ @"՞", @"`", @"«", @"»", @"՛", @"😊", @"😉", @"😄"]
                            options:nil OffsetLeft:0.05 OffsetLeft:0.05];
     row3.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
     
@@ -201,7 +209,11 @@
     [self addSymbolicButtonInRow:row4 sideOffset:0.0];
     
     // Row 5
-    UIView* row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
+    UIView* row5;
+    if (IPAD)
+        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.445];
+    else
+        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
     row5.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:kDebug];
     
     // Add return button
@@ -212,6 +224,10 @@
     
     // Add globe button
     [self addGlobeButtonInRow:row5 sideOffset:0.0];
+    
+    // Add dismiss button (only for iPad)
+    if (IPAD)
+        [self addDismissButtonInRow:row5 sideOffset:0.0];
     
     // Add dot button
     [self addDotButtonInRow:row5 sideOffset:0.0];
@@ -243,7 +259,7 @@
     row2.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
     
     // Row 3
-    UIView* row3 = [self createRow:@[ @"՞", @"`", @"«", @"»", @"՛", @":)", @";)", @":D"]
+    UIView* row3 = [self createRow:@[ @"՞", @"`", @"«", @"»", @"՛", @"😊", @"😉", @"😄"]
                            options:nil OffsetLeft:0.05 OffsetLeft:0.05];
     row3.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
     
@@ -259,7 +275,11 @@
     [self addNumbersButtonInRow:row4 sideOffset:0.0];
     
     // Row 5
-    UIView* row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
+    UIView* row5;
+    if (IPAD)
+        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.445];
+    else
+        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
     row5.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:kDebug];
     
     // Add return button
@@ -270,6 +290,10 @@
     
     // Add globe button
     [self addGlobeButtonInRow:row5 sideOffset:0.0];
+    
+    // Add dismiss button (only for iPad)
+    if (IPAD)
+        [self addDismissButtonInRow:row5 sideOffset:0.0];
     
     // Add dot button
     [self addDotButtonInRow:row5 sideOffset:0.0];
