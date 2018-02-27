@@ -122,21 +122,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-//    // Setup the colors manager
-//    [[Colors sharedManager] setTextDocumentProxy:self.textDocumentProxy];
-//
-//    // Add alpha keyboard
-//    [self addAlphaKeyboard];
-//
-//    if (self.isPredictionEnabled == YES)
-//    {
-//        // Add prediction bar
-//        [self addPredictionBar];
-//    }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
     // Setup the colors manager
     [[Colors sharedManager] setTextDocumentProxy:self.textDocumentProxy];
 
@@ -148,7 +133,10 @@
         // Add prediction bar
         [self addPredictionBar];
     }
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:nil
