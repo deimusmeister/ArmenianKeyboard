@@ -10,6 +10,7 @@
 #import "Alpha.h"
 #import "PredictiveBar.h"
 #import "Colors.h"
+#import "ios_detect.h"
 
 // Height sizes for iPhone modes
 #define kiPhonePortraitHeight       286; //251 + 35;
@@ -122,21 +123,39 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // Setup the colors manager
-    [[Colors sharedManager] setTextDocumentProxy:self.textDocumentProxy];
-
-    // Add alpha keyboard
-    [self addAlphaKeyboard];
-
-    if (self.isPredictionEnabled == YES)
+    if (SYSTEM_VERSION_LESS_THAN(@"11.2.6"))
     {
-        // Add prediction bar
-        [self addPredictionBar];
+        // Setup the colors manager
+        [[Colors sharedManager] setTextDocumentProxy:self.textDocumentProxy];
+
+        // Add alpha keyboard
+        [self addAlphaKeyboard];
+
+        if (self.isPredictionEnabled == YES)
+        {
+            // Add prediction bar
+            [self addPredictionBar];
+        }
     }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"11.2.6"))
+    {
+        // Setup the colors manager
+        [[Colors sharedManager] setTextDocumentProxy:self.textDocumentProxy];
+        
+        // Add alpha keyboard
+        [self addAlphaKeyboard];
+        
+        if (self.isPredictionEnabled == YES)
+        {
+            // Add prediction bar
+            [self addPredictionBar];
+        }
+    }
+    
     self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:nil
