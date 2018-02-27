@@ -288,6 +288,7 @@
 		3DFA62921CB70DA300EBB770 /* suggestmgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = suggestmgr.h; sourceTree = "<group>"; };
 		3DFA62931CB70DA300EBB770 /* suggestmgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = suggestmgr.mm; sourceTree = "<group>"; };
 		3DFA62941CB70DA300EBB770 /* w_char.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = w_char.h; sourceTree = "<group>"; };
+		3DFB4C932045E04900648068 /* ios_detect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ios_detect.h; sourceTree = "<group>"; };
 		3DFE2E0A1CD006520096D91B /* ArmenianAppForKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ArmenianAppForKeyboard.entitlements; sourceTree = "<group>"; };
 		3DFE2E0B1CD006640096D91B /* Armenian.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Armenian.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -328,6 +329,7 @@
 		3D8BBAC31CAC40C700F8D7A4 = {
 			isa = PBXGroup;
 			children = (
+				3DFB4C932045E04900648068 /* ios_detect.h */,
 				3D9103351E2EBC5500B7EDAE /* SwipeViews */,
 				3D8BBACE1CAC40C800F8D7A4 /* ArmenianAppForKeyboard */,
 				3D8BBAEB1CAC415C00F8D7A4 /* Armenian */,

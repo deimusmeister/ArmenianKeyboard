@@ -8,6 +8,7 @@
 
 #import "HelpSecond.h"
 #import "SwipeView.h"
+#import "ios_detect.h"
 
 @implementation HelpSecond
 
@@ -58,6 +59,8 @@
         
         CGFloat coffsetX = frame.size.width - 1.5 * [UIImage imageNamed:@"IconCorner.png"].size.width;
         CGFloat coffsetY = [UIImage imageNamed:@"IconCorner.png"].size.height / 2;
+        if (IS_IPHONE_X)
+            coffsetY += 20;
         
         cornerIcon.frame = CGRectMake(coffsetX, coffsetY,
                                     [UIImage imageNamed:@"IconCorner.png"].size.width,

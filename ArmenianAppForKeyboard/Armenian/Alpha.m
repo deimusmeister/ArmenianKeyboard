@@ -11,6 +11,7 @@
 #import "CYRKeyboardButton.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import "ios_detect.h"
 
 // UI debugging flag
 #define kDebug              0.0
@@ -1118,14 +1119,16 @@
 {
     // Find button with space or . title
     id button = nil;
+    BOOL bottomRow = NO;
     for (UIView *subUIView in containerView.subviews) {
         if ([subUIView isKindOfClass:[UIButton class]])
         {
             UIButton* tmp = (UIButton*)subUIView;
             // Check if we found the proper button
-            BOOL properButton = [tmp.titleLabel.text isEqualToString:@"ԲԱՑԱՏ"] || [tmp.titleLabel.text isEqualToString:@"."];
+            BOOL properButton = [tmp.titleLabel.text isEqualToString:@"ԲԱՑԱՏ"];
             if (properButton == YES)
             {
+                bottomRow = YES;
                 button = tmp;
                 break;
             }
@@ -1200,17 +1203,24 @@
     [containerView addConstraint:buttonLeftConstraint];
     
     // Width constraint
+    CGFloat widthRatio = 0.10f;
+    if (IS_IPHONE_X && bottomRow)
+        widthRatio = 0.205;
     NSLayoutConstraint *buttonWidthConstraint = [NSLayoutConstraint constraintWithItem:ebutton
                                                                              attribute:NSLayoutAttributeWidth
                                                                              relatedBy:NSLayoutRelationEqual
                                                                                 toItem:containerView
                                                                              attribute:NSLayoutAttributeWidth
-                                                                            multiplier:0.10f constant:0];
+                                                                            multiplier:widthRatio constant:0];
     [containerView addConstraint:buttonWidthConstraint];
 }
 
 - (void)addGlobeButtonInRow:(UIView*)containerView sideOffset:(CGFloat)offset
 {
+    // Don't add globe button for iPhoneX
+    if (IS_IPHONE_X)
+        return;
+    
     // Find button with numbers button
     UIButton* numbutton = nil;
     for (UIView *subUIView in containerView.subviews) {
@@ -1542,12 +1552,15 @@
     [containerView addConstraint:buttonLeftConstraint];
     
     // Width constraint
+    CGFloat widthRatio = 0.10f;
+    if (IS_IPHONE_X)
+        widthRatio = 0.205f;
     NSLayoutConstraint *buttonWidthConstraint = [NSLayoutConstraint constraintWithItem:ebutton
                                                                              attribute:NSLayoutAttributeWidth
                                                                              relatedBy:NSLayoutRelationEqual
                                                                                 toItem:containerView
                                                                              attribute:NSLayoutAttributeWidth
-                                                                            multiplier:0.10f constant:0];
+                                                                            multiplier:widthRatio constant:0];
     [containerView addConstraint:buttonWidthConstraint];
 }
 

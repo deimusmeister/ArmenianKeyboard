@@ -169,7 +169,7 @@
     if ([userDefaults objectForKey:@"ArmKeyboardPrediction"] == nil)
     {
         NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
-        [userDefaults setBool:YES forKey:@"ArmKeyboardPrediction"];
+        [userDefaults setBool:NO forKey:@"ArmKeyboardPrediction"];
         [userDefaults synchronize];
     }
     if ([userDefaults objectForKey:@"ArmKeyboardBoldText"] == nil)

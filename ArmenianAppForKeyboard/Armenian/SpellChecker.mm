@@ -87,7 +87,7 @@ static char *createCharFromCFStringRef(CFStringRef cfstr)
             }
 		}
 	} else {
-		result = [NSArray array];
+		result = [NSMutableArray array];
 	}
 	
 	free(currentWord);

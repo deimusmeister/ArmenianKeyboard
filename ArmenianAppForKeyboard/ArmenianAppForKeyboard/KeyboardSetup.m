@@ -7,6 +7,7 @@
 //
 
 #import "KeyboardSetup.h"
+#import "ios_detect.h"
 
 @implementation KeyboardSetup
 
@@ -23,8 +24,11 @@
         
         
         CGFloat hoffsetX = (frame.size.width - [UIImage imageNamed:@"IconSettings.png"].size.width) / 2;
+        CGFloat hoffsetY = 20;
+        if (IS_IPHONE_X)
+            hoffsetY += 20;
         
-        homeIcon.frame = CGRectMake(hoffsetX, 20,
+        homeIcon.frame = CGRectMake(hoffsetX, hoffsetY,
                                     [UIImage imageNamed:@"IconSettings.png"].size.width,
                                     [UIImage imageNamed:@"IconSettings.png"].size.height);
         [self addSubview:homeIcon];
