@@ -95,6 +95,12 @@
       "idiom" : "ipad",
       "filename" : "appicon-90.png",
       "scale" : "2x"
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "large_image.png",
+      "scale" : "1x"
     }
   ],
   "info" : {
