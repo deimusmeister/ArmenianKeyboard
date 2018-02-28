@@ -40,7 +40,8 @@ dispatch_queue_t suggestionsQueue;
                                                                        views:views]];
         
         // Instantiate spellchecker
-        spellChecker = [[SpellChecker alloc] init];
+        if (spellChecker == NULL)
+            spellChecker = [[SpellChecker alloc] init];
         word = [[NSString alloc] init];
         
         // Initialize the dispatch queue
@@ -141,7 +142,8 @@ dispatch_queue_t suggestionsQueue;
     [button setBackgroundColor:buttonBackgroundColor];
     
     // Forward the option to input field
-    [delegate spellerInputDelegateMethod:button.currentTitle Word:word];
+    if (button.currentTitle != NULL)
+        [delegate spellerInputDelegateMethod:button.currentTitle Word:word];
 }
 
 - (void)buttonDown:(id)sender

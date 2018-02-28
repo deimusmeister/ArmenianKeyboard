@@ -102,7 +102,7 @@
     NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
     if ([userDefaults objectForKey:@"ArmKeyboardPrediction"] == nil)
     {
-        [userDefaults setBool:NO forKey:@"ArmKeyboardPrediction"];
+        [userDefaults setBool:YES forKey:@"ArmKeyboardPrediction"];
     }
     self.isPredictionEnabled = [userDefaults boolForKey:@"ArmKeyboardPrediction"];
     

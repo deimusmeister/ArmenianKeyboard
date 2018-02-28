@@ -53,13 +53,18 @@ void releaseDictionary()
 
 bool isSpeltCorrectly(const char *word)
 {
-    int result = ((Hunspell*)handle)->spell(word);
+    int result = 0;
+    if (handle != NULL)
+        result = ((Hunspell*)handle)->spell(word);
 	return(result != 0);
 }
 
 int getSuggestions(const char *word, char ***suggest_list_ptr)
 {
-	return ((Hunspell*)handle)->suggest(suggest_list_ptr, word);
+    if (handle != NULL)
+        return ((Hunspell*)handle)->suggest(suggest_list_ptr, word);
+    else
+        return 0;
 }
 
 void releaseSuggestions(int n, char ***list) 
