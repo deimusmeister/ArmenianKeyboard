@@ -178,6 +178,12 @@
         [userDefaults setBool:NO forKey:@"ArmKeyboardBoldText"];
         [userDefaults synchronize];
     }
+    if ([userDefaults objectForKey:@"ArmKeyboardAutoCapitalization"] == nil)
+    {
+        NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+        [userDefaults setBool:YES forKey:@"ArmKeyboardAutoCapitalization"];
+        [userDefaults synchronize];
+    }
     
     SwipeView* swipeView = [[SwipeView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     swipeView.delegate = self;
