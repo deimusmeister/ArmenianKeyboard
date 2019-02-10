@@ -36,6 +36,7 @@
 // Helper variables
 @property (nonatomic) BOOL isLandscape;
 @property (nonatomic) BOOL isPredictionEnabled;
+@property (nonatomic) BOOL isAutoCapitalizationEnabled;
 
 // Variables for storing keyboard height on landscape and portrait modes
 @property (nonatomic) CGFloat portraitHeight;
@@ -119,6 +120,13 @@
         [userDefaults setBool:NO forKey:@"ArmKeyboardBoldText"];
     }
     ((Colors*)[Colors sharedManager]).isBoldEnabled = [userDefaults boolForKey:@"ArmKeyboardBoldText"];
+    
+    
+    if ([userDefaults objectForKey:@"ArmKeyboardAutoCapitalization"] == nil)
+    {
+        [userDefaults setBool:YES forKey:@"ArmKeyboardAutoCapitalization"];
+    }
+    self.isAutoCapitalizationEnabled = [userDefaults boolForKey:@"ArmKeyboardAutoCapitalization"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -249,7 +257,8 @@
     [self.view addConstraint:alphaKeyboardButtonTopConstraint];
     
     // Update the keyboard mode on startup
-    if ((self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeWords ||
+    if (self.isAutoCapitalizationEnabled &&
+        (self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeWords ||
          self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeSentences ||
          self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeAllCharacters) &&
         (self.textDocumentProxy.documentContextBeforeInput == nil ||
@@ -437,7 +446,7 @@
         text = [NSString stringWithString:self.textDocumentProxy.documentContextBeforeInput];
     
     // Check for switching to shited mode
-    if ([text hasSuffix:@": "])
+    if (self.isAutoCapitalizationEnabled && [text hasSuffix:@": "])
     {
         // Switch to shited mode
         [self toShifted];

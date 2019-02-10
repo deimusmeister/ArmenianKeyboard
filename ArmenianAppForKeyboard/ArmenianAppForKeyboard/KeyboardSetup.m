@@ -79,7 +79,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -147,6 +147,24 @@
             BCSwitch.on = [userDefaults boolForKey:@"ArmKeyboardBoldText"];
             [cell.contentView addSubview:BCSwitch];
         }
+        
+        if (indexPath.row == 3)
+        {
+            // Add Auto Capitalization option label
+            UILabel* TClabel = [[UILabel alloc] initWithFrame:CGRectMake(11, 21, self.frame.size.width / 2, 22)];
+            TClabel.font = [UIFont fontWithName:@"OpenSans" size:18.f];
+            TClabel.text = @"Auto Capitalization";
+            TClabel.textColor = tableView.separatorColor = [UIColor colorWithRed:65.f/255.f green:65.f/255.f blue:65.f/255.f alpha:1.f];
+            TClabel.textAlignment = NSTextAlignmentLeft;
+            [cell.contentView addSubview:TClabel];
+
+            // Add Auto Capitalization switch
+            UISwitch* BCSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.frame.size.width - 55 - 11, 14,
+                                                                            126, 44)];
+            [BCSwitch addTarget:self action: @selector(autoCapitalization:) forControlEvents:UIControlEventValueChanged];
+            BCSwitch.on = [userDefaults boolForKey:@"ArmKeyboardAutoCapitalization"];
+            [cell.contentView addSubview:BCSwitch];
+        }
     }
     return cell;
 }
@@ -177,6 +195,14 @@
     UISwitch* BCSwitch  = (UISwitch*)sender;
     NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
     [userDefaults setBool:BCSwitch.on forKey:@"ArmKeyboardBoldText"];
+    [userDefaults synchronize];
+}
+
+- (void)autoCapitalization:(id)sender
+{
+    UISwitch* BCSwitch  = (UISwitch*)sender;
+    NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+    [userDefaults setBool:BCSwitch.on forKey:@"ArmKeyboardAutoCapitalization"];
     [userDefaults synchronize];
 }
 

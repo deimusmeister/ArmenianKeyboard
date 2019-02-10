@@ -68,7 +68,7 @@
     
     // Row 4
     UIView* row4 = [self createRow:@[ @"զ", @"ղ", @"ց", @"վ", @"բ", @"ն", @"մ" ]
-                           options:nil OffsetLeft:0.11 OffsetLeft:0.11];
+                           options:nil OffsetLeft:0.18 OffsetLeft:0.18];
     row4.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:kDebug];
     
     // Add delete button
@@ -134,7 +134,7 @@
     
     // Row 4
     UIView* row4 = [self createRow:@[ @"Զ", @"Ղ", @"Ց", @"Վ", @"Բ", @"Ն", @"Մ"]
-                           options:nil  OffsetLeft:0.11 OffsetLeft:0.11];
+                           options:nil  OffsetLeft:0.18 OffsetLeft:0.18];
     row4.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:kDebug];
     
     // Add delete button
@@ -200,7 +200,7 @@
     
     // Row 4
     UIView* row4 = [self createRow:@[ @".", @",", @"?", @"!", @"‘" ]
-                           options:nil  OffsetLeft:0.11 OffsetLeft:0.11];
+                           options:nil  OffsetLeft:0.18 OffsetLeft:0.18];
     row4.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:kDebug];
     
     // Add delete button
@@ -266,7 +266,7 @@
     
     // Row 4
     UIView* row4 = [self createRow: @[ @".", @",", @"?", @"!", @"‘" ]
-                           options:nil  OffsetLeft:0.11 OffsetLeft:0.11];
+                           options:nil  OffsetLeft:0.18 OffsetLeft:0.18];
     row4.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:kDebug];
     
     // Add delete button
