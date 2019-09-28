@@ -45,6 +45,7 @@ NSString *const CYRKeyboardButtonKeyPressedKey = @"CYRKeyboardButtonKeyPressedKe
 @interface CYRKeyboardButton () <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UILabel *inputLabel;
+@property (nonatomic, strong) UIImageView *inputImage;
 @property (nonatomic, strong) CYRKeyboardButtonView *buttonView;
 @property (nonatomic, strong) CYRKeyboardButtonView *expandedButtonView;
 
@@ -167,6 +168,16 @@ static const NSString *KEY_HIT_TEST_EDGE_INSETS = @"HitTestEdgeInsets";
     [self addSubview:inputLabel];
     _inputLabel = inputLabel;
     
+    // Input icon
+    UIImageView *inputImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
+    inputImage.contentMode = UIViewContentModeCenter;
+    inputImage.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    inputImage.backgroundColor = [UIColor clearColor];
+    inputImage.userInteractionEnabled = NO;
+    
+    [self addSubview:inputImage];
+    _inputImage = inputImage;
+    
     [self updateDisplayStyle];
 }
 
@@ -222,6 +233,23 @@ static const NSString *KEY_HIT_TEST_EDGE_INSETS = @"HitTestEdgeInsets";
     [self didChangeValueForKey:NSStringFromSelector(@selector(input))];
     
     _inputLabel.text = _input;
+}
+
+- (void)setImage:(UIImage *)image
+{
+//    [self willChangeValueForKey:NSStringFromSelector(@selector(input))];
+    _image = image;
+//    [self didChangeValueForKey:NSStringFromSelector(@selector(input))];
+    
+    _inputImage.image = image;
+}
+
+- (void)setImageColor:(UIColor *)color
+{
+//    [self willChangeValueForKey:NSStringFromSelector(@selector(input))];
+//    [self didChangeValueForKey:NSStringFromSelector(@selector(input))];
+    
+    _inputImage.tintColor = color;
 }
 
 - (void)setInputOptions:(NSArray *)inputOptions

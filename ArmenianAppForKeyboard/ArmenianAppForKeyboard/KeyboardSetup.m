@@ -66,6 +66,7 @@
         if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
             [tableView setSeparatorInset:UIEdgeInsetsZero];
         }
+        tableView.backgroundColor = [UIColor whiteColor];
         tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         tableView.bounces = NO;
         tableView.separatorColor = [UIColor colorWithRed:231.f/255.f green:231.f/255.f blue:231.f/255.f alpha:1.f];
@@ -91,6 +92,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         cell.layoutMargins = UIEdgeInsetsZero;
+        cell.backgroundColor = [UIColor whiteColor];
         
         NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
         

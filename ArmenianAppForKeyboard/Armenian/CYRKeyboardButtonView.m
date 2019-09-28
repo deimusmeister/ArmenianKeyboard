@@ -139,6 +139,9 @@
     UIBezierPath *bezierPath = [self inputViewPath];
     NSString *inputString = self.button.input;
     
+    if([inputString isEqualToString:@""])
+        return;
+
     // Position the overlay
     CGRect keyRect = [self convertRect:self.button.frame fromView:self.button.superview];
     
@@ -407,11 +410,15 @@
 
 - (UIBezierPath *)expandedInputViewPath
 {
+    NSUInteger len = ((NSString*)self.button.inputOptions[0]).length;
+    
     CGRect keyRect = [self convertRect:self.button.frame fromView:self.button.superview];
     
     UIEdgeInsets insets = UIEdgeInsetsMake(7, 13, 7, 13);
     CGFloat margin = 7.f;
     CGFloat upperWidth = insets.left + insets.right + self.button.inputOptions.count * CGRectGetWidth(keyRect) + margin * (self.button.inputOptions.count - 1) - margin/2;
+    if (len != 1)
+        upperWidth = insets.left + insets.right + (len - 2) * self.button.inputOptions.count * CGRectGetWidth(keyRect) + margin * (self.button.inputOptions.count - 1) - margin/2;
     CGFloat lowerWidth = CGRectGetWidth(_button.frame);
     CGFloat majorRadius = 10.f;
     CGFloat minorRadius = 4.f;
@@ -537,6 +544,9 @@
 - (void)determineExpandedKeyGeometries
 {
     CGRect keyRect = [self convertRect:self.button.frame fromView:self.button.superview];
+    NSUInteger len = ((NSString*)self.button.inputOptions[0]).length;
+    if (len != 1)
+        keyRect.size = CGSizeMake(keyRect.size.width * (len - 2), keyRect.size.height);
     
     __block NSMutableArray *inputOptionRects = [NSMutableArray arrayWithCapacity:self.button.inputOptions.count];
     

@@ -113,6 +113,8 @@ extern NSString *const CYRKeyboardButtonKeyPressedKey;
  */
 @property (nonatomic, strong) UIColor *keyTextColor UI_APPEARANCE_SELECTOR;
 
+@property (nonatomic, strong) UIColor *ImageColor UI_APPEARANCE_SELECTOR;
+
 /**
  The shadow color for the keyboard button.
  */
@@ -134,6 +136,11 @@ extern NSString *const CYRKeyboardButtonKeyPressedKey;
  The string input for the keyboard button. This is the string that would be inserted upon a successful key press.
  */
 @property (nonatomic, strong) NSString *input;
+
+/**
+ The string input for the keyboard button. This is the string that would be inserted upon a successful key press.
+ */
+@property (nonatomic, strong) UIImage *image;
 
 /**
  An array of input option strings associated with the keybonard button. The user must tap and hold the keyboard button for 0.3 seconds before the input options will be displayed.

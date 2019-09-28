@@ -1240,29 +1240,32 @@
     if (numbutton == nil)
         return;
 
-    UIButton* ebutton = [[UIButton alloc] init];
+    CYRKeyboardButton *ebutton = [CYRKeyboardButton new];
     ebutton.tag = kAlphaGlobeButton;
-    [ebutton setImage:[[UIImage imageNamed:@"global_portrait"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    ebutton.imageView.contentMode = UIViewContentModeScaleAspectFit;
 
     ebutton.translatesAutoresizingMaskIntoConstraints = NO;
     [containerView addSubview:ebutton];
 
+    ebutton.input = @"";
+    ebutton.image = [[UIImage imageNamed:@"global_portrait"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    ebutton.inputOptions = @[@"հաջորդը"];
+
     // Register button click handler
-    [ebutton addTarget:self action:@selector(buttonUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    ebutton.delegate = self;
 
     // Button specific colors
     UIColor* buttonBackgroundColor = [[Colors sharedManager] buttonSpecialBackgroundColor];
     UIColor* buttonTextColor = [[Colors sharedManager] buttonTextBackgroundColor];
 
     // Button properties
-    [ebutton setBackgroundColor:buttonBackgroundColor];
-    [ebutton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-    [ebutton setTitleColor:buttonTextColor forState:UIControlStateNormal];
-    ebutton.tintColor = buttonTextColor;
-    ebutton.titleLabel.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
-                                              size:12.0 + [[Colors sharedManager] keyboardFontSize]];
-    ebutton.layer.cornerRadius = 5;
+    [ebutton setImageColor:buttonTextColor];
+    ebutton.keyColor = buttonBackgroundColor;
+    ebutton.keyShadowColor = buttonBackgroundColor;
+    ebutton.keyTextColor = buttonTextColor;
+    ebutton.font = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                   size:12.0 + [[Colors sharedManager] keyboardFontSize]];
+    ebutton.inputOptionsFont = [UIFont fontWithName:[[Colors sharedManager] keyboardFont]
+                                   size:23.0 + [[Colors sharedManager] keyboardFontSize]];
     
     // Bottom constraint
     NSLayoutConstraint *buttonBottomConstraint = [NSLayoutConstraint constraintWithItem:ebutton
@@ -1867,7 +1870,10 @@
 
 - (void) cyrKeyboardButtonInputDelegateMethod: (NSString *)key
 {
-    [self forwardInput:key];
+    if ([key isEqualToString:@""] || [key isEqualToString:@"հաջորդը"])
+        [delegate alphaSpecialKeyInputDelegateMethod:kAlphaGlobeButton];
+    else
+        [self forwardInput:key];
 }
 
 @end
