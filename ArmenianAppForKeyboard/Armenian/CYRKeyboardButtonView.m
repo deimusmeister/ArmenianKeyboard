@@ -34,6 +34,8 @@
 #import "CYRKeyboardButtonView.h"
 #import "CYRKeyboardButton.h"
 #import "TurtleBezierPath.h"
+#import <AVFoundation/AVFoundation.h>
+
 
 @interface CYRKeyboardButtonView ()
 
@@ -203,6 +205,11 @@
 
 - (void)drawExpandedInputView:(CGRect)rect
 {
+    // Trigger a haptic feedback
+    UIImpactFeedbackGenerator *myGen = [[UIImpactFeedbackGenerator alloc] initWithStyle:(UIImpactFeedbackStyleLight )];
+    [myGen impactOccurred];
+    myGen = nil;
+    
     // Generate the overlay
     UIBezierPath *bezierPath = [self expandedInputViewPath];
     
