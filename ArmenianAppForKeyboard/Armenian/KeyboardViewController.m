@@ -461,7 +461,8 @@
         ![text hasSuffix:@"քանի որ "]           && ![text hasSuffix:@"Քանի որ "] &&
         ![text hasSuffix:@"հենց որ "]            && ![text hasSuffix:@"Հենց որ "] &&
         ![text hasSuffix:@"մանավանդ որ "]       && ![text hasSuffix:@"Մանավանդ որ "] &&
-        ![text hasSuffix:@"երբ որ "]             && ![text hasSuffix:@"Երբ որ "])
+        ![text hasSuffix:@"երբ որ "]             && ![text hasSuffix:@"Երբ որ "] &&
+        ![text hasSuffix:@"ինչ որ "]             && ![text hasSuffix:@"Ինչ որ "])
     {
         [self.textDocumentProxy deleteBackward];
         [self.textDocumentProxy deleteBackward];
