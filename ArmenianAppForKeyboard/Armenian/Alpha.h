@@ -52,6 +52,10 @@
 // Delegate member for alpha key input forwarding
 @property (nonatomic, weak) id <AlphaInputDelegate> delegate;
 
+// Settings
+@property (nonatomic) BOOL isULetterHidden;
+@property (nonatomic) BOOL isQuestionHightHidden;
+
 // Represents the current state of alpha keyboad possible values are :
 //      kLowerCase        1
 //      kUpperCase        2

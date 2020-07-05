@@ -57,7 +57,9 @@
     row1.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:kDebug];
     
     // Row 2
-    UIView* row2 = [self createRow:@[ @"ք", @"ո", @"ե", @"ռ", @"տ", @"ը", @"ւ", @"ի", @"օ", @"պ", @"խ" ]
+    [self readSettings];
+    NSString* uLetter = (self.isULetterHidden == NO ? @"ւ" : @"ու" );
+    UIView* row2 = [self createRow:@[ @"ք", @"ո", @"ե", @"ռ", @"տ", @"ը", uLetter, @"ի", @"օ", @"պ", @"խ" ]
                            options:nil OffsetLeft:0.0 OffsetLeft:0.0];
     row2.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
     
@@ -80,9 +82,16 @@
     // Row 5
     UIView* row5;
     if (IPAD)
-        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.445];
-    else
-        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
+        if (self.isQuestionHightHidden == YES)
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.342];
+        else
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.445];
+    else {
+        if (self.isQuestionHightHidden == YES)
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.240];
+        else
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
+    }
     row5.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:kDebug];
     
     // Add return button
@@ -123,7 +132,9 @@
     row1.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:kDebug];
     
     // Row 2
-    UIView* row2 = [self createRow:@[ @"Ք", @"Ո", @"Ե", @"Ռ", @"Տ", @"Ը", @"Ւ", @"Ի", @"Օ", @"Պ", @"Խ" ]
+    [self readSettings];
+    NSString* uLetter = (self.isULetterHidden == NO ? @"Ւ" : @"Ու" );
+    UIView* row2 = [self createRow:@[ @"Ք", @"Ո", @"Ե", @"Ռ", @"Տ", @"Ը", uLetter, @"Ի", @"Օ", @"Պ", @"Խ" ]
                            options:nil OffsetLeft:0.0 OffsetLeft:0.0];
     row2.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
     
@@ -146,9 +157,16 @@
     // Row 5
     UIView* row5;
     if (IPAD)
-        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.445];
-    else
-        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
+        if (self.isQuestionHightHidden == YES)
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.342];
+        else
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.445];
+    else {
+        if (self.isQuestionHightHidden == YES)
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.240];
+        else
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
+    }
     row5.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:kDebug];
     
     // Add return button
@@ -212,9 +230,16 @@
     // Row 5
     UIView* row5;
     if (IPAD)
-        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.445];
-    else
-        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
+        if (self.isQuestionHightHidden == YES)
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.342];
+        else
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.445];
+    else {
+        if (self.isQuestionHightHidden == YES)
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.240];
+        else
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
+    }
     row5.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:kDebug];
     
     // Add return button
@@ -278,9 +303,16 @@
     // Row 5
     UIView* row5;
     if (IPAD)
-        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.445];
-    else
-        row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
+        if (self.isQuestionHightHidden == YES)
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.342];
+        else
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.445];
+    else {
+        if (self.isQuestionHightHidden == YES)
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.240];
+        else
+            row5 = [self createRow:@[@"ԲԱՑԱՏ"] options:nil  OffsetLeft:0.215 OffsetLeft:0.345];
+    }
     row5.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:kDebug];
     
     // Add return button
@@ -1308,6 +1340,12 @@
 
 - (void)addDotButtonInRow:(UIView*)containerView sideOffset:(CGFloat)offset
 {
+    // Hide question mark button if configured so
+    [self readSettings];
+    if (self.isQuestionHightHidden == YES) {
+        return;
+    }
+    
     // The button id to locate
     NSInteger BUTTONID = 0;
     if (IPAD)
@@ -1874,6 +1912,23 @@
         [delegate alphaSpecialKeyInputDelegateMethod:kAlphaGlobeButton];
     else
         [self forwardInput:key];
+}
+
+#pragma mark Settings Readers
+- (void) readSettings
+{
+    NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+    if ([userDefaults objectForKey:@"ArmKeyboardULetter"] == nil)
+    {
+        [userDefaults setBool:NO forKey:@"ArmKeyboardULetter"];
+    }
+    self.isULetterHidden = [userDefaults boolForKey:@"ArmKeyboardULetter"];
+    
+    if ([userDefaults objectForKey:@"ArmKeyboardQuestionSign"] == nil)
+    {
+        [userDefaults setBool:NO forKey:@"ArmKeyboardQuestionSign"];
+    }
+    self.isQuestionHightHidden = [userDefaults boolForKey:@"ArmKeyboardQuestionSign"];
 }
 
 @end

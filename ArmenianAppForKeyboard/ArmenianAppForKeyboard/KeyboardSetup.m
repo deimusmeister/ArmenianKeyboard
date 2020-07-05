@@ -80,7 +80,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -93,6 +93,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         cell.layoutMargins = UIEdgeInsetsZero;
         cell.backgroundColor = [UIColor whiteColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
         
@@ -167,6 +168,42 @@
             BCSwitch.on = [userDefaults boolForKey:@"ArmKeyboardAutoCapitalization"];
             [cell.contentView addSubview:BCSwitch];
         }
+        
+        if (indexPath.row == 4)
+        {
+            // Add Auto Capitalization option label
+            UILabel* TClabel = [[UILabel alloc] initWithFrame:CGRectMake(11, 21, self.frame.size.width / 2, 22)];
+            TClabel.font = [UIFont fontWithName:@"OpenSans" size:18.f];
+            TClabel.text = @"Use \"ու\" instead of \"ւ\"";
+            TClabel.textColor = tableView.separatorColor = [UIColor colorWithRed:65.f/255.f green:65.f/255.f blue:65.f/255.f alpha:1.f];
+            TClabel.textAlignment = NSTextAlignmentLeft;
+            [cell.contentView addSubview:TClabel];
+
+            // Add Auto Capitalization switch
+            UISwitch* BCSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.frame.size.width - 55 - 11, 14,
+                                                                            126, 44)];
+            [BCSwitch addTarget:self action: @selector(uLetterHandle:) forControlEvents:UIControlEventValueChanged];
+            BCSwitch.on = [userDefaults boolForKey:@"ArmKeyboardULetter"];
+            [cell.contentView addSubview:BCSwitch];
+        }
+        
+        if (indexPath.row == 5)
+        {
+            // Add Auto Capitalization option label
+            UILabel* TClabel = [[UILabel alloc] initWithFrame:CGRectMake(11, 21, self.frame.size.width, 22)];
+            TClabel.font = [UIFont fontWithName:@"OpenSans" size:18.f];
+            TClabel.text = @"Hide \"՞\" from main layout";
+            TClabel.textColor = tableView.separatorColor = [UIColor colorWithRed:65.f/255.f green:65.f/255.f blue:65.f/255.f alpha:1.f];
+            TClabel.textAlignment = NSTextAlignmentLeft;
+            [cell.contentView addSubview:TClabel];
+
+            // Add Auto Capitalization switch
+            UISwitch* BCSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.frame.size.width - 55 - 11, 14,
+                                                                            126, 44)];
+            [BCSwitch addTarget:self action: @selector(questionSignHandler:) forControlEvents:UIControlEventValueChanged];
+            BCSwitch.on = [userDefaults boolForKey:@"ArmKeyboardQuestionSign"];
+            [cell.contentView addSubview:BCSwitch];
+        }
     }
     return cell;
 }
@@ -205,6 +242,22 @@
     UISwitch* BCSwitch  = (UISwitch*)sender;
     NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
     [userDefaults setBool:BCSwitch.on forKey:@"ArmKeyboardAutoCapitalization"];
+    [userDefaults synchronize];
+}
+
+- (void)uLetterHandle:(id)sender
+{
+    UISwitch* BCSwitch  = (UISwitch*)sender;
+    NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+    [userDefaults setBool:BCSwitch.on forKey:@"ArmKeyboardULetter"];
+    [userDefaults synchronize];
+}
+
+- (void)questionSignHandler:(id)sender
+{
+    UISwitch* BCSwitch  = (UISwitch*)sender;
+    NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+    [userDefaults setBool:BCSwitch.on forKey:@"ArmKeyboardQuestionSign"];
     [userDefaults synchronize];
 }
 

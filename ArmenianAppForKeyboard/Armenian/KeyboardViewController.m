@@ -37,6 +37,8 @@
 @property (nonatomic) BOOL isLandscape;
 @property (nonatomic) BOOL isPredictionEnabled;
 @property (nonatomic) BOOL isAutoCapitalizationEnabled;
+@property (nonatomic) BOOL isULetterHidden;
+@property (nonatomic) BOOL isQuestionHightHidden;
 
 // Variables for storing keyboard height on landscape and portrait modes
 @property (nonatomic) CGFloat portraitHeight;
@@ -127,6 +129,18 @@
         [userDefaults setBool:YES forKey:@"ArmKeyboardAutoCapitalization"];
     }
     self.isAutoCapitalizationEnabled = [userDefaults boolForKey:@"ArmKeyboardAutoCapitalization"];
+    
+    if ([userDefaults objectForKey:@"ArmKeyboardULetter"] == nil)
+    {
+        [userDefaults setBool:NO forKey:@"ArmKeyboardULetter"];
+    }
+    self.isULetterHidden = [userDefaults boolForKey:@"ArmKeyboardULetter"];
+    
+    if ([userDefaults objectForKey:@"ArmKeyboardQuestionSign"] == nil)
+    {
+        [userDefaults setBool:NO forKey:@"ArmKeyboardQuestionSign"];
+    }
+    self.isQuestionHightHidden = [userDefaults boolForKey:@"ArmKeyboardQuestionSign"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -205,8 +219,9 @@
     // Add alpha layout
     Alpha* alpha = [[Alpha alloc] init];
     
-    // Register for numeric input
+    // Register for numeric input and settings
     alpha.delegate = self;
+    alpha.isULetterHidden = self.isULetterHidden;
     
     // Set a unique tag
     alpha.tag = kAlpha;
