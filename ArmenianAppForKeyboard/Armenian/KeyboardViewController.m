@@ -485,6 +485,28 @@
         [self.textDocumentProxy deleteBackward];
         [self.textDocumentProxy insertText:@", որ "];
     }
+
+    if (![text isEqualToString:@" թե "]         &&
+        [text hasSuffix:@" թե "]                && ![text hasSuffix:@", թե "] &&
+        ![text hasSuffix:@"ո՞նց թե "]            && ![text hasSuffix:@"Ո՞նց թե "] &&
+        ![text hasSuffix:@"ոնց թե "]            && ![text hasSuffix:@"Ոնց թե "] &&
+        ![text hasSuffix:@"ինչպե՞ս թե "]            && ![text hasSuffix:@"Ինչպե՞ս թե "] &&
+        ![text hasSuffix:@"ինչպես թե "]            && ![text hasSuffix:@"Ինչպես թե "] &&
+        ![text hasSuffix:@"կարծես թե "]           && ![text hasSuffix:@"Կարծես թե "] &&
+        ![text hasSuffix:@"կարծեք թե "]           && ![text hasSuffix:@"Կարծեք թե "] &&
+        ![text hasSuffix:@"ասես թե "]          && ![text hasSuffix:@"Ասես թե "] &&
+        ![text hasSuffix:@"ոչ թե "]           && ![text hasSuffix:@"Ոչ թե "] &&
+        ![text hasSuffix:@"ո՛չ թե "]           && ![text hasSuffix:@"Ո՛չ թե "] &&
+        ![text hasSuffix:@"իբրև թե "]            && ![text hasSuffix:@"Իբրև թե "] &&
+        ![text hasSuffix:@"իսկ թե "]       && ![text hasSuffix:@"Իսկ թե "] &&
+        ![text hasSuffix:@"իբր թե "]       && ![text hasSuffix:@"Իբր թե "])
+    {
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy deleteBackward];
+        [self.textDocumentProxy insertText:@", թե "];
+    }
     
     if (![text isEqualToString:@" երբ "] &&
         [text hasSuffix:@" երբ "] && ![text hasSuffix:@", երբ "])
