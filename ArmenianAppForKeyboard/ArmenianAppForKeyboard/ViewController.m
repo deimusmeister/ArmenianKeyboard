@@ -24,10 +24,20 @@
 {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self.view action:@selector(endEditing:)]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
-{    
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
     // Set the default values if no setting is configured
     NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
     if ([userDefaults objectForKey:@"ArmKeyboardPrediction"] == nil)
@@ -58,6 +68,12 @@
     {
         NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
         [userDefaults setBool:NO forKey:@"ArmKeyboardQuestionSign"];
+        [userDefaults synchronize];
+    }
+    
+    if ([userDefaults objectForKey:@"ArmKeyboardQuestionSignContext"] == nil) {
+        NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+        [userDefaults setObject:@"՝ ՛ ՜," forKey:@"ArmKeyboardQuestionSignContext"];
         [userDefaults synchronize];
     }
     
@@ -150,6 +166,30 @@
         }
     }
     return page;
+}
+
+#pragma mark Move content up and down handlers
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    
+    float newVerticalPosition = -keyboardSize.height;
+    
+    [self moveFrameToVerticalPosition:newVerticalPosition forDuration:0.3f];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    [self moveFrameToVerticalPosition:0.0f forDuration:0.3f];
+}
+
+
+- (void)moveFrameToVerticalPosition:(float)position forDuration:(float)duration {
+    CGRect frame = self.view.frame;
+    frame.origin.y = position;
+    
+    [UIView animateWithDuration:duration animations:^{
+        self.view.frame = frame;
+    }];
 }
 
 @end

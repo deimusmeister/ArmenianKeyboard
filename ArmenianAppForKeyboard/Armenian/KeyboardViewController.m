@@ -39,6 +39,7 @@
 @property (nonatomic) BOOL isAutoCapitalizationEnabled;
 @property (nonatomic) BOOL isULetterHidden;
 @property (nonatomic) BOOL isQuestionHightHidden;
+@property (nonatomic) NSArray* questionMarkContext;
 
 // Variables for storing keyboard height on landscape and portrait modes
 @property (nonatomic) CGFloat portraitHeight;
@@ -141,6 +142,11 @@
         [userDefaults setBool:NO forKey:@"ArmKeyboardQuestionSign"];
     }
     self.isQuestionHightHidden = [userDefaults boolForKey:@"ArmKeyboardQuestionSign"];
+    
+    if ([userDefaults objectForKey:@"ArmKeyboardQuestionSignContext"] == nil)
+    {
+        [userDefaults setObject:@"՝ ՛ ՜," forKey:@"ArmKeyboardQuestionSignContext"];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -55,6 +55,7 @@
 // Settings
 @property (nonatomic) BOOL isULetterHidden;
 @property (nonatomic) BOOL isQuestionHightHidden;
+@property (nonatomic) NSArray* questionMarkContext;
 
 // Represents the current state of alpha keyboad possible values are :
 //      kLowerCase        1

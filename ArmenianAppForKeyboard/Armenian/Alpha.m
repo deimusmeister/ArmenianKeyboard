@@ -1379,7 +1379,7 @@
     [containerView addSubview:ebutton];
     
     ebutton.input = @"՞";
-    ebutton.inputOptions = @[@",", @":", @"?", @"!"];
+    ebutton.inputOptions = self.questionMarkContext;// @[@",", @":", @"?", @"!"];
     
     // Register button click handler
     ebutton.delegate = self;
@@ -1929,6 +1929,14 @@
         [userDefaults setBool:NO forKey:@"ArmKeyboardQuestionSign"];
     }
     self.isQuestionHightHidden = [userDefaults boolForKey:@"ArmKeyboardQuestionSign"];
+    
+    NSString* context = [userDefaults stringForKey:@"ArmKeyboardQuestionSignContext"];
+    context = [context stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int i = 0; i < context.length; i++) {
+        [array addObject:[NSString stringWithFormat:@"%C", [context characterAtIndex:i]]];
+    }
+    self.questionMarkContext = array;
 }
 
 @end

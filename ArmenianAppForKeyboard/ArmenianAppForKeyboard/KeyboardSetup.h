@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KeyboardSetup : UIView <UITableViewDataSource, UITableViewDelegate>
+@interface KeyboardSetup : UIView <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @end

@@ -80,7 +80,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -204,6 +204,32 @@
             BCSwitch.on = [userDefaults boolForKey:@"ArmKeyboardQuestionSign"];
             [cell.contentView addSubview:BCSwitch];
         }
+        
+        if (indexPath.row == 6)
+        {
+            // Add Tailing Character option label
+            UILabel* TClabel = [[UILabel alloc] initWithFrame:CGRectMake(11, 21, self.frame.size.width / 2, 22)];
+            TClabel.font = [UIFont fontWithName:@"OpenSans" size:18.f];
+            TClabel.text = @"\"՞\" context characters";
+            TClabel.textColor = tableView.separatorColor = [UIColor colorWithRed:65.f/255.f green:65.f/255.f blue:65.f/255.f alpha:1.f];
+            TClabel.textAlignment = NSTextAlignmentLeft;
+            [cell.contentView addSubview:TClabel];
+
+        
+            // Add Tailing Character option input field
+            UITextField* TCField = [[UITextField alloc] initWithFrame:CGRectMake(self.frame.size.width - 126 - 11, 8,
+                                                                                 126, 44)];
+            TCField.text = [userDefaults stringForKey:@"ArmKeyboardQuestionSignContext"];
+            TCField.delegate = self;
+            TCField.autocorrectionType = UITextAutocorrectionTypeNo;
+            TCField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            [TCField addTarget:self action:@selector(questionMarkCharacters:) forControlEvents:UIControlEventEditingChanged];
+            TCField.borderStyle = UITextBorderStyleRoundedRect;
+            TCField.backgroundColor = [UIColor colorWithRed:232.f/255.f green:232.f/255.f blue:232.f/255.f alpha:1.f];
+            TCField.textAlignment = NSTextAlignmentCenter;
+            TCField.textColor = [UIColor colorWithRed:65.f/255.f green:65.f/255.f blue:65.f/255.f alpha:1.f];
+            [cell.contentView addSubview:TCField];
+        }
     }
     return cell;
 }
@@ -259,6 +285,24 @@
     NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
     [userDefaults setBool:BCSwitch.on forKey:@"ArmKeyboardQuestionSign"];
     [userDefaults synchronize];
+}
+
+- (void)questionMarkCharacters:(id)sender
+{
+    UITextField* TCField = (UITextField*)sender;
+    NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+    NSString* text = TCField.text;
+    [userDefaults setObject:text forKey:@"ArmKeyboardQuestionSignContext"];
+    [userDefaults synchronize];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSUInteger length = [textField.text length];
+    if (length >= 4 && ![string isEqualToString:@""]) {
+        textField.text = [textField.text substringToIndex:4];
+        return NO;
+    }
+    return YES;
 }
 
 @end
