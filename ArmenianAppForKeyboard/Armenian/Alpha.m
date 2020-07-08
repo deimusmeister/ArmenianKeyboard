@@ -212,7 +212,7 @@
     row2.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
     
     // Row 3
-    UIView* row3 = [self createRow:@[ @"՞", @"`", @"«", @"»", @"՛", @"😊", @"😉", @"😄"]
+    UIView* row3 = [self createRow:@[ @"՞", @"`", @"«", @"»", @"՛", @"—", @"😉", @"😄"]
                            options:nil OffsetLeft:0.05 OffsetLeft:0.05];
     row3.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
     
@@ -285,7 +285,7 @@
     row2.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
     
     // Row 3
-    UIView* row3 = [self createRow:@[ @"՞", @"`", @"«", @"»", @"՛", @"😊", @"😉", @"😄"]
+    UIView* row3 = [self createRow:@[ @"՞", @"`", @"«", @"»", @"՛", @"—", @"😉", @"😄"]
                            options:nil OffsetLeft:0.05 OffsetLeft:0.05];
     row3.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:kDebug];
     
