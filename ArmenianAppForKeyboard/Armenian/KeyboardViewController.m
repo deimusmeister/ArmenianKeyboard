@@ -40,6 +40,7 @@
 @property (nonatomic) BOOL isULetterHidden;
 @property (nonatomic) BOOL isQuestionHightHidden;
 @property (nonatomic) NSArray* questionMarkContext;
+@property (nonatomic) BOOL isCommaAdditionEnabled;
 
 // Variables for storing keyboard height on landscape and portrait modes
 @property (nonatomic) CGFloat portraitHeight;
@@ -147,6 +148,11 @@
     {
         [userDefaults setObject:@"՝ ՛ ՜," forKey:@"ArmKeyboardQuestionSignContext"];
     }
+    if ([userDefaults objectForKey:@"ArmKeyboardCommaInsertion"] == nil)
+    {
+        [userDefaults setBool:YES forKey:@"ArmKeyboardCommaInsertion"];
+    }
+    self.isCommaAdditionEnabled = [userDefaults boolForKey:@"ArmKeyboardCommaInsertion"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -471,6 +477,11 @@
     {
         // Switch to shited mode
         [self toShifted];
+    }
+    
+    // Check if automatic comma insertion is disabled
+    if (self.isCommaAdditionEnabled == NO) {
+        return;
     }
     
     // Check for automatic comma edition

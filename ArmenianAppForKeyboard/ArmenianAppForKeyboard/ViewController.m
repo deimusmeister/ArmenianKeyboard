@@ -70,10 +70,15 @@
         [userDefaults setBool:NO forKey:@"ArmKeyboardQuestionSign"];
         [userDefaults synchronize];
     }
-    
     if ([userDefaults objectForKey:@"ArmKeyboardQuestionSignContext"] == nil) {
         NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
         [userDefaults setObject:@"՝ ՛ ՜," forKey:@"ArmKeyboardQuestionSignContext"];
+        [userDefaults synchronize];
+    }
+    if ([userDefaults objectForKey:@"ArmKeyboardCommaInsertion"] == nil)
+    {
+        NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+        [userDefaults setBool:YES forKey:@"ArmKeyboardCommaInsertion"];
         [userDefaults synchronize];
     }
     

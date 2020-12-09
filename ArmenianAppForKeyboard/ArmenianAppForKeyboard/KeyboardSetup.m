@@ -80,7 +80,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -230,6 +230,24 @@
             TCField.textColor = [UIColor colorWithRed:65.f/255.f green:65.f/255.f blue:65.f/255.f alpha:1.f];
             [cell.contentView addSubview:TCField];
         }
+        
+        if (indexPath.row == 7)
+        {
+            // Add Auto Capitalization option label
+            UILabel* TClabel = [[UILabel alloc] initWithFrame:CGRectMake(11, 21, self.frame.size.width, 22)];
+            TClabel.font = [UIFont fontWithName:@"OpenSans" size:18.f];
+            TClabel.text = @"Auto Comma Insertion";
+            TClabel.textColor = tableView.separatorColor = [UIColor colorWithRed:65.f/255.f green:65.f/255.f blue:65.f/255.f alpha:1.f];
+            TClabel.textAlignment = NSTextAlignmentLeft;
+            [cell.contentView addSubview:TClabel];
+
+            // Add Auto Capitalization switch
+            UISwitch* BCSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.frame.size.width - 55 - 11, 14,
+                                                                            126, 44)];
+            [BCSwitch addTarget:self action: @selector(automaticCommaHandler:) forControlEvents:UIControlEventValueChanged];
+            BCSwitch.on = [userDefaults boolForKey:@"ArmKeyboardCommaInsertion"];
+            [cell.contentView addSubview:BCSwitch];
+        }
     }
     return cell;
 }
@@ -303,6 +321,14 @@
         return NO;
     }
     return YES;
+}
+
+- (void)automaticCommaHandler:(id)sender
+{
+    UISwitch* BCSwitch  = (UISwitch*)sender;
+    NSUserDefaults* userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.levonpoghosyan.armeniankeyboard"];
+    [userDefaults setBool:BCSwitch.on forKey:@"ArmKeyboardCommaInsertion"];
+    [userDefaults synchronize];
 }
 
 @end
